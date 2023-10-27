@@ -12,7 +12,7 @@
         <meta name="author" content="WSO2">
       
       
-        <link rel="canonical" href="https://is.docs.wso2.com/en/7.0.0/references/compliance/ccpa/">
+        <link rel="canonical" href="https://is.docs.wso2.com/en/next/references/compliance/ccpa/">
       
       
         <link rel="prev" href="../eidas/">
@@ -165,6 +165,38 @@
         
       </div>
     </div>
+    
+      
+      <div class="md-header__version-select-dropdown">
+        <a class="dropdown-link" href="#!">
+          
+            
+          
+          <span class="icon">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.3.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M201.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 338.7 54.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z"/></svg>
+          </span>
+        </a>
+        <ul class="dropdown-content" tabindex="0">
+          
+             
+              <li><a href="https://is.docs.wso2.com/en/6.1.0">6.1.0</a></li>
+            
+          
+             
+              <li><a href="https://is.docs.wso2.com/en/6.0.0">6.0.0</a></li>
+            
+          
+             
+              <li><a href="https://is.docs.wso2.com/en/5.11.0">5.11.0</a></li>
+            
+          
+          
+            <li><a href="https://is.docs.wso2.com/en/versions">Show all</a></li>
+          
+        </ul>
+      </div>
+    
     
       <form class="md-header__option" data-md-component="palette">
         
@@ -2843,8 +2875,6 @@
         
           
         
-          
-        
       
       
         
@@ -2873,7 +2903,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../guides/users/manage-collaborators/" class="md-nav__link">
+      <a href="../../../guides/users/manage-administrators/" class="md-nav__link">
         Manage administrators
       </a>
     </li>
@@ -2887,7 +2917,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../guides/users/manage-customers/" class="md-nav__link">
+      <a href="../../../guides/users/manage-users/" class="md-nav__link">
         Manage users
       </a>
     </li>
@@ -2928,27 +2958,13 @@
   
   
   
-    <li class="md-nav__item">
-      <a href="../../../guides/users/migrate-users/" class="md-nav__link">
-        Migrate users to WSO2 Identity Server
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
     
     <li class="md-nav__item md-nav__item--nested">
       
       
       
       
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_6_7" >
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_6_6" >
       
       
         
@@ -2971,14 +2987,14 @@
         <div class="md-nav__link md-nav__link--index ">
           <a href="../../../guides/users/attributes/">Manage attributes and mappings</a>
           
-            <label for="__nav_3_6_7">
+            <label for="__nav_3_6_6">
               <span class="md-nav__icon md-icon"></span>
             </label>
           
         </div>
       
-      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_6_7_label" aria-expanded="false">
-        <label class="md-nav__title" for="__nav_3_6_7">
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_6_6_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_3_6_6">
           <span class="md-nav__icon md-icon"></span>
           Manage attributes and mappings
         </label>
@@ -3060,7 +3076,7 @@
       
       
       
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_6_8" >
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_6_7" >
       
       
         
@@ -3081,14 +3097,14 @@
         <div class="md-nav__link md-nav__link--index ">
           <a href="../../../guides/users/user-stores/">Manage user stores</a>
           
-            <label for="__nav_3_6_8">
+            <label for="__nav_3_6_7">
               <span class="md-nav__icon md-icon"></span>
             </label>
           
         </div>
       
-      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_6_8_label" aria-expanded="false">
-        <label class="md-nav__title" for="__nav_3_6_8">
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_6_7_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_3_6_7">
           <span class="md-nav__icon md-icon"></span>
           Manage user stores
         </label>
@@ -5870,7 +5886,7 @@ This includes a broader spectrum of identifiers such as purchase events or downl
 <li>Download any kind of information stored in the system in a human-readable manner</li>
 </ul>
 <p>To facilitate this, WSO2 Identity Server published an API that can be used to download profile details of consumers stored in the server, in a well-structured and machine-readable JSON format. Consumers can download their profiles by logging into the self-care portal called <strong>My Account</strong>.
-Any organization can integrate this capability into existing applications and portals with the help of the RESTful personal data export API exposed by the WSO2 Identity Server. For more information, refer to <a href="https://is.docs.wso2.com/en/next/apis/use-the-personal-information-export-rest-apis">Personal Information Export REST APIs</a>.</p>
+Any organization can integrate this capability into existing applications and portals with the help of the RESTful personal data export API exposed by the WSO2 Identity Server. For more information, refer to <a href="http://127.0.0.1:8000/en/7.0.0/apis/use-the-personal-information-export-rest-apis">Personal Information Export REST APIs</a>.</p>
 </li>
 <li>
 <p><strong>The right to have PI deleted</strong>
@@ -5901,7 +5917,7 @@ Pseudonymization helps the system to keep the context related to the operation w
 </li>
 </ol>
 <p>Additionally, the WSO2 Privacy Toolkit can be extended to clear personal data in any relational database or any textual log file.
-For further information on the WSO2 privacy toolkit, refer to <a href="https://is.docs.wso2.com/en/next/deploy/remove-references-to-deleted-user-identities">Remove References to Deleted User Identities</a>.</p>
+For further information on the WSO2 privacy toolkit, refer to <a href="http://127.0.0.1:8000/en/7.0.0/deploy/remove-references-to-deleted-user-identities">Remove References to Deleted User Identities</a>.</p>
 </li>
 <li>
 <p><strong>The right of disclosure</strong>
@@ -5935,7 +5951,7 @@ For further information on the WSO2 privacy toolkit, refer to <a href="https://i
 <p>WSO2 Identity Server comes with an extensive consent management solution that enables users to conveniently manage the consents of their consumers and third-party applications. WSO2 Identity Server’s consent management module consists of the following key features.</p>
 <ul>
 <li>
-<p>Has RESTful consent APIs to manage consents remotely. For more information on consent management, refer to <a href="https://is.docs.wso2.com/en/next/references/concepts/consent-management/">Consent Management</a>.</p>
+<p>Has RESTful consent APIs to manage consents remotely. For more information on consent management, refer to <a href="http://127.0.0.1:8000/en/7.0.0/references/concepts/consent-management/">Consent Management</a>.</p>
 </li>
 <li>
 <p>Provides an admin portal support for organizations to define and manage consent, data processing purposes, and user attributes per consent.</p>
@@ -6002,7 +6018,7 @@ For further information on the WSO2 privacy toolkit, refer to <a href="https://i
 <div class="md-copyright">
     
         <div class="md-copyright__highlight">
-            WSO2 Identity Server - Documentation
+            © 2023 WSO2 LLC.
         </div>
     
     <div class="md-license__highlight">
@@ -6024,6 +6040,8 @@ For further information on the WSO2 privacy toolkit, refer to <a href="https://i
     
     
       <script src="../../../assets/javascripts/bundle.fc8c2696.min.js"></script>
+      
+        <script src="../../../assets/js/theme.js"></script>
       
     
   </body>

@@ -12,7 +12,7 @@
         <meta name="author" content="WSO2">
       
       
-        <link rel="canonical" href="https://is.docs.wso2.com/en/7.0.0/guides/authentication/user-attributes/enable-attributes-for-saml-app/">
+        <link rel="canonical" href="https://is.docs.wso2.com/en/next/guides/authentication/user-attributes/enable-attributes-for-saml-app/">
       
       
         <link rel="prev" href="../enable-attributes-for-oidc-app/">
@@ -165,6 +165,38 @@
         
       </div>
     </div>
+    
+      
+      <div class="md-header__version-select-dropdown">
+        <a class="dropdown-link" href="#!">
+          
+            
+          
+          <span class="icon">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.3.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M201.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 338.7 54.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z"/></svg>
+          </span>
+        </a>
+        <ul class="dropdown-content" tabindex="0">
+          
+             
+              <li><a href="https://is.docs.wso2.com/en/6.1.0">6.1.0</a></li>
+            
+          
+             
+              <li><a href="https://is.docs.wso2.com/en/6.0.0">6.0.0</a></li>
+            
+          
+             
+              <li><a href="https://is.docs.wso2.com/en/5.11.0">5.11.0</a></li>
+            
+          
+          
+            <li><a href="https://is.docs.wso2.com/en/versions">Show all</a></li>
+          
+        </ul>
+      </div>
+    
     
       <form class="md-header__option" data-md-component="palette">
         
@@ -2965,8 +2997,6 @@
         
           
         
-          
-        
       
       
         
@@ -2995,7 +3025,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../users/manage-collaborators/" class="md-nav__link">
+      <a href="../../../users/manage-administrators/" class="md-nav__link">
         Manage administrators
       </a>
     </li>
@@ -3009,7 +3039,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../users/manage-customers/" class="md-nav__link">
+      <a href="../../../users/manage-users/" class="md-nav__link">
         Manage users
       </a>
     </li>
@@ -3050,27 +3080,13 @@
   
   
   
-    <li class="md-nav__item">
-      <a href="../../../users/migrate-users/" class="md-nav__link">
-        Migrate users to WSO2 Identity Server
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
     
     <li class="md-nav__item md-nav__item--nested">
       
       
       
       
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_6_7" >
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_6_6" >
       
       
         
@@ -3093,14 +3109,14 @@
         <div class="md-nav__link md-nav__link--index ">
           <a href="../../../users/attributes/">Manage attributes and mappings</a>
           
-            <label for="__nav_3_6_7">
+            <label for="__nav_3_6_6">
               <span class="md-nav__icon md-icon"></span>
             </label>
           
         </div>
       
-      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_6_7_label" aria-expanded="false">
-        <label class="md-nav__title" for="__nav_3_6_7">
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_6_6_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_3_6_6">
           <span class="md-nav__icon md-icon"></span>
           Manage attributes and mappings
         </label>
@@ -3182,7 +3198,7 @@
       
       
       
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_6_8" >
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_6_7" >
       
       
         
@@ -3203,14 +3219,14 @@
         <div class="md-nav__link md-nav__link--index ">
           <a href="../../../users/user-stores/">Manage user stores</a>
           
-            <label for="__nav_3_6_8">
+            <label for="__nav_3_6_7">
               <span class="md-nav__icon md-icon"></span>
             </label>
           
         </div>
       
-      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_6_8_label" aria-expanded="false">
-        <label class="md-nav__title" for="__nav_3_6_8">
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_6_7_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_3_6_7">
           <span class="md-nav__icon md-icon"></span>
           Manage user stores
         </label>
@@ -5993,7 +6009,7 @@
 <h1 id="enable-user-attributes-for-saml-apps">Enable user attributes for SAML apps<a class="headerlink" href="#enable-user-attributes-for-saml-apps" title="Permanent link">&para;</a></h1>
 <p>WSO2 Identity Server can share user attributes with applications. The following guide shows how to share user attributes with SAML applications.</p>
 <h2 id="prerequisite">Prerequisite<a class="headerlink" href="#prerequisite" title="Permanent link">&para;</a></h2>
-<p>To get started, you need to have an application registered in WSO2 Identity Server. If you don't have an app registered, go to WSO2 Identity Server to <a href="https://is.docs.wso2.com/en/next/guides/applications/register-saml-web-app/">register a SAML application</a>.</p>
+<p>To get started, you need to have an application registered in WSO2 Identity Server. If you don't have an app registered, go to WSO2 Identity Server to <a href="http://127.0.0.1:8000/en/7.0.0/guides/applications/register-saml-web-app/">register a SAML application</a>.</p>
 <h2 id="configure-user-attributes-to-share">Configure user attributes to share<a class="headerlink" href="#configure-user-attributes-to-share" title="Permanent link">&para;</a></h2>
 <p>Follow the steps below to configure the user attributes from the WSO2 Identity Server Console and share them with the application.</p>
 <h3 id="select-user-attributes">Select user attributes<a class="headerlink" href="#select-user-attributes" title="Permanent link">&para;</a></h3>
@@ -6005,11 +6021,11 @@
 <li>Click <strong>Update</strong> and go to the <strong>User Attributes</strong> tab.</li>
 <li>
 <p>Click <strong>Add User Attribute</strong> if you don't have any attributes already added.</p>
-<p><img alt="Add user attributes to a SAML app in WSO2 Identity Server" src="https://is.docs.wso2.com/en/next/assets/img/guides/applications/attributes/add-user-attributes.png" style="display: block; margin: 0 auto; border: 0.3px solid lightgrey;" width="600" /></p>
+<p><img alt="Add user attributes to a SAML app in WSO2 Identity Server" src="http://127.0.0.1:8000/en/7.0.0/assets/img/guides/applications/attributes/add-user-attributes.png" style="display: block; margin: 0 auto; border: 0.3px solid lightgrey;" width="600" /></p>
 </li>
 <li>
 <p>Select the required attributes from the list as shown below.</p>
-<p><img alt="Add user attributes in WSO2 Identity Server" src="https://is.docs.wso2.com/en/next/assets/img/guides/applications/attributes/select-user-attributes.png" style="display: block; margin: 0 auto; border: 0.3px solid lightgrey;" width="600" /></p>
+<p><img alt="Add user attributes in WSO2 Identity Server" src="http://127.0.0.1:8000/en/7.0.0/assets/img/guides/applications/attributes/select-user-attributes.png" style="display: block; margin: 0 auto; border: 0.3px solid lightgrey;" width="600" /></p>
 </li>
 <li>
 <p>Click <strong>Save</strong> to return to the <strong>User Attributes</strong> tab and then click <strong>Update</strong>.</p>
@@ -6023,7 +6039,7 @@
 <li>Click <strong>Enable Mapping</strong> in the <strong>User Attributes</strong> section.</li>
 <li>
 <p>Change the <strong>Mapped user attribute</strong> for the selected attribute.</p>
-<p><img alt="Eable mapping" src="https://is.docs.wso2.com/en/next/assets/img/guides/applications/attributes/saml/enable-mapping.png" style="display: block; margin: 0 auto; border: 0.3px solid lightgrey;" width="600" /></p>
+<p><img alt="Eable mapping" src="http://127.0.0.1:8000/en/7.0.0/assets/img/guides/applications/attributes/saml/enable-mapping.png" style="display: block; margin: 0 auto; border: 0.3px solid lightgrey;" width="600" /></p>
 </li>
 </ol>
 <p>This ensures that the application receives attributes based on the name that is configured.</p>
@@ -6033,7 +6049,7 @@
 <p>You can configure the mandatory attributes that are essential for application functionalities. That is, when a user logs in, the user information linked to these attributes are required to be shared with the application.</p>
 <p>If the user does not have this information entered in the user profile, the user will be prompted to enter the information during the login flow.</p>
 <p>From the attributes that are enabled for the application in the <strong>Attributes</strong> tab, you can expand the scopes and select the attributes that are mandatory for the application:</p>
-<p><img alt="Add mandatory user attributes in WSO2 Identity Server" src="https://is.docs.wso2.com/en/next/assets/img/guides/applications/attributes/saml/add-mandatory-user-attributes.png" style="display: block; margin: 0 auto; border: 0.3px solid lightgrey;" width="600" /></p>
+<p><img alt="Add mandatory user attributes in WSO2 Identity Server" src="http://127.0.0.1:8000/en/7.0.0/assets/img/guides/applications/attributes/saml/add-mandatory-user-attributes.png" style="display: block; margin: 0 auto; border: 0.3px solid lightgrey;" width="600" /></p>
 <h3 id="select-the-subject-attribute">Select the subject attribute<a class="headerlink" href="#select-the-subject-attribute" title="Permanent link">&para;</a></h3>
 <p>The subject attribute is used for exchanging information about the user. The subject is represented by the <strong>subject</strong> attribute in the SAML assertion.</p>
 <p>By default, WSO2 Identity Server shares <strong>username</strong> as the subject. You can define any user attribute as the subject.</p>
@@ -6042,7 +6058,7 @@
 <li><a href="#select-user-attributes">Select it as a user attribute</a>.</li>
 <li>
 <p>Go to the <strong>Subject</strong> section under <strong>User Attributes</strong>.</p>
-<p><img alt="Select subject attribute in WSO2 Identity Server" src="https://is.docs.wso2.com/en/next/assets/img/guides/applications/attributes/saml/select-sub-attribute.png" style="display: block; margin: 0 auto; border: 0.3px solid lightgrey;" width="600" /></p>
+<p><img alt="Select subject attribute in WSO2 Identity Server" src="http://127.0.0.1:8000/en/7.0.0/assets/img/guides/applications/attributes/saml/select-sub-attribute.png" style="display: block; margin: 0 auto; border: 0.3px solid lightgrey;" width="600" /></p>
 </li>
 <li>
 <p>Select an attribute as the subject from the <strong>Subject attribute</strong> list.</p>
@@ -6052,14 +6068,14 @@
 <h2 id="how-it-works">How it works<a class="headerlink" href="#how-it-works" title="Permanent link">&para;</a></h2>
 <p>Let's see how this flow works in WSO2 Identity Server.</p>
 <p>Once you have configured the user attributes that are required for your application, WSO2 Identity Server implements the following process when a user tries to log in to your app.</p>
-<p><img alt="Provides consent for attributes in WSO2 Identity Server" src="https://is.docs.wso2.com/en/next/assets/img/guides/applications/attributes/saml/how-it-works.png" style="display: block; margin: 0 auto;" width="800" /></p>
+<p><img alt="Provides consent for attributes in WSO2 Identity Server" src="http://127.0.0.1:8000/en/7.0.0/assets/img/guides/applications/attributes/saml/how-it-works.png" style="display: block; margin: 0 auto;" width="800" /></p>
 <h3 id="wso2-identity-server-checks-for-mandatory-attributes">WSO2 Identity Server checks for mandatory attributes<a class="headerlink" href="#wso2-identity-server-checks-for-mandatory-attributes" title="Permanent link">&para;</a></h3>
 <p>WSO2 Identity Server verifies whether the user's profile has values for all the <a href="#define-mandatory-user-attributes">mandatory attributes</a> that are requested by the application. If there are missing values, WSO2 Identity Server will prompt the user to enter the missing values.</p>
 <h3 id="requests-user-consent">Requests user consent<a class="headerlink" href="#requests-user-consent" title="Permanent link">&para;</a></h3>
 <p>By default, WSO2 Identity Server requests the user's consent to share the user attributes with the application.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Learn more about <a href="https://is.docs.wso2.com/en/next/guides/authentication/manage-consent-for-attributes/">managing user consent</a>.</p>
+<p>Learn more about <a href="http://127.0.0.1:8000/en/7.0.0/guides/authentication/manage-consent-for-attributes/">managing user consent</a>.</p>
 </div>
 <h3 id="shares-attributes-with-the-app">Shares attributes with the app<a class="headerlink" href="#shares-attributes-with-the-app" title="Permanent link">&para;</a></h3>
 <p>WSO2 Identity Server will share these user attributes with an application, given the user has provided consent. User attributes, along with the <strong>subject</strong> attribute, are shared via SAML assertions.</p>
@@ -6164,7 +6180,7 @@
 <div class="md-copyright">
     
         <div class="md-copyright__highlight">
-            WSO2 Identity Server - Documentation
+            © 2023 WSO2 LLC.
         </div>
     
     <div class="md-license__highlight">
@@ -6186,6 +6202,8 @@
     
     
       <script src="../../../../assets/javascripts/bundle.fc8c2696.min.js"></script>
+      
+        <script src="../../../../assets/js/theme.js"></script>
       
     
   </body>

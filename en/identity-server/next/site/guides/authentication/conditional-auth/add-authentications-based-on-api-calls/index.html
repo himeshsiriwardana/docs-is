@@ -12,7 +12,7 @@
         <meta name="author" content="WSO2">
       
       
-        <link rel="canonical" href="https://is.docs.wso2.com/en/7.0.0/guides/authentication/conditional-auth/add-authentications-based-on-api-calls/">
+        <link rel="canonical" href="https://is.docs.wso2.com/en/next/guides/authentication/conditional-auth/add-authentications-based-on-api-calls/">
       
       
         <link rel="prev" href="../ip-based-template/">
@@ -165,6 +165,38 @@
         
       </div>
     </div>
+    
+      
+      <div class="md-header__version-select-dropdown">
+        <a class="dropdown-link" href="#!">
+          
+            
+          
+          <span class="icon">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.3.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M201.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 338.7 54.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z"/></svg>
+          </span>
+        </a>
+        <ul class="dropdown-content" tabindex="0">
+          
+             
+              <li><a href="https://is.docs.wso2.com/en/6.1.0">6.1.0</a></li>
+            
+          
+             
+              <li><a href="https://is.docs.wso2.com/en/6.0.0">6.0.0</a></li>
+            
+          
+             
+              <li><a href="https://is.docs.wso2.com/en/5.11.0">5.11.0</a></li>
+            
+          
+          
+            <li><a href="https://is.docs.wso2.com/en/versions">Show all</a></li>
+          
+        </ul>
+      </div>
+    
     
       <form class="md-header__option" data-md-component="palette">
         
@@ -2947,8 +2979,6 @@
         
           
         
-          
-        
       
       
         
@@ -2977,7 +3007,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../users/manage-collaborators/" class="md-nav__link">
+      <a href="../../../users/manage-administrators/" class="md-nav__link">
         Manage administrators
       </a>
     </li>
@@ -2991,7 +3021,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../users/manage-customers/" class="md-nav__link">
+      <a href="../../../users/manage-users/" class="md-nav__link">
         Manage users
       </a>
     </li>
@@ -3032,27 +3062,13 @@
   
   
   
-    <li class="md-nav__item">
-      <a href="../../../users/migrate-users/" class="md-nav__link">
-        Migrate users to WSO2 Identity Server
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
     
     <li class="md-nav__item md-nav__item--nested">
       
       
       
       
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_6_7" >
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_6_6" >
       
       
         
@@ -3075,14 +3091,14 @@
         <div class="md-nav__link md-nav__link--index ">
           <a href="../../../users/attributes/">Manage attributes and mappings</a>
           
-            <label for="__nav_3_6_7">
+            <label for="__nav_3_6_6">
               <span class="md-nav__icon md-icon"></span>
             </label>
           
         </div>
       
-      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_6_7_label" aria-expanded="false">
-        <label class="md-nav__title" for="__nav_3_6_7">
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_6_6_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_3_6_6">
           <span class="md-nav__icon md-icon"></span>
           Manage attributes and mappings
         </label>
@@ -3164,7 +3180,7 @@
       
       
       
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_6_8" >
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_6_7" >
       
       
         
@@ -3185,14 +3201,14 @@
         <div class="md-nav__link md-nav__link--index ">
           <a href="../../../users/user-stores/">Manage user stores</a>
           
-            <label for="__nav_3_6_8">
+            <label for="__nav_3_6_7">
               <span class="md-nav__icon md-icon"></span>
             </label>
           
         </div>
       
-      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_6_8_label" aria-expanded="false">
-        <label class="md-nav__title" for="__nav_3_6_8">
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_6_7_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_3_6_7">
           <span class="md-nav__icon md-icon"></span>
           Manage user stores
         </label>
@@ -5957,11 +5973,11 @@
 <h2 id="scenario">Scenario<a class="headerlink" href="#scenario" title="Permanent link">&para;</a></h2>
 <p>Consider a scenario where the login flow of the application should be stepped up after an API call to a service endpoint hosted on Choreo. The API call should be executed after the first authentication step is successfully completed. The second authentication step should be prompted based on the decision made by the service during the API call.</p>
 <p>Let's consider an API hosted on Choreo that reads an IP address from the request body, retrieves geolocation from the IP address, evaluates the risk of the login attempt, and sends back the result in the <code>hasRisk</code> parameter in the response. And the second authentication step should be prompted if the <code>hasRisk</code> is <code>true</code>.</p>
-<p><img alt="API calls based adaptive authentication" src="https://is.docs.wso2.com/en/next/assets/img/guides/conditional-auth/api-calls-callchoreo.png" /></p>
+<p><img alt="API calls based adaptive authentication" src="http://127.0.0.1:8000/en/7.0.0/assets/img/guides/conditional-auth/api-calls-callchoreo.png" /></p>
 <h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h2>
 <ul>
 <li>
-<p>You need to <a href="https://is.docs.wso2.com/en/next/guides/applications/">register an application with WSO2 Identity Server</a>. You can register your own application or use one of the <a href="https://is.docs.wso2.com/en/next/get-started/try-samples/">sample applications</a> provided.</p>
+<p>You need to <a href="http://127.0.0.1:8000/en/7.0.0/guides/applications/">register an application with WSO2 Identity Server</a>. You can register your own application or use one of the <a href="http://127.0.0.1:8000/en/7.0.0/get-started/try-samples/">sample applications</a> provided.</p>
 </li>
 <li>
 <p>Get an API key from <a href="https://ipgeolocation.io/">ipgeolocation</a>. For more information, refer to <a href="https://ipgeolocation.io/documentation.html">ipgeolocation documentation</a>.</p>
@@ -6092,7 +6108,7 @@
 </div>
 </div>
 <hr />
-<p><img alt="Enable conditional auth in WSO2 Identity Server" src="https://is.docs.wso2.com/en/next/assets/img/guides/conditional-auth/enable-conditional-auth.png" style="display: block; margin: 0 auto; border: 0.3px solid lightgrey;" /></p>
+<p><img alt="Enable conditional auth in WSO2 Identity Server" src="http://127.0.0.1:8000/en/7.0.0/assets/img/guides/conditional-auth/enable-conditional-auth.png" style="display: block; margin: 0 auto; border: 0.3px solid lightgrey;" /></p>
 <p>You can now define your conditional authentication script.</p>
 </li>
 <li>
@@ -6172,10 +6188,10 @@
 <li>
 <p><strong>Add a stored <code>consumer key</code> and <code>consumer secret</code> to the script.</strong></p>
 <p>Select the location in the script where the secret should be inserted, click the key icon above the script, and use one of the following options:</p>
-<p><img alt="Add secret to script" src="https://is.docs.wso2.com/en/next/assets/img/guides/secret/add-secret-to-script.png" style="display: block; margin: 0 auto; border: 0.3px solid lightgrey;" /></p>
+<p><img alt="Add secret to script" src="http://127.0.0.1:8000/en/7.0.0/assets/img/guides/secret/add-secret-to-script.png" style="display: block; margin: 0 auto; border: 0.3px solid lightgrey;" /></p>
 <ul>
 <li>If you are adding an existing secret, click "+" next to the secret in the drop-down menu.</li>
-<li>If you need a new secret, you can first <a href="https://is.docs.wso2.com/en/next/guides/authentication/conditional-auth/configure-conditional-auth/#create-a-new-secret-on-the-console">create a new secret</a>.
+<li>If you need a new secret, you can first <a href="http://127.0.0.1:8000/en/7.0.0/guides/authentication/conditional-auth/configure-conditional-auth/#create-a-new-secret-on-the-console">create a new secret</a>.
       Now the new secret will be listed when you click the key icon. You can click "+" to add it to the script.</li>
 </ul>
 </li>
@@ -6220,7 +6236,7 @@
 </li>
 <li>
 <p>Login from an IP address outside the allowed geolocation. TOTP authentication is prompted.</p>
-<p><img alt="ip-based-2fa-conditional-auth-totp-page" src="https://is.docs.wso2.com/en/next/assets/img/guides/conditional-auth/enter-otp-token.png" style="display: block; margin: 0 auto; border: 0.3px solid lightgrey;" width="300" /></p>
+<p><img alt="ip-based-2fa-conditional-auth-totp-page" src="http://127.0.0.1:8000/en/7.0.0/assets/img/guides/conditional-auth/enter-otp-token.png" style="display: block; margin: 0 auto; border: 0.3px solid lightgrey;" width="300" /></p>
 </li>
 </ol>
 
@@ -6269,7 +6285,7 @@
 <div class="md-copyright">
     
         <div class="md-copyright__highlight">
-            WSO2 Identity Server - Documentation
+            © 2023 WSO2 LLC.
         </div>
     
     <div class="md-license__highlight">
@@ -6291,6 +6307,8 @@
     
     
       <script src="../../../../assets/javascripts/bundle.fc8c2696.min.js"></script>
+      
+        <script src="../../../../assets/js/theme.js"></script>
       
     
   </body>

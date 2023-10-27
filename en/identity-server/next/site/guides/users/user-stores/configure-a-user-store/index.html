@@ -12,7 +12,7 @@
         <meta name="author" content="WSO2">
       
       
-        <link rel="canonical" href="https://is.docs.wso2.com/en/7.0.0/guides/users/user-stores/configure-a-user-store/">
+        <link rel="canonical" href="https://is.docs.wso2.com/en/next/guides/users/user-stores/configure-a-user-store/">
       
       
         <link rel="prev" href="../">
@@ -81,7 +81,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#prerequisites" class="md-skip">
+        <a href="#connect-a-remote-user-store" class="md-skip">
           Skip to content
         </a>
       
@@ -165,6 +165,38 @@
         
       </div>
     </div>
+    
+      
+      <div class="md-header__version-select-dropdown">
+        <a class="dropdown-link" href="#!">
+          
+            
+          
+          <span class="icon">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.3.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M201.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 338.7 54.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z"/></svg>
+          </span>
+        </a>
+        <ul class="dropdown-content" tabindex="0">
+          
+             
+              <li><a href="https://is.docs.wso2.com/en/6.1.0">6.1.0</a></li>
+            
+          
+             
+              <li><a href="https://is.docs.wso2.com/en/6.0.0">6.0.0</a></li>
+            
+          
+             
+              <li><a href="https://is.docs.wso2.com/en/5.11.0">5.11.0</a></li>
+            
+          
+          
+            <li><a href="https://is.docs.wso2.com/en/versions">Show all</a></li>
+          
+        </ul>
+      </div>
+    
     
       <form class="md-header__option" data-md-component="palette">
         
@@ -2847,8 +2879,6 @@
         
           
         
-          
-        
       
       
         
@@ -2877,7 +2907,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../manage-collaborators/" class="md-nav__link">
+      <a href="../../manage-administrators/" class="md-nav__link">
         Manage administrators
       </a>
     </li>
@@ -2891,7 +2921,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../manage-customers/" class="md-nav__link">
+      <a href="../../manage-users/" class="md-nav__link">
         Manage users
       </a>
     </li>
@@ -2932,27 +2962,13 @@
   
   
   
-    <li class="md-nav__item">
-      <a href="../../migrate-users/" class="md-nav__link">
-        Migrate users to WSO2 Identity Server
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
     
     <li class="md-nav__item md-nav__item--nested">
       
       
       
       
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_6_7" >
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_6_6" >
       
       
         
@@ -2975,14 +2991,14 @@
         <div class="md-nav__link md-nav__link--index ">
           <a href="../../attributes/">Manage attributes and mappings</a>
           
-            <label for="__nav_3_6_7">
+            <label for="__nav_3_6_6">
               <span class="md-nav__icon md-icon"></span>
             </label>
           
         </div>
       
-      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_6_7_label" aria-expanded="false">
-        <label class="md-nav__title" for="__nav_3_6_7">
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_6_6_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_3_6_6">
           <span class="md-nav__icon md-icon"></span>
           Manage attributes and mappings
         </label>
@@ -3066,7 +3082,7 @@
       
       
       
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_6_8" checked>
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_6_7" checked>
       
       
         
@@ -3087,14 +3103,14 @@
         <div class="md-nav__link md-nav__link--index ">
           <a href="../">Manage user stores</a>
           
-            <label for="__nav_3_6_8">
+            <label for="__nav_3_6_7">
               <span class="md-nav__icon md-icon"></span>
             </label>
           
         </div>
       
-      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_6_8_label" aria-expanded="true">
-        <label class="md-nav__title" for="__nav_3_6_8">
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_6_7_label" aria-expanded="true">
+        <label class="md-nav__title" for="__nav_3_6_7">
           <span class="md-nav__icon md-icon"></span>
           Manage user stores
         </label>
@@ -3114,6 +3130,8 @@
       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
       
+        
+      
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
           Connect a remote user store
@@ -3130,19 +3148,14 @@
   
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
       Table of contents
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#prerequisites" class="md-nav__link">
-    Prerequisites
-  </a>
-  
-</li>
       
         <li class="md-nav__item">
   <a href="#register-a-remote-user-store" class="md-nav__link">
@@ -5826,19 +5839,14 @@
   
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
       Table of contents
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#prerequisites" class="md-nav__link">
-    Prerequisites
-  </a>
-  
-</li>
       
         <li class="md-nav__item">
   <a href="#register-a-remote-user-store" class="md-nav__link">
@@ -5876,84 +5884,16 @@
                   
 
 
-  <h1>Connect a remote user store</h1>
-
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>If you have connected a remote user store before 7<sup>th</sup> February 2023, you will have Read-Only access for the user store.
-If you need Read-Write access for your user store on WSO2 Identity Server,</p>
-<ol>
-<li>Delete the existing remote user store.</li>
-<li><a href="#register-a-remote-user-store">Register a remote user store</a> again with Read/Write access type.</li>
-<li><a href="#set-up-the-remote-user-store">Set up the remote user store</a> with the latest user store agent.</li>
-</ol>
-</div>
-<p>You can connect your on-premise user store to WSO2 Identity Server and onboard users and groups from it. Note that this user store connection is read-only, which means you cannot use the WSO2 Identity Server Console to modify this user store.</p>
-<p>Administrators get the opportunity to manage access to business applications and manage users and groups based on the access type of the user store.</p>
-<p>Follow the guide below to set up a remote user store in WSO2 Identity Server.</p>
-<h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h2>
-<ul>
-<li>
-<p>An organization in WSO2 Identity Server.
-<a href="https://is.docs.wso2.com/en/next/guides/organization-management/manage-organizations/#create-a-new-organization">Create an organization</a> if you don't have one already.</p>
-</li>
-<li>
-<p>An on-premise user store. Currently, WSO2 Identity Server supports:</p>
-</li>
-<li>Lightweight Directory Access Protocol (LDAP)</li>
-<li>
-<p>Active Directory (AD)</p>
-</li>
-<li>
-<p>To run the user store agent, you need to have:</p>
-</li>
-<li>JAVA 8 or JAVA 11 installed locally</li>
-<li>JAVA_HOME configured correctly</li>
-</ul>
-<details class="note"><summary>Requirements</summary><ul>
-<li>
-<p>Recommended hardware requirements
-    <table>
-        <tr>
-            <td><b>CPU cores</b></td>
-            <td><code>2</code></td>
-        </tr>
-        <tr>
-            <td><b>Storage</b></td>
-            <td><code>500 MB</code> of free space on disk.</td>
-        </tr>
-        <tr>
-            <td><b>Operating System</b></td>
-            <td>The connector can run on Windows or Linux.</td>
-        </tr>
-        <tr>
-            <td><b>RAM</b></td>
-            <td><code>1 GB</code></td>
-        </tr>
-    </table></p>
-</li>
-<li>
-<p>Connectivity methods
-    <table>
-        <tr>
-            <td><b>Protocol</b></td>
-            <td>Web socket</td>
-        </tr>
-        <tr>
-            <td><b>Port</b></td>
-            <td>443</td>
-        </tr>
-    </table></p>
-</li>
-</ul>
-</details>
+<h1 id="connect-a-remote-user-store">Connect a remote user store<a class="headerlink" href="#connect-a-remote-user-store" title="Permanent link">&para;</a></h1>
+<p>You can connect your on-premise user store to WSO2 Identity Server and onboard users and groups from it. Depending on your requirement, you can provide the user store connection either read-only or read/write privilges.</p>
+<p>Follow the guide below to connect a remote user store to WSO2 Identity Server.</p>
 <h2 id="register-a-remote-user-store">Register a remote user store<a class="headerlink" href="#register-a-remote-user-store" title="Permanent link">&para;</a></h2>
 <p>To configure a remote user store for your organization:</p>
 <ol>
-<li>On the WSO2 Identity Server Console, go to <strong>User Management</strong> &gt; <strong>User Stores</strong>.</li>
+<li>On the WSO2 Identity Server Console, go to <strong>User Attributes &amp; Stores</strong> &gt; <strong>User Stores</strong>.</li>
 <li>
-<p>Click <strong>Connect userstore</strong> to open the following:</p>
-<p><img alt="Register remote user store to WSO2 Identity Server" src="https://is.docs.wso2.com/en/next/assets/img/guides/user-stores/register-user-store.png" style="display: block; margin: 0 auto; border: 0.3px solid lightgrey;" width="600" /></p>
+<p>Click <strong>New User Store</strong> to open the following:</p>
+<p><img alt="Register remote user store to WSO2 Identity Server" src="http://127.0.0.1:8000/en/7.0.0/assets/img/guides/user-stores/register-user-store.png" style="display: block; margin: 0 auto; border: 0.3px solid lightgrey;" width="600" /></p>
 </li>
 <li>
 <p>Enter the following details about the user store.
@@ -5985,7 +5925,7 @@ If you need Read-Write access for your user store on WSO2 Identity Server,</p>
 <p class="admonition-title">Warning</p>
 <p>These two attributes need to be mapped correctly for proper authentication.</p>
 <ul>
-<li><code>Username</code> - This attribute is used as the user identifier. Provide an attribute that identifies your user in your on-premise user store. For the best experience, use a username that satisfies validation rules in <a href="https://is.docs.wso2.com/en/next/guides/user-accounts/account-login/username-validation/">Username Validation</a> section.</li>
+<li><code>Username</code> - This attribute is used as the user identifier. Provide an attribute that identifies your user in your on-premise user store. For the best experience, use a username that satisfies validation rules in <a href="http://127.0.0.1:8000/en/7.0.0/guides/user-accounts/account-login/username-validation/">Username Validation</a> section.</li>
 <li><code>User ID</code> - This attribute is used to uniquely identify a user entry. Provide an attribute that uniquely identifies a user entry in your user store.</li>
 </ul>
 </div>
@@ -6030,7 +5970,7 @@ membership_attribute = &quot;member&quot;
 
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Refer <a href="https://is.docs.wso2.com/en/next/references/remote-user-store/remote-user-store-properties/">remote user store properties</a> for the complete list of user store configurations.</p>
+<p>Refer <a href="http://127.0.0.1:8000/en/7.0.0/references/remote-user-store/remote-user-store-properties/">remote user store properties</a> for the complete list of user store configurations.</p>
 </div>
 </li>
 </ol>
@@ -6041,7 +5981,7 @@ membership_attribute = &quot;member&quot;
 <p class="admonition-title">Warning</p>
 <ul>
 <li>Copy the installation token and save it in a safe location. You won't be able to see it again!</li>
-<li>This token has no expiry time, but in case you lose or forget it, you can <a href="https://is.docs.wso2.com/en/next/guides/users/user-stores/update-user-stores/#regenerate-the-installation-token">regenerate an installation token</a>.</li>
+<li>This token has no expiry time, but in case you lose or forget it, you can <a href="http://127.0.0.1:8000/en/7.0.0/guides/users/user-stores/update-user-stores/#regenerate-the-installation-token">regenerate an installation token</a>.</li>
 </ul>
 </div>
 </li>
@@ -6088,8 +6028,8 @@ membership_attribute = &quot;member&quot;
 </ol>
 <h2 id="whats-next">What's Next<a class="headerlink" href="#whats-next" title="Permanent link">&para;</a></h2>
 <ul>
-<li><a href="https://is.docs.wso2.com/en/next/guides/users/user-stores/configure-high-availability/">Configure high availability for a remote user store</a></li>
-<li><a href="https://is.docs.wso2.com/en/next/guides/users/user-stores/update-user-stores/">Manage remote user stores in WSO2 Identity Server</a></li>
+<li><a href="http://127.0.0.1:8000/en/7.0.0/guides/users/user-stores/configure-high-availability/">Configure high availability for a remote user store</a></li>
+<li><a href="http://127.0.0.1:8000/en/7.0.0/guides/users/user-stores/update-user-stores/">Manage remote user stores in WSO2 Identity Server</a></li>
 </ul>
 
 
@@ -6137,7 +6077,7 @@ membership_attribute = &quot;member&quot;
 <div class="md-copyright">
     
         <div class="md-copyright__highlight">
-            WSO2 Identity Server - Documentation
+            © 2023 WSO2 LLC.
         </div>
     
     <div class="md-license__highlight">
@@ -6159,6 +6099,8 @@ membership_attribute = &quot;member&quot;
     
     
       <script src="../../../../assets/javascripts/bundle.fc8c2696.min.js"></script>
+      
+        <script src="../../../../assets/js/theme.js"></script>
       
     
   </body>

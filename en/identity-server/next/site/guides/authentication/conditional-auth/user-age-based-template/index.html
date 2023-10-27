@@ -12,7 +12,7 @@
         <meta name="author" content="WSO2">
       
       
-        <link rel="canonical" href="https://is.docs.wso2.com/en/7.0.0/guides/authentication/conditional-auth/user-age-based-template/">
+        <link rel="canonical" href="https://is.docs.wso2.com/en/next/guides/authentication/conditional-auth/user-age-based-template/">
       
       
         <link rel="prev" href="../access-control/">
@@ -165,6 +165,38 @@
         
       </div>
     </div>
+    
+      
+      <div class="md-header__version-select-dropdown">
+        <a class="dropdown-link" href="#!">
+          
+            
+          
+          <span class="icon">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.3.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M201.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 338.7 54.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z"/></svg>
+          </span>
+        </a>
+        <ul class="dropdown-content" tabindex="0">
+          
+             
+              <li><a href="https://is.docs.wso2.com/en/6.1.0">6.1.0</a></li>
+            
+          
+             
+              <li><a href="https://is.docs.wso2.com/en/6.0.0">6.0.0</a></li>
+            
+          
+             
+              <li><a href="https://is.docs.wso2.com/en/5.11.0">5.11.0</a></li>
+            
+          
+          
+            <li><a href="https://is.docs.wso2.com/en/versions">Show all</a></li>
+          
+        </ul>
+      </div>
+    
     
       <form class="md-header__option" data-md-component="palette">
         
@@ -2920,8 +2952,6 @@
         
           
         
-          
-        
       
       
         
@@ -2950,7 +2980,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../users/manage-collaborators/" class="md-nav__link">
+      <a href="../../../users/manage-administrators/" class="md-nav__link">
         Manage administrators
       </a>
     </li>
@@ -2964,7 +2994,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../users/manage-customers/" class="md-nav__link">
+      <a href="../../../users/manage-users/" class="md-nav__link">
         Manage users
       </a>
     </li>
@@ -3005,27 +3035,13 @@
   
   
   
-    <li class="md-nav__item">
-      <a href="../../../users/migrate-users/" class="md-nav__link">
-        Migrate users to WSO2 Identity Server
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
     
     <li class="md-nav__item md-nav__item--nested">
       
       
       
       
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_6_7" >
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_6_6" >
       
       
         
@@ -3048,14 +3064,14 @@
         <div class="md-nav__link md-nav__link--index ">
           <a href="../../../users/attributes/">Manage attributes and mappings</a>
           
-            <label for="__nav_3_6_7">
+            <label for="__nav_3_6_6">
               <span class="md-nav__icon md-icon"></span>
             </label>
           
         </div>
       
-      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_6_7_label" aria-expanded="false">
-        <label class="md-nav__title" for="__nav_3_6_7">
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_6_6_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_3_6_6">
           <span class="md-nav__icon md-icon"></span>
           Manage attributes and mappings
         </label>
@@ -3137,7 +3153,7 @@
       
       
       
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_6_8" >
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_6_7" >
       
       
         
@@ -3158,14 +3174,14 @@
         <div class="md-nav__link md-nav__link--index ">
           <a href="../../../users/user-stores/">Manage user stores</a>
           
-            <label for="__nav_3_6_8">
+            <label for="__nav_3_6_7">
               <span class="md-nav__icon md-icon"></span>
             </label>
           
         </div>
       
-      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_6_8_label" aria-expanded="false">
-        <label class="md-nav__title" for="__nav_3_6_8">
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_6_7_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_3_6_7">
           <span class="md-nav__icon md-icon"></span>
           Manage user stores
         </label>
@@ -5902,14 +5918,14 @@
 <p>To control access to your application based on the user's age, you can apply the <strong>Age-Based</strong> conditional authentication template. The age of the user is calculated using the <code>date of birth</code> attribute in the user's profile. Users are redirected to an error page if the date of birth is not specified in the user profile or if the user's age is below the minimum age configured in the template.</p>
 <h2 id="scenario">Scenario<a class="headerlink" href="#scenario" title="Permanent link">&para;</a></h2>
 <p>Consider a scenario where users who are younger than 18 years should be prevented from signing in to an application and redirected to an error message.</p>
-<p><img alt="Age based access control" src="https://is.docs.wso2.com/en/next/assets/img/guides/conditional-auth/age-based-access-control.png" /></p>
+<p><img alt="Age based access control" src="http://127.0.0.1:8000/en/7.0.0/assets/img/guides/conditional-auth/age-based-access-control.png" /></p>
 <h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h2>
 <ul>
 <li>
-<p>You need to <a href="https://is.docs.wso2.com/en/next/guides/applications/">register an application with WSO2 Identity Server</a>. You can register your own application or use one of the <a href="https://is.docs.wso2.com/en/next/get-started/try-samples/">sample applications</a> provided.</p>
+<p>You need to <a href="http://127.0.0.1:8000/en/7.0.0/guides/applications/">register an application with WSO2 Identity Server</a>. You can register your own application or use one of the <a href="http://127.0.0.1:8000/en/7.0.0/get-started/try-samples/">sample applications</a> provided.</p>
 </li>
 <li>
-<p>Go to the user's profile and update the date of birth so that the current age is below 18 years. For instructions, see <a href="https://is.docs.wso2.com/en/next/guides/user-self-service/update-profile-info/">Manage user profiles</a>.</p>
+<p>Go to the user's profile and update the date of birth so that the current age is below 18 years. For instructions, see <a href="http://127.0.0.1:8000/en/7.0.0/guides/user-self-service/update-profile-info/">Manage user profiles</a>.</p>
 </li>
 </ul>
 <h2 id="configure-the-login-flow">Configure the login flow<a class="headerlink" href="#configure-the-login-flow" title="Permanent link">&para;</a></h2>
@@ -5943,7 +5959,7 @@
 </li>
 <li>
 <p>Click <strong>+ ADD</strong> next to <strong>User-Age-Based</strong> to add the user-age-based access control script.</p>
-<p><img alt="Age-based access control with visual editor" src="https://is.docs.wso2.com/en/next/assets/img/guides/conditional-auth/age-based-access-control-with-visual-editor.png" style="display: block; margin: 0 auto; border: 0.3px solid lightgrey;" /></p>
+<p><img alt="Age-based access control with visual editor" src="http://127.0.0.1:8000/en/7.0.0/assets/img/guides/conditional-auth/age-based-access-control-with-visual-editor.png" style="display: block; margin: 0 auto; border: 0.3px solid lightgrey;" /></p>
 </li>
 <li>
 <p>Click <strong>Confirm</strong> to replace any existing script with the selected predefined script.</p>
@@ -6057,7 +6073,7 @@ configured error page.</li>
 </ol>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Find out more about the scripting language in the <a href="https://is.docs.wso2.com/en/next/references/conditional-auth/api-reference/">Conditional Authentication API Reference</a>.</p>
+<p>Find out more about the scripting language in the <a href="http://127.0.0.1:8000/en/7.0.0/references/conditional-auth/api-reference/">Conditional Authentication API Reference</a>.</p>
 </div>
 <h2 id="try-it-out">Try it out<a class="headerlink" href="#try-it-out" title="Permanent link">&para;</a></h2>
 <p>Follow the steps given below.</p>
@@ -6067,7 +6083,7 @@ configured error page.</li>
 <li>Log out of the application.</li>
 <li>
 <p>Log in again with a user who is below 18 years. The user will see the following error.</p>
-<p><img alt="authentication failed" src="https://is.docs.wso2.com/en/next/assets/img/guides/conditional-auth/auth-failure.png" style="display: block; margin: 0 auto; border: 0.3px solid lightgrey;" width="600" /></p>
+<p><img alt="authentication failed" src="http://127.0.0.1:8000/en/7.0.0/assets/img/guides/conditional-auth/auth-failure.png" style="display: block; margin: 0 auto; border: 0.3px solid lightgrey;" width="600" /></p>
 </li>
 </ol>
 
@@ -6116,7 +6132,7 @@ configured error page.</li>
 <div class="md-copyright">
     
         <div class="md-copyright__highlight">
-            WSO2 Identity Server - Documentation
+            © 2023 WSO2 LLC.
         </div>
     
     <div class="md-license__highlight">
@@ -6138,6 +6154,8 @@ configured error page.</li>
     
     
       <script src="../../../../assets/javascripts/bundle.fc8c2696.min.js"></script>
+      
+        <script src="../../../../assets/js/theme.js"></script>
       
     
   </body>

@@ -12,7 +12,7 @@
         <meta name="author" content="WSO2">
       
       
-        <link rel="canonical" href="https://is.docs.wso2.com/en/7.0.0/guides/users/user-stores/update-user-stores/">
+        <link rel="canonical" href="https://is.docs.wso2.com/en/next/guides/users/user-stores/update-user-stores/">
       
       
         <link rel="prev" href="../configure-high-availability/">
@@ -165,6 +165,38 @@
         
       </div>
     </div>
+    
+      
+      <div class="md-header__version-select-dropdown">
+        <a class="dropdown-link" href="#!">
+          
+            
+          
+          <span class="icon">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.3.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M201.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 338.7 54.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z"/></svg>
+          </span>
+        </a>
+        <ul class="dropdown-content" tabindex="0">
+          
+             
+              <li><a href="https://is.docs.wso2.com/en/6.1.0">6.1.0</a></li>
+            
+          
+             
+              <li><a href="https://is.docs.wso2.com/en/6.0.0">6.0.0</a></li>
+            
+          
+             
+              <li><a href="https://is.docs.wso2.com/en/5.11.0">5.11.0</a></li>
+            
+          
+          
+            <li><a href="https://is.docs.wso2.com/en/versions">Show all</a></li>
+          
+        </ul>
+      </div>
+    
     
       <form class="md-header__option" data-md-component="palette">
         
@@ -2847,8 +2879,6 @@
         
           
         
-          
-        
       
       
         
@@ -2877,7 +2907,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../manage-collaborators/" class="md-nav__link">
+      <a href="../../manage-administrators/" class="md-nav__link">
         Manage administrators
       </a>
     </li>
@@ -2891,7 +2921,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../manage-customers/" class="md-nav__link">
+      <a href="../../manage-users/" class="md-nav__link">
         Manage users
       </a>
     </li>
@@ -2932,27 +2962,13 @@
   
   
   
-    <li class="md-nav__item">
-      <a href="../../migrate-users/" class="md-nav__link">
-        Migrate users to WSO2 Identity Server
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
     
     <li class="md-nav__item md-nav__item--nested">
       
       
       
       
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_6_7" >
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_6_6" >
       
       
         
@@ -2975,14 +2991,14 @@
         <div class="md-nav__link md-nav__link--index ">
           <a href="../../attributes/">Manage attributes and mappings</a>
           
-            <label for="__nav_3_6_7">
+            <label for="__nav_3_6_6">
               <span class="md-nav__icon md-icon"></span>
             </label>
           
         </div>
       
-      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_6_7_label" aria-expanded="false">
-        <label class="md-nav__title" for="__nav_3_6_7">
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_6_6_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_3_6_6">
           <span class="md-nav__icon md-icon"></span>
           Manage attributes and mappings
         </label>
@@ -3066,7 +3082,7 @@
       
       
       
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_6_8" checked>
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_6_7" checked>
       
       
         
@@ -3087,14 +3103,14 @@
         <div class="md-nav__link md-nav__link--index ">
           <a href="../">Manage user stores</a>
           
-            <label for="__nav_3_6_8">
+            <label for="__nav_3_6_7">
               <span class="md-nav__icon md-icon"></span>
             </label>
           
         </div>
       
-      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_6_8_label" aria-expanded="true">
-        <label class="md-nav__title" for="__nav_3_6_8">
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_6_7_label" aria-expanded="true">
+        <label class="md-nav__title" for="__nav_3_6_7">
           <span class="md-nav__icon md-icon"></span>
           Manage user stores
         </label>
@@ -3172,20 +3188,6 @@
         <li class="md-nav__item">
   <a href="#update-attribute-mappings" class="md-nav__link">
     Update attribute mappings
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#disconnect-a-user-store-agent" class="md-nav__link">
-    Disconnect a user store agent
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#regenerate-an-installation-token" class="md-nav__link">
-    Regenerate an installation token
   </a>
   
 </li>
@@ -5854,20 +5856,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#disconnect-a-user-store-agent" class="md-nav__link">
-    Disconnect a user store agent
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#regenerate-an-installation-token" class="md-nav__link">
-    Regenerate an installation token
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#disable-a-user-store" class="md-nav__link">
     Disable a user store
   </a>
@@ -5901,7 +5889,7 @@
 <h2 id="update-attribute-mappings">Update attribute mappings<a class="headerlink" href="#update-attribute-mappings" title="Permanent link">&para;</a></h2>
 <p>To update attribute mappings via the WSO2 Identity Server Console:</p>
 <ol>
-<li>On the WSO2 Identity Server Console, go to <strong>User Management</strong> &gt; <strong>User Stores</strong>.</li>
+<li>On the WSO2 Identity Server Console, go to <strong>User Attributes &amp; Stores</strong> &gt; <strong>User Stores</strong>.</li>
 <li>Select your user store from the <strong>User stores</strong> list.</li>
 <li>
 <p>Go to the <strong>Attribute Mappings</strong> tab and update the required information.</p>
@@ -5917,34 +5905,6 @@
 <p>Click <strong>Update</strong> to save the configurations.</p>
 </li>
 </ol>
-<h2 id="disconnect-a-user-store-agent">Disconnect a user store agent<a class="headerlink" href="#disconnect-a-user-store-agent" title="Permanent link">&para;</a></h2>
-<p>To disconnect a user store agent:</p>
-<ol>
-<li>On the WSO2 Identity Server Console, go to <strong>User Management</strong> &gt; <strong>User Stores</strong>.</li>
-<li>Select your user store from the <strong>User stores</strong> list.</li>
-<li>In the <strong>User Store Agent Connection(s)</strong> section, click <strong>Disconnect</strong> on the user store agent that you wish to disconnect.</li>
-<li>Select the checkbox to confirm your action and click <strong>Confirm</strong>.</li>
-</ol>
-<h2 id="regenerate-an-installation-token">Regenerate an installation token<a class="headerlink" href="#regenerate-an-installation-token" title="Permanent link">&para;</a></h2>
-<p>An installation token is used to run a user store agent. Once generated, an installation token is displayed only once.</p>
-<p>In case you forget or lose this installation token, you can regenerate it.</p>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<ul>
-<li>
-<p>If you regenerate a token without disconnecting the user store agent, the agent will be disconnected forcefully. You will need to re-run the user store agent with the new installation token.</p>
-</li>
-<li>
-<p>If the token is compromised, it is essential to regenerate an installation token.</p>
-</li>
-</ul>
-</div>
-<p>To regenerate an installation token:</p>
-<ol>
-<li>On the WSO2 Identity Server Console, go to <strong>User Management</strong> &gt; <strong>User Stores</strong>.</li>
-<li>Select your user store from the <strong>User Stores</strong> list and go to the <strong>General</strong> tab.</li>
-<li>In the <strong>User Store Agent Connection(s)</strong> section, click <strong>Regenerate Token</strong> on the user store agent that you wish to regenerate the token for.</li>
-</ol>
 <h2 id="disable-a-user-store">Disable a user store<a class="headerlink" href="#disable-a-user-store" title="Permanent link">&para;</a></h2>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
@@ -5955,7 +5915,7 @@
 <li>On the WSO2 Identity Server Console, go to <strong>User Management</strong> &gt; <strong>User Stores</strong> and select your user store.</li>
 <li>
 <p>Turn on the <strong>Disable User Store</strong> toggle at the bottom of the page to disable the user store.</p>
-<p><img alt="Disable a user store" src="https://is.docs.wso2.com/en/next/assets/img/guides/user-stores/disable-user-store.png" style="display: block; margin: 0 auto; border: 0.3px solid lightgrey;" /></p>
+<p><img alt="Disable a user store" src="http://127.0.0.1:8000/en/7.0.0/assets/img/guides/user-stores/disable-user-store.png" style="display: block; margin: 0 auto; border: 0.3px solid lightgrey;" /></p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>You can re-enable a disabled user store by switching off the toggle.</p>
@@ -5973,7 +5933,7 @@
 <li>On the WSO2 Identity Server Console, go to <strong>User Management</strong> &gt; <strong>User Stores</strong> and select your user store.</li>
 <li>
 <p>Click <strong>Delete User Store</strong> at the bottom of the page.</p>
-<p><img alt="Disable a user store" src="https://is.docs.wso2.com/en/next/assets/img/guides/user-stores/delete-user-store.png" style="display: block; margin: 0 auto; border: 0.3px solid lightgrey;" /></p>
+<p><img alt="Disable a user store" src="http://127.0.0.1:8000/en/7.0.0/assets/img/guides/user-stores/delete-user-store.png" style="display: block; margin: 0 auto; border: 0.3px solid lightgrey;" /></p>
 </li>
 <li>
 <p>On the pop-up window, type the user store name and click <strong>Confirm</strong> to delete the user store.</p>
@@ -6025,7 +5985,7 @@
 <div class="md-copyright">
     
         <div class="md-copyright__highlight">
-            WSO2 Identity Server - Documentation
+            © 2023 WSO2 LLC.
         </div>
     
     <div class="md-license__highlight">
@@ -6047,6 +6007,8 @@
     
     
       <script src="../../../../assets/javascripts/bundle.fc8c2696.min.js"></script>
+      
+        <script src="../../../../assets/js/theme.js"></script>
       
     
   </body>

@@ -12,7 +12,7 @@
         <meta name="author" content="WSO2">
       
       
-        <link rel="canonical" href="https://is.docs.wso2.com/en/7.0.0/get-started/sample-use-cases/self-sign-up/">
+        <link rel="canonical" href="https://is.docs.wso2.com/en/next/get-started/sample-use-cases/self-sign-up/">
       
       
         <link rel="prev" href="../federated-authentication/">
@@ -165,6 +165,38 @@
         
       </div>
     </div>
+    
+      
+      <div class="md-header__version-select-dropdown">
+        <a class="dropdown-link" href="#!">
+          
+            
+          
+          <span class="icon">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.3.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M201.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 338.7 54.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z"/></svg>
+          </span>
+        </a>
+        <ul class="dropdown-content" tabindex="0">
+          
+             
+              <li><a href="https://is.docs.wso2.com/en/6.1.0">6.1.0</a></li>
+            
+          
+             
+              <li><a href="https://is.docs.wso2.com/en/6.0.0">6.0.0</a></li>
+            
+          
+             
+              <li><a href="https://is.docs.wso2.com/en/5.11.0">5.11.0</a></li>
+            
+          
+          
+            <li><a href="https://is.docs.wso2.com/en/versions">Show all</a></li>
+          
+        </ul>
+      </div>
+    
     
       <form class="md-header__option" data-md-component="palette">
         
@@ -2940,8 +2972,6 @@
         
           
         
-          
-        
       
       
         
@@ -2970,7 +3000,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../guides/users/manage-collaborators/" class="md-nav__link">
+      <a href="../../../guides/users/manage-administrators/" class="md-nav__link">
         Manage administrators
       </a>
     </li>
@@ -2984,7 +3014,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../guides/users/manage-customers/" class="md-nav__link">
+      <a href="../../../guides/users/manage-users/" class="md-nav__link">
         Manage users
       </a>
     </li>
@@ -3025,27 +3055,13 @@
   
   
   
-    <li class="md-nav__item">
-      <a href="../../../guides/users/migrate-users/" class="md-nav__link">
-        Migrate users to WSO2 Identity Server
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
     
     <li class="md-nav__item md-nav__item--nested">
       
       
       
       
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_6_7" >
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_6_6" >
       
       
         
@@ -3068,14 +3084,14 @@
         <div class="md-nav__link md-nav__link--index ">
           <a href="../../../guides/users/attributes/">Manage attributes and mappings</a>
           
-            <label for="__nav_3_6_7">
+            <label for="__nav_3_6_6">
               <span class="md-nav__icon md-icon"></span>
             </label>
           
         </div>
       
-      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_6_7_label" aria-expanded="false">
-        <label class="md-nav__title" for="__nav_3_6_7">
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_6_6_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_3_6_6">
           <span class="md-nav__icon md-icon"></span>
           Manage attributes and mappings
         </label>
@@ -3157,7 +3173,7 @@
       
       
       
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_6_8" >
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_6_7" >
       
       
         
@@ -3178,14 +3194,14 @@
         <div class="md-nav__link md-nav__link--index ">
           <a href="../../../guides/users/user-stores/">Manage user stores</a>
           
-            <label for="__nav_3_6_8">
+            <label for="__nav_3_6_7">
               <span class="md-nav__icon md-icon"></span>
             </label>
           
         </div>
       
-      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_6_8_label" aria-expanded="false">
-        <label class="md-nav__title" for="__nav_3_6_8">
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_6_7_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_3_6_7">
           <span class="md-nav__icon md-icon"></span>
           Manage user stores
         </label>
@@ -5947,20 +5963,20 @@ using WSO2 Identity Server.</p>
 <h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h2>
 <p>Before you begin, do the following:</p>
 <ol>
-<li><a href="https://is.docs.wso2.com/en/next/get-started/sample-use-cases/set-up/">Install WSO2 Identity Server</a>.</li>
-<li><a href="https://is.docs.wso2.com/en/next/deploy/configure-email-sending">Enable the email sending configurations</a> of WSO2 IS.</li>
+<li><a href="http://127.0.0.1:8000/en/7.0.0/get-started/sample-use-cases/set-up/">Install WSO2 Identity Server</a>.</li>
+<li><a href="http://127.0.0.1:8000/en/7.0.0/deploy/configure-email-sending">Enable the email sending configurations</a> of WSO2 IS.</li>
 <li>Restart the WSO2 IS.</li>
 </ol>
 <h2 id="run-the-sample-scenario">Run the sample scenario<a class="headerlink" href="#run-the-sample-scenario" title="Permanent link">&para;</a></h2>
 <p>First, let's set up and run the sample applications.</p>
 <ol>
 <li>
-<p>Follow the instructions on <a href="https://is.docs.wso2.com/en/next/get-started/sample-use-cases/sample-scenario/#set-up-the-sample-apps/">setting up the samples</a>.</p>
+<p>Follow the instructions on <a href="http://127.0.0.1:8000/en/7.0.0/get-started/sample-use-cases/sample-scenario/#set-up-the-sample-apps/">setting up the samples</a>.</p>
 <div class="admonition info">
 <p class="admonition-title">Info</p>
 <p>A message appears to pick a scenario.</p>
 </div>
-<p><img alt="List of scenarios in QSG" src="https://is.docs.wso2.com/en/next/assets/img/get-started/qsg-configure-sso.png" /></p>
+<p><img alt="List of scenarios in QSG" src="http://127.0.0.1:8000/en/7.0.0/assets/img/get-started/qsg-configure-sso.png" /></p>
 </li>
 <li>
 <p>Enter <code>5</code> as the scenario number at the command prompt.</p>
@@ -5979,11 +5995,11 @@ using WSO2 Identity Server.</p>
         </td>
     </tr>
 </table></p>
-<p><img src="https://is.docs.wso2.com/en/next/assets/img/get-started/qsg-configure-self-sign-up.png" width="600" alt="Self sign-up approaches"/></p>
+<p><img src="http://127.0.0.1:8000/en/7.0.0/assets/img/get-started/qsg-configure-self-sign-up.png" width="600" alt="Self sign-up approaches"/></p>
 </li>
 <li>
 <p>Enter the <code>number</code> that matches the approach you would like to try.</p>
-<p><img src="https://is.docs.wso2.com/en/next/assets/img/get-started/qsg-configure-self-sign-up-2.png" width="600" alt="QSG configure self sign-up"/></p>
+<p><img src="http://127.0.0.1:8000/en/7.0.0/assets/img/get-started/qsg-configure-self-sign-up-2.png" width="600" alt="QSG configure self sign-up"/></p>
 </li>
 </ol>
 <h2 id="try-it-out">Try it out<a class="headerlink" href="#try-it-out" title="Permanent link">&para;</a></h2>
@@ -5996,15 +6012,15 @@ using WSO2 Identity Server.</p>
 </li>
 <li>
 <p>Click <strong>Login</strong> to access the authentication page.</p>
-<p><img alt="Pickup Dispatch application login" src="https://is.docs.wso2.com/en/next/assets/img/get-started/qsg-sso-dispatch-login.png" /></p>
+<p><img alt="Pickup Dispatch application login" src="http://127.0.0.1:8000/en/7.0.0/assets/img/get-started/qsg-sso-dispatch-login.png" /></p>
 </li>
 <li>
 <p>Click <strong>Create Account</strong> to start the self sign-up process.</p>
-<p><img alt="QSG self sign-up register" src="https://is.docs.wso2.com/en/next/assets/img/get-started/qsg-self-sign-up-register.png" /></p>
+<p><img alt="QSG self sign-up register" src="http://127.0.0.1:8000/en/7.0.0/assets/img/get-started/qsg-self-sign-up-register.png" /></p>
 </li>
 <li>
 <p>Enter a <code>username</code> for your user account and click <strong>Proceed to Self Register</strong>.</p>
-<p><img alt="QSG self sign-up username" src="https://is.docs.wso2.com/en/next/assets/img/get-started/qsg-self-sign-up-username.png" /></p>
+<p><img alt="QSG self sign-up username" src="http://127.0.0.1:8000/en/7.0.0/assets/img/get-started/qsg-self-sign-up-username.png" /></p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>If you want a user to self register for a specific tenant, provide
@@ -6013,9 +6029,9 @@ the <code>username</code> in the following format: <code>&lt;USERNAME&gt;@&lt;TE
 </li>
 <li>
 <p>Provide the user profile details, agree to the <strong>Privacy Policy</strong>, and click <strong>Register</strong>.</p>
-<p><img alt="QSG self sign-up new account" src="https://is.docs.wso2.com/en/next/assets/img/get-started/qsg-self-sign-up-new-account.png" /></p>
+<p><img alt="QSG self sign-up new account" src="http://127.0.0.1:8000/en/7.0.0/assets/img/get-started/qsg-self-sign-up-new-account.png" /></p>
 <p>A confirmation message appears.</p>
-<p><img alt="QSG self-sign-up confirmation" src="https://is.docs.wso2.com/en/next/assets/img/get-started/qsg-self-sign-up-confirmation.png" /></p>
+<p><img alt="QSG self-sign-up confirmation" src="http://127.0.0.1:8000/en/7.0.0/assets/img/get-started/qsg-self-sign-up-confirmation.png" /></p>
 </li>
 <li>
 <p>Click <strong>Close</strong> to complete the registration.</p>
@@ -6041,9 +6057,9 @@ the <code>username</code> in the following format: <code>&lt;USERNAME&gt;@&lt;TE
 </li>
 <li>
 <p>Go back to the <strong>Pickup-Dispatch</strong> application and sign in using the new user credentials.</p>
-<p><img alt="WSO2 Identity Server sign in page" src="https://is.docs.wso2.com/en/next/assets/img/get-started/qsg-sso-login-credentials.png" /></p>
+<p><img alt="WSO2 Identity Server sign in page" src="http://127.0.0.1:8000/en/7.0.0/assets/img/get-started/qsg-sso-login-credentials.png" /></p>
 <p>Note that the <strong>Pickup-Dispatch</strong> application home screen appears.</p>
-<p><img alt="Pickup Dispatch home screen" src="https://is.docs.wso2.com/en/next/assets/img/get-started/qsg-sso-dispatch-home.png" /></p>
+<p><img alt="Pickup Dispatch home screen" src="http://127.0.0.1:8000/en/7.0.0/assets/img/get-started/qsg-sso-dispatch-home.png" /></p>
 </li>
 </ol>
 </li>
@@ -6051,7 +6067,7 @@ the <code>username</code> in the following format: <code>&lt;USERNAME&gt;@&lt;TE
 <p>You have successfully self-signed up to the <strong>Pickup-Dispatch</strong> web application.</p>
 <h2 id="whats-next">What's next?<a class="headerlink" href="#whats-next" title="Permanent link">&para;</a></h2>
 <p>To try out other scenarios, navigate back to the command-line where you ran the quickstart sample and enter <code>y</code> to clean the setup.</p>
-<p><img alt="QSG cleanup" src="https://is.docs.wso2.com/en/next/assets/img/get-started/qsg-sso-cleanup.png" /></p>
+<p><img alt="QSG cleanup" src="http://127.0.0.1:8000/en/7.0.0/assets/img/get-started/qsg-sso-cleanup.png" /></p>
 
 
 
@@ -6098,7 +6114,7 @@ the <code>username</code> in the following format: <code>&lt;USERNAME&gt;@&lt;TE
 <div class="md-copyright">
     
         <div class="md-copyright__highlight">
-            WSO2 Identity Server - Documentation
+            © 2023 WSO2 LLC.
         </div>
     
     <div class="md-license__highlight">
@@ -6120,6 +6136,8 @@ the <code>username</code> in the following format: <code>&lt;USERNAME&gt;@&lt;TE
     
     
       <script src="../../../assets/javascripts/bundle.fc8c2696.min.js"></script>
+      
+        <script src="../../../assets/js/theme.js"></script>
       
     
   </body>

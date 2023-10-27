@@ -12,7 +12,7 @@
         <meta name="author" content="WSO2">
       
       
-        <link rel="canonical" href="https://is.docs.wso2.com/en/7.0.0/guides/authentication/manage-consent-for-attributes/">
+        <link rel="canonical" href="https://is.docs.wso2.com/en/next/guides/authentication/manage-consent-for-attributes/">
       
       
         <link rel="prev" href="../user-attributes/enable-attributes-for-saml-app/">
@@ -165,6 +165,38 @@
         
       </div>
     </div>
+    
+      
+      <div class="md-header__version-select-dropdown">
+        <a class="dropdown-link" href="#!">
+          
+            
+          
+          <span class="icon">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.3.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M201.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 338.7 54.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z"/></svg>
+          </span>
+        </a>
+        <ul class="dropdown-content" tabindex="0">
+          
+             
+              <li><a href="https://is.docs.wso2.com/en/6.1.0">6.1.0</a></li>
+            
+          
+             
+              <li><a href="https://is.docs.wso2.com/en/6.0.0">6.0.0</a></li>
+            
+          
+             
+              <li><a href="https://is.docs.wso2.com/en/5.11.0">5.11.0</a></li>
+            
+          
+          
+            <li><a href="https://is.docs.wso2.com/en/versions">Show all</a></li>
+          
+        </ul>
+      </div>
+    
     
       <form class="md-header__option" data-md-component="palette">
         
@@ -2895,8 +2927,6 @@
         
           
         
-          
-        
       
       
         
@@ -2925,7 +2955,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../users/manage-collaborators/" class="md-nav__link">
+      <a href="../../users/manage-administrators/" class="md-nav__link">
         Manage administrators
       </a>
     </li>
@@ -2939,7 +2969,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../users/manage-customers/" class="md-nav__link">
+      <a href="../../users/manage-users/" class="md-nav__link">
         Manage users
       </a>
     </li>
@@ -2980,27 +3010,13 @@
   
   
   
-    <li class="md-nav__item">
-      <a href="../../users/migrate-users/" class="md-nav__link">
-        Migrate users to WSO2 Identity Server
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
     
     <li class="md-nav__item md-nav__item--nested">
       
       
       
       
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_6_7" >
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_6_6" >
       
       
         
@@ -3023,14 +3039,14 @@
         <div class="md-nav__link md-nav__link--index ">
           <a href="../../users/attributes/">Manage attributes and mappings</a>
           
-            <label for="__nav_3_6_7">
+            <label for="__nav_3_6_6">
               <span class="md-nav__icon md-icon"></span>
             </label>
           
         </div>
       
-      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_6_7_label" aria-expanded="false">
-        <label class="md-nav__title" for="__nav_3_6_7">
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_6_6_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_3_6_6">
           <span class="md-nav__icon md-icon"></span>
           Manage attributes and mappings
         </label>
@@ -3112,7 +3128,7 @@
       
       
       
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_6_8" >
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_6_7" >
       
       
         
@@ -3133,14 +3149,14 @@
         <div class="md-nav__link md-nav__link--index ">
           <a href="../../users/user-stores/">Manage user stores</a>
           
-            <label for="__nav_3_6_8">
+            <label for="__nav_3_6_7">
               <span class="md-nav__icon md-icon"></span>
             </label>
           
         </div>
       
-      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_6_8_label" aria-expanded="false">
-        <label class="md-nav__title" for="__nav_3_6_8">
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_6_7_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_3_6_7">
           <span class="md-nav__icon md-icon"></span>
           Manage user stores
         </label>
@@ -5853,12 +5869,12 @@
 
 
 <h1 id="manage-consent-for-user-attributes">Manage consent for user attributes<a class="headerlink" href="#manage-consent-for-user-attributes" title="Permanent link">&para;</a></h1>
-<p>If user attributes are enabled for applications registered in WSO2 Identity Server, the applications can access these attributes when the user logs in to the app. However, it may be necessary to get the user's consent before sharing the user's information. Learn more about <a href="https://is.docs.wso2.com/en/next/guides/authentication/user-attributes/">configuring user attributes for applications</a>.</p>
+<p>If user attributes are enabled for applications registered in WSO2 Identity Server, the applications can access these attributes when the user logs in to the app. However, it may be necessary to get the user's consent before sharing the user's information. Learn more about <a href="http://127.0.0.1:8000/en/7.0.0/guides/authentication/user-attributes/">configuring user attributes for applications</a>.</p>
 <p>In WSO2 Identity Server, you can either display a screen to request consent for user attributes or skip this step, as explained below.</p>
 <h2 id="get-consent-for-user-attributes">Get consent for user attributes<a class="headerlink" href="#get-consent-for-user-attributes" title="Permanent link">&para;</a></h2>
 <p>Once the user is logged in, WSO2 Identity Server requests consent to share the user's attributes with the application.</p>
-<p><img alt="Provides consent for attributes in WSO2 Identity Server" src="https://is.docs.wso2.com/en/next/assets/img/guides/applications/attributes/oidc/provide-consent.png" style="display: block; margin: 0 auto; border: 0.3px solid lightgrey;" width="300" /></p>
-<p>If the application requires <strong>mandatory</strong> attributes for which values are not specified in the <a href="https://is.docs.wso2.com/en/next/guides/users/manage-customers/#manage-user-profiles">user profile</a>, WSO2 Identity Server will prompt the user to enter those values during login.</p>
+<p><img alt="Provides consent for attributes in WSO2 Identity Server" src="http://127.0.0.1:8000/en/7.0.0/assets/img/guides/applications/attributes/oidc/provide-consent.png" style="display: block; margin: 0 auto; border: 0.3px solid lightgrey;" width="300" /></p>
+<p>If the application requires <strong>mandatory</strong> attributes for which values are not specified in the <a href="http://127.0.0.1:8000/en/7.0.0/guides/users/manage-customers/#manage-user-profiles">user profile</a>, WSO2 Identity Server will prompt the user to enter those values during login.</p>
 <p>The user can do one of the following during login:</p>
 <ul>
 <li>
@@ -5876,7 +5892,7 @@
 <li>Sign in to the WSO2 Identity Server and select the application for which user consent needs to be disabled.</li>
 <li>
 <p>Go to the <strong>Advanced</strong> tab and enable <strong>Skip login consent</strong>.</p>
-<p><img alt="Skip login consent in WSO2 Identity Server" src="https://is.docs.wso2.com/en/next/assets/img/guides/applications/attributes/skip-login-consent.png" style="display: block; margin: 0 auto; border: 0.3px solid lightgrey;" /></p>
+<p><img alt="Skip login consent in WSO2 Identity Server" src="http://127.0.0.1:8000/en/7.0.0/assets/img/guides/applications/attributes/skip-login-consent.png" style="display: block; margin: 0 auto; border: 0.3px solid lightgrey;" /></p>
 </li>
 </ol>
 
@@ -5925,7 +5941,7 @@
 <div class="md-copyright">
     
         <div class="md-copyright__highlight">
-            WSO2 Identity Server - Documentation
+            © 2023 WSO2 LLC.
         </div>
     
     <div class="md-license__highlight">
@@ -5947,6 +5963,8 @@
     
     
       <script src="../../../assets/javascripts/bundle.fc8c2696.min.js"></script>
+      
+        <script src="../../../assets/js/theme.js"></script>
       
     
   </body>

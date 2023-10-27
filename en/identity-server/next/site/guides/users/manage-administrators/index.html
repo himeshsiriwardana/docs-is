@@ -12,23 +12,27 @@
         <meta name="author" content="WSO2">
       
       
-        <link rel="canonical" href="https://is.docs.wso2.com/en/7.0.0/apis/count-users-and-roles-using-management-console-and-admin-services/">
+        <link rel="canonical" href="https://is.docs.wso2.com/en/next/guides/users/manage-administrators/">
       
       
+        <link rel="prev" href="../">
       
-      <link rel="icon" href="../../assets/images/identity-server-favicon.png">
+      
+        <link rel="next" href="../manage-users/">
+      
+      <link rel="icon" href="../../../assets/images/identity-server-favicon.png">
       <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.1.2">
     
     
       
-        <title>Count Users and User Roles - </title>
+        <title>Manage administrators - </title>
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.7bf56d0a.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.7bf56d0a.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.a0c5b2b5.min.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.a0c5b2b5.min.css">
       
       
 
@@ -44,11 +48,11 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/libs/fontawesome-free-6.4.2-web/css/all.min.css">
+      <link rel="stylesheet" href="../../../assets/libs/fontawesome-free-6.4.2-web/css/all.min.css">
     
-      <link rel="stylesheet" href="../../assets/css/overrides.css">
+      <link rel="stylesheet" href="../../../assets/css/overrides.css">
     
-    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -77,7 +81,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#count-users-and-user-roles" class="md-skip">
+        <a href="#manage-administrators" class="md-skip">
           Skip to content
         </a>
       
@@ -111,7 +115,7 @@
 
 <header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../.." title="" class="md-header__button md-logo" aria-label="" data-md-component="logo">
+    <a href="../../.." title="" class="md-header__button md-logo" aria-label="" data-md-component="logo">
       <!--
  * Copyright (c) 2023, WSO2 LLC. (https://www.wso2.com).
  *
@@ -132,10 +136,10 @@
 
 
     
-        <img src="../../assets/images/identity-server-docs-logo-dark.svg" alt="logo" data-md-component="logo" data-md-color="default">
+        <img src="../../../assets/images/identity-server-docs-logo-dark.svg" alt="logo" data-md-component="logo" data-md-color="default">
     
     
-        <img src="../../assets/images/identity-server-docs-logo.svg" alt="logo" data-md-component="logo" data-md-color="slate">
+        <img src="../../../assets/images/identity-server-docs-logo.svg" alt="logo" data-md-component="logo" data-md-color="slate">
     
 
     </a>
@@ -154,13 +158,45 @@
           <div class="md-header__topic" data-md-component="header-topic">
             <span class="md-ellipsis">
                 
-                  Count Users and User Roles
+                  Manage administrators
                 
             </span>
           </div>
         
       </div>
     </div>
+    
+      
+      <div class="md-header__version-select-dropdown">
+        <a class="dropdown-link" href="#!">
+          
+            
+          
+          <span class="icon">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.3.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M201.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 338.7 54.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z"/></svg>
+          </span>
+        </a>
+        <ul class="dropdown-content" tabindex="0">
+          
+             
+              <li><a href="https://is.docs.wso2.com/en/6.1.0">6.1.0</a></li>
+            
+          
+             
+              <li><a href="https://is.docs.wso2.com/en/6.0.0">6.0.0</a></li>
+            
+          
+             
+              <li><a href="https://is.docs.wso2.com/en/5.11.0">5.11.0</a></li>
+            
+          
+          
+            <li><a href="https://is.docs.wso2.com/en/versions">Show all</a></li>
+          
+        </ul>
+      </div>
+    
     
       <form class="md-header__option" data-md-component="palette">
         
@@ -285,7 +321,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../.." class="md-tabs__link">
+      <a href="../../.." class="md-tabs__link">
         Home
       </a>
     </li>
@@ -301,7 +337,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../get-started/quick-start-guide/" class="md-tabs__link">
+      <a href="../../../get-started/quick-start-guide/" class="md-tabs__link">
         Get Started
       </a>
     </li>
@@ -311,13 +347,15 @@
         
   
   
+    
+  
 
 
   
   
   
     <li class="md-tabs__item">
-      <a href="../../guides/" class="md-tabs__link">
+      <a href="../../" class="md-tabs__link md-tabs__link--active">
         Guides
       </a>
     </li>
@@ -333,7 +371,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../integrations/" class="md-tabs__link">
+      <a href="../../../integrations/" class="md-tabs__link">
         Integrations
       </a>
     </li>
@@ -349,7 +387,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../" class="md-tabs__link">
+      <a href="../../../apis/" class="md-tabs__link">
         APIs
       </a>
     </li>
@@ -365,7 +403,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../references/" class="md-tabs__link">
+      <a href="../../../references/" class="md-tabs__link">
         References
       </a>
     </li>
@@ -400,7 +438,7 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../.." title="" class="md-nav__button md-logo" aria-label="" data-md-component="logo">
+    <a href="../../.." title="" class="md-nav__button md-logo" aria-label="" data-md-component="logo">
       <!--
  * Copyright (c) 2023, WSO2 LLC. (https://www.wso2.com).
  *
@@ -421,10 +459,10 @@
 
 
     
-        <img src="../../assets/images/identity-server-docs-logo-dark.svg" alt="logo" data-md-component="logo" data-md-color="default">
+        <img src="../../../assets/images/identity-server-docs-logo-dark.svg" alt="logo" data-md-component="logo" data-md-color="default">
     
     
-        <img src="../../assets/images/identity-server-docs-logo.svg" alt="logo" data-md-component="logo" data-md-color="slate">
+        <img src="../../../assets/images/identity-server-docs-logo.svg" alt="logo" data-md-component="logo" data-md-color="slate">
     
 
     </a>
@@ -459,7 +497,7 @@
         
         
         <div class="md-nav__link md-nav__link--index ">
-          <a href="../..">Home</a>
+          <a href="../../..">Home</a>
           
         </div>
       
@@ -521,7 +559,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../get-started/quick-start-guide/" class="md-nav__link">
+      <a href="../../../get-started/quick-start-guide/" class="md-nav__link">
         Introduction
       </a>
     </li>
@@ -568,7 +606,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../get-started/sample-use-cases/set-up/" class="md-nav__link">
+      <a href="../../../get-started/sample-use-cases/set-up/" class="md-nav__link">
         Quick Setup
       </a>
     </li>
@@ -615,7 +653,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../get-started/sample-use-cases/sample-scenario/" class="md-nav__link">
+      <a href="../../../get-started/sample-use-cases/sample-scenario/" class="md-nav__link">
         Sample Scenario
       </a>
     </li>
@@ -666,7 +704,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../get-started/sample-use-cases/single-sign-on/" class="md-nav__link">
+      <a href="../../../get-started/sample-use-cases/single-sign-on/" class="md-nav__link">
         Single Sign-On
       </a>
     </li>
@@ -680,7 +718,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../get-started/sample-use-cases/multi-factor-authentication/" class="md-nav__link">
+      <a href="../../../get-started/sample-use-cases/multi-factor-authentication/" class="md-nav__link">
         Multi-Factor Authentication
       </a>
     </li>
@@ -694,7 +732,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../get-started/sample-use-cases/federated-authentication/" class="md-nav__link">
+      <a href="../../../get-started/sample-use-cases/federated-authentication/" class="md-nav__link">
         Federated Authentication
       </a>
     </li>
@@ -708,7 +746,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../get-started/sample-use-cases/self-sign-up/" class="md-nav__link">
+      <a href="../../../get-started/sample-use-cases/self-sign-up/" class="md-nav__link">
         Self Sign-Up
       </a>
     </li>
@@ -798,7 +836,7 @@
         
         
         <div class="md-nav__link md-nav__link--index ">
-          <a href="../../get-started/try-samples/">Try for a sample app</a>
+          <a href="../../../get-started/try-samples/">Try for a sample app</a>
           
             <label for="__nav_2_3_1">
               <span class="md-nav__icon md-icon"></span>
@@ -854,7 +892,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../get-started/try-samples/qsg-spa-react/" class="md-nav__link">
+      <a href="../../../get-started/try-samples/qsg-spa-react/" class="md-nav__link">
         React
       </a>
     </li>
@@ -868,7 +906,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../get-started/try-samples/qsg-spa-javascript/" class="md-nav__link">
+      <a href="../../../get-started/try-samples/qsg-spa-javascript/" class="md-nav__link">
         JavaScript
       </a>
     </li>
@@ -922,7 +960,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../get-started/try-samples/qsg-oidc-webapp-java-ee/" class="md-nav__link">
+      <a href="../../../get-started/try-samples/qsg-oidc-webapp-java-ee/" class="md-nav__link">
         OIDC Java EE
       </a>
     </li>
@@ -936,7 +974,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../get-started/try-samples/qsg-saml-webapp-java-ee/" class="md-nav__link">
+      <a href="../../../get-started/try-samples/qsg-saml-webapp-java-ee/" class="md-nav__link">
         SAML Java EE
       </a>
     </li>
@@ -986,7 +1024,7 @@
         
         
         <div class="md-nav__link md-nav__link--index ">
-          <a href="../../get-started/try-your-own-app/">Try for your own app</a>
+          <a href="../../../get-started/try-your-own-app/">Try for your own app</a>
           
             <label for="__nav_2_3_2">
               <span class="md-nav__icon md-icon"></span>
@@ -1042,7 +1080,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../get-started/try-your-own-app/react/" class="md-nav__link">
+      <a href="../../../get-started/try-your-own-app/react/" class="md-nav__link">
         React
       </a>
     </li>
@@ -1056,7 +1094,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../get-started/try-your-own-app/javascript/" class="md-nav__link">
+      <a href="../../../get-started/try-your-own-app/javascript/" class="md-nav__link">
         Javascript
       </a>
     </li>
@@ -1110,7 +1148,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../get-started/try-your-own-app/java-ee-oidc/" class="md-nav__link">
+      <a href="../../../get-started/try-your-own-app/java-ee-oidc/" class="md-nav__link">
         OIDC Java EE
       </a>
     </li>
@@ -1124,7 +1162,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../get-started/try-your-own-app/java-ee-saml/" class="md-nav__link">
+      <a href="../../../get-started/try-your-own-app/java-ee-saml/" class="md-nav__link">
         SAML Java EE
       </a>
     </li>
@@ -1165,14 +1203,16 @@
 
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
       
       
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
       
       
         
@@ -1203,7 +1243,7 @@
         
         
         <div class="md-nav__link md-nav__link--index ">
-          <a href="../../guides/">Guides</a>
+          <a href="../../">Guides</a>
           
             <label for="__nav_3">
               <span class="md-nav__icon md-icon"></span>
@@ -1211,7 +1251,7 @@
           
         </div>
       
-      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
         <label class="md-nav__title" for="__nav_3">
           <span class="md-nav__icon md-icon"></span>
           Guides
@@ -1254,7 +1294,7 @@
         
         
         <div class="md-nav__link md-nav__link--index ">
-          <a href="../../guides/applications/">Applications</a>
+          <a href="../../applications/">Applications</a>
           
             <label for="__nav_3_2">
               <span class="md-nav__icon md-icon"></span>
@@ -1277,7 +1317,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../guides/applications/register-single-page-app/" class="md-nav__link">
+      <a href="../../applications/register-single-page-app/" class="md-nav__link">
         Register an SPA
       </a>
     </li>
@@ -1291,7 +1331,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../guides/applications/register-oidc-web-app/" class="md-nav__link">
+      <a href="../../applications/register-oidc-web-app/" class="md-nav__link">
         Register web app with OIDC
       </a>
     </li>
@@ -1305,7 +1345,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../guides/applications/register-saml-web-app/" class="md-nav__link">
+      <a href="../../applications/register-saml-web-app/" class="md-nav__link">
         Register web app with SAML
       </a>
     </li>
@@ -1319,7 +1359,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../guides/applications/register-standard-based-app/" class="md-nav__link">
+      <a href="../../applications/register-standard-based-app/" class="md-nav__link">
         Register a standard-based app
       </a>
     </li>
@@ -1333,7 +1373,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../guides/applications/register-mobile-app/" class="md-nav__link">
+      <a href="../../applications/register-mobile-app/" class="md-nav__link">
         Register a mobile app
       </a>
     </li>
@@ -1398,7 +1438,7 @@
         
         
         <div class="md-nav__link md-nav__link--index ">
-          <a href="../../guides/authentication/">Authentication</a>
+          <a href="../../authentication/">Authentication</a>
           
             <label for="__nav_3_3">
               <span class="md-nav__icon md-icon"></span>
@@ -1458,7 +1498,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../guides/authentication/add-login-to-apps/" class="md-nav__link">
+      <a href="../../authentication/add-login-to-apps/" class="md-nav__link">
         Add login to apps
       </a>
     </li>
@@ -1472,7 +1512,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../guides/authentication/add-login-to-single-page-app/" class="md-nav__link">
+      <a href="../../authentication/add-login-to-single-page-app/" class="md-nav__link">
         Add login to an SPA
       </a>
     </li>
@@ -1486,7 +1526,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../guides/authentication/add-login-to-web-app/" class="md-nav__link">
+      <a href="../../authentication/add-login-to-web-app/" class="md-nav__link">
         Add login to a web app
       </a>
     </li>
@@ -1500,7 +1540,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../guides/authentication/add-login-to-mobile-app/" class="md-nav__link">
+      <a href="../../authentication/add-login-to-mobile-app/" class="md-nav__link">
         Add login to a mobile app
       </a>
     </li>
@@ -1547,7 +1587,7 @@
         
         
         <div class="md-nav__link md-nav__link--index ">
-          <a href="../../guides/authentication/passwordless-login/">Add passwordless login</a>
+          <a href="../../authentication/passwordless-login/">Add passwordless login</a>
           
             <label for="__nav_3_3_3">
               <span class="md-nav__icon md-icon"></span>
@@ -1570,7 +1610,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../guides/authentication/passwordless-login/add-passwordless-login-with-magic-link/" class="md-nav__link">
+      <a href="../../authentication/passwordless-login/add-passwordless-login-with-magic-link/" class="md-nav__link">
         Add login with Magic link
       </a>
     </li>
@@ -1584,7 +1624,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../guides/authentication/passwordless-login/add-passwordless-login-with-fido/" class="md-nav__link">
+      <a href="../../authentication/passwordless-login/add-passwordless-login-with-fido/" class="md-nav__link">
         Add login with FIDO2
       </a>
     </li>
@@ -1598,7 +1638,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../guides/authentication/passwordless-login/add-passwordless-login-with-hypr/" class="md-nav__link">
+      <a href="../../authentication/passwordless-login/add-passwordless-login-with-hypr/" class="md-nav__link">
         Add login with HYPR
       </a>
     </li>
@@ -1612,7 +1652,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../guides/authentication/passwordless-login/add-passwordless-login-with-email-otp/" class="md-nav__link">
+      <a href="../../authentication/passwordless-login/add-passwordless-login-with-email-otp/" class="md-nav__link">
         Add login with Email OTP
       </a>
     </li>
@@ -1655,7 +1695,7 @@
         
         
         <div class="md-nav__link md-nav__link--index ">
-          <a href="../../guides/authentication/user-attributes/">Enable user attributes</a>
+          <a href="../../authentication/user-attributes/">Enable user attributes</a>
           
             <label for="__nav_3_3_4">
               <span class="md-nav__icon md-icon"></span>
@@ -1678,7 +1718,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../guides/authentication/user-attributes/enable-attributes-for-oidc-app/" class="md-nav__link">
+      <a href="../../authentication/user-attributes/enable-attributes-for-oidc-app/" class="md-nav__link">
         Enable attributes for OIDC apps
       </a>
     </li>
@@ -1692,7 +1732,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../guides/authentication/user-attributes/enable-attributes-for-saml-app/" class="md-nav__link">
+      <a href="../../authentication/user-attributes/enable-attributes-for-saml-app/" class="md-nav__link">
         Enable attributes for SAML apps
       </a>
     </li>
@@ -1713,7 +1753,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../guides/authentication/manage-consent-for-attributes/" class="md-nav__link">
+      <a href="../../authentication/manage-consent-for-attributes/" class="md-nav__link">
         Manage consent for user attributes
       </a>
     </li>
@@ -1753,7 +1793,7 @@
         
         
         <div class="md-nav__link md-nav__link--index ">
-          <a href="../../guides/authentication/social-login/">Add social login</a>
+          <a href="../../authentication/social-login/">Add social login</a>
           
             <label for="__nav_3_3_6">
               <span class="md-nav__icon md-icon"></span>
@@ -1776,7 +1816,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../guides/authentication/social-login/add-facebook-login/" class="md-nav__link">
+      <a href="../../authentication/social-login/add-facebook-login/" class="md-nav__link">
         Add Facebook login
       </a>
     </li>
@@ -1790,7 +1830,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../guides/authentication/social-login/add-google-login/" class="md-nav__link">
+      <a href="../../authentication/social-login/add-google-login/" class="md-nav__link">
         Add Google login
       </a>
     </li>
@@ -1804,7 +1844,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../guides/authentication/social-login/add-microsoft-login/" class="md-nav__link">
+      <a href="../../authentication/social-login/add-microsoft-login/" class="md-nav__link">
         Add Microsoft login
       </a>
     </li>
@@ -1818,7 +1858,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../guides/authentication/social-login/add-apple-login/" class="md-nav__link">
+      <a href="../../authentication/social-login/add-apple-login/" class="md-nav__link">
         Add Apple login
       </a>
     </li>
@@ -1859,7 +1899,7 @@
         
         
         <div class="md-nav__link md-nav__link--index ">
-          <a href="../../guides/authentication/decentralized-login/">Add decentralized login</a>
+          <a href="../../authentication/decentralized-login/">Add decentralized login</a>
           
             <label for="__nav_3_3_7">
               <span class="md-nav__icon md-icon"></span>
@@ -1882,7 +1922,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../guides/authentication/decentralized-login/sign-in-with-ethereum/" class="md-nav__link">
+      <a href="../../authentication/decentralized-login/sign-in-with-ethereum/" class="md-nav__link">
         Sign-in with Ethereum
       </a>
     </li>
@@ -1925,7 +1965,7 @@
         
         
         <div class="md-nav__link md-nav__link--index ">
-          <a href="../../guides/authentication/enterprise-login/">Add standard-based login</a>
+          <a href="../../authentication/enterprise-login/">Add standard-based login</a>
           
             <label for="__nav_3_3_8">
               <span class="md-nav__icon md-icon"></span>
@@ -1948,7 +1988,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../guides/authentication/enterprise-login/add-oidc-idp-login/" class="md-nav__link">
+      <a href="../../authentication/enterprise-login/add-oidc-idp-login/" class="md-nav__link">
         Add login with OIDC IdP
       </a>
     </li>
@@ -1962,7 +2002,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../guides/authentication/enterprise-login/add-saml-idp-login/" class="md-nav__link">
+      <a href="../../authentication/enterprise-login/add-saml-idp-login/" class="md-nav__link">
         Add login with SAML IdP
       </a>
     </li>
@@ -2007,7 +2047,7 @@
         
         
         <div class="md-nav__link md-nav__link--index ">
-          <a href="../../guides/authentication/mfa/">Add multi-factor authentication</a>
+          <a href="../../authentication/mfa/">Add multi-factor authentication</a>
           
             <label for="__nav_3_3_9">
               <span class="md-nav__icon md-icon"></span>
@@ -2030,7 +2070,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../guides/authentication/mfa/add-totp-login/" class="md-nav__link">
+      <a href="../../authentication/mfa/add-totp-login/" class="md-nav__link">
         Add TOTP
       </a>
     </li>
@@ -2044,7 +2084,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../guides/authentication/mfa/add-emailotp-login/" class="md-nav__link">
+      <a href="../../authentication/mfa/add-emailotp-login/" class="md-nav__link">
         Add Email OTP
       </a>
     </li>
@@ -2058,7 +2098,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../guides/authentication/mfa/user-preferred-mfa-login/" class="md-nav__link">
+      <a href="../../authentication/mfa/user-preferred-mfa-login/" class="md-nav__link">
         Add user-preferred MFA
       </a>
     </li>
@@ -2105,7 +2145,7 @@
         
         
         <div class="md-nav__link md-nav__link--index ">
-          <a href="../../guides/authentication/conditional-auth/">Add conditional authentication</a>
+          <a href="../../authentication/conditional-auth/">Add conditional authentication</a>
           
             <label for="__nav_3_3_10">
               <span class="md-nav__icon md-icon"></span>
@@ -2128,7 +2168,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../guides/authentication/conditional-auth/configure-conditional-auth/" class="md-nav__link">
+      <a href="../../authentication/conditional-auth/configure-conditional-auth/" class="md-nav__link">
         Set up conditional authentication
       </a>
     </li>
@@ -2177,7 +2217,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../guides/authentication/conditional-auth/access-control/" class="md-nav__link">
+      <a href="../../authentication/conditional-auth/access-control/" class="md-nav__link">
         Access control
       </a>
     </li>
@@ -2191,7 +2231,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../guides/authentication/conditional-auth/user-age-based-template/" class="md-nav__link">
+      <a href="../../authentication/conditional-auth/user-age-based-template/" class="md-nav__link">
         Age-based access
       </a>
     </li>
@@ -2205,7 +2245,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../guides/authentication/conditional-auth/concurrent-session-based-template/" class="md-nav__link">
+      <a href="../../authentication/conditional-auth/concurrent-session-based-template/" class="md-nav__link">
         Concurrent session-based access
       </a>
     </li>
@@ -2271,7 +2311,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../guides/authentication/conditional-auth/adaptive-mfa/" class="md-nav__link">
+      <a href="../../authentication/conditional-auth/adaptive-mfa/" class="md-nav__link">
         Adaptive mfa
       </a>
     </li>
@@ -2285,7 +2325,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../guides/authentication/conditional-auth/role-based-template/" class="md-nav__link">
+      <a href="../../authentication/conditional-auth/role-based-template/" class="md-nav__link">
         MFA based on user role
       </a>
     </li>
@@ -2299,7 +2339,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../guides/authentication/conditional-auth/user-store-based-template/" class="md-nav__link">
+      <a href="../../authentication/conditional-auth/user-store-based-template/" class="md-nav__link">
         MFA based on user store
       </a>
     </li>
@@ -2313,7 +2353,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../guides/authentication/conditional-auth/login-attempt-based-template/" class="md-nav__link">
+      <a href="../../authentication/conditional-auth/login-attempt-based-template/" class="md-nav__link">
         MFA based on login-attempts
       </a>
     </li>
@@ -2327,7 +2367,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../guides/authentication/conditional-auth/group-based-template/" class="md-nav__link">
+      <a href="../../authentication/conditional-auth/group-based-template/" class="md-nav__link">
         MFA based on user group
       </a>
     </li>
@@ -2341,7 +2381,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../guides/authentication/conditional-auth/new-device-based-template/" class="md-nav__link">
+      <a href="../../authentication/conditional-auth/new-device-based-template/" class="md-nav__link">
         MFA based on user device
       </a>
     </li>
@@ -2355,7 +2395,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../guides/authentication/conditional-auth/ip-based-template/" class="md-nav__link">
+      <a href="../../authentication/conditional-auth/ip-based-template/" class="md-nav__link">
         MFA based on IP address
       </a>
     </li>
@@ -2369,7 +2409,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../guides/authentication/conditional-auth/add-authentications-based-on-api-calls/" class="md-nav__link">
+      <a href="../../authentication/conditional-auth/add-authentications-based-on-api-calls/" class="md-nav__link">
         MFA based on advanced conditions (using WSO2 Choreo)
       </a>
     </li>
@@ -2390,7 +2430,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../guides/authentication/conditional-auth/write-your-first-script/" class="md-nav__link">
+      <a href="../../authentication/conditional-auth/write-your-first-script/" class="md-nav__link">
         Write a custom authentication script
       </a>
     </li>
@@ -2447,7 +2487,7 @@
         
         
         <div class="md-nav__link md-nav__link--index ">
-          <a href="../../guides/authentication/oidc/">Configure OIDC flows</a>
+          <a href="../../authentication/oidc/">Configure OIDC flows</a>
           
             <label for="__nav_3_3_11">
               <span class="md-nav__icon md-icon"></span>
@@ -2470,7 +2510,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../guides/authentication/oidc/discover-oidc-configs/" class="md-nav__link">
+      <a href="../../authentication/oidc/discover-oidc-configs/" class="md-nav__link">
         Discover OIDC endpoints
       </a>
     </li>
@@ -2484,7 +2524,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../guides/authentication/oidc/implement-auth-code/" class="md-nav__link">
+      <a href="../../authentication/oidc/implement-auth-code/" class="md-nav__link">
         Implement login using the Authorization Code flow
       </a>
     </li>
@@ -2498,7 +2538,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../guides/authentication/oidc/implement-auth-code-with-pkce/" class="md-nav__link">
+      <a href="../../authentication/oidc/implement-auth-code-with-pkce/" class="md-nav__link">
         Implement login using the Authorization Code flow and PKCE
       </a>
     </li>
@@ -2512,7 +2552,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../guides/authentication/oidc/private-key-jwt-client-auth/" class="md-nav__link">
+      <a href="../../authentication/oidc/private-key-jwt-client-auth/" class="md-nav__link">
         Implement private key JWT client authentication for OIDC
       </a>
     </li>
@@ -2526,7 +2566,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../guides/authentication/oidc/validate-id-tokens/" class="md-nav__link">
+      <a href="../../authentication/oidc/validate-id-tokens/" class="md-nav__link">
         Validate ID tokens
       </a>
     </li>
@@ -2540,7 +2580,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../guides/authentication/oidc/request-user-info/" class="md-nav__link">
+      <a href="../../authentication/oidc/request-user-info/" class="md-nav__link">
         Request user information
       </a>
     </li>
@@ -2554,7 +2594,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../guides/authentication/oidc/token-validation-resource-server/" class="md-nav__link">
+      <a href="../../authentication/oidc/token-validation-resource-server/" class="md-nav__link">
         Validate tokens
       </a>
     </li>
@@ -2568,7 +2608,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../guides/authentication/oidc/revoke-tokens/" class="md-nav__link">
+      <a href="../../authentication/oidc/revoke-tokens/" class="md-nav__link">
         Revoke tokens
       </a>
     </li>
@@ -2582,7 +2622,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../guides/authentication/oidc/add-logout/" class="md-nav__link">
+      <a href="../../authentication/oidc/add-logout/" class="md-nav__link">
         Implement logout
       </a>
     </li>
@@ -2623,7 +2663,7 @@
         
         
         <div class="md-nav__link md-nav__link--index ">
-          <a href="../../guides/authentication/saml/">Configure SAML flows</a>
+          <a href="../../authentication/saml/">Configure SAML flows</a>
           
             <label for="__nav_3_3_12">
               <span class="md-nav__icon md-icon"></span>
@@ -2646,7 +2686,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../guides/authentication/saml/discover-saml-configs/" class="md-nav__link">
+      <a href="../../authentication/saml/discover-saml-configs/" class="md-nav__link">
         Discover SAML endpoints and settings
       </a>
     </li>
@@ -2667,7 +2707,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../guides/authentication/jit-user-provisioning/" class="md-nav__link">
+      <a href="../../authentication/jit-user-provisioning/" class="md-nav__link">
         Configure Just-in-Time user provisioning
       </a>
     </li>
@@ -2681,7 +2721,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../guides/authentication/configure-the-token-exchange-flow/" class="md-nav__link">
+      <a href="../../authentication/configure-the-token-exchange-flow/" class="md-nav__link">
         Configure the token exchange flow
       </a>
     </li>
@@ -2702,7 +2742,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../guides/api-authorization/" class="md-nav__link">
+      <a href="../../api-authorization/" class="md-nav__link">
         API authorization
       </a>
     </li>
@@ -2740,7 +2780,7 @@
         
         
         <div class="md-nav__link md-nav__link--index ">
-          <a href="../../guides/branding/">Branding</a>
+          <a href="../../branding/">Branding</a>
           
             <label for="__nav_3_5">
               <span class="md-nav__icon md-icon"></span>
@@ -2763,7 +2803,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../guides/branding/configure-ui-branding/" class="md-nav__link">
+      <a href="../../branding/configure-ui-branding/" class="md-nav__link">
         Configure UI branding
       </a>
     </li>
@@ -2777,7 +2817,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../guides/branding/customize-email-templates/" class="md-nav__link">
+      <a href="../../branding/customize-email-templates/" class="md-nav__link">
         Customize email templates
       </a>
     </li>
@@ -2791,7 +2831,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../guides/branding/configure-email-sender/" class="md-nav__link">
+      <a href="../../branding/configure-email-sender/" class="md-nav__link">
         Configure the email sender
       </a>
     </li>
@@ -2810,21 +2850,21 @@
               
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
       
       
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_6" >
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_6" checked>
       
       
         
           
             
-          
-        
           
         
           
@@ -2844,7 +2884,7 @@
         
         
         <div class="md-nav__link md-nav__link--index ">
-          <a href="../../guides/users/">User management</a>
+          <a href="../">User management</a>
           
             <label for="__nav_3_6">
               <span class="md-nav__icon md-icon"></span>
@@ -2852,7 +2892,7 @@
           
         </div>
       
-      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_6_label" aria-expanded="false">
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_6_label" aria-expanded="true">
         <label class="md-nav__title" for="__nav_3_6">
           <span class="md-nav__icon md-icon"></span>
           User management
@@ -2865,11 +2905,66 @@
               
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../../guides/users/manage-collaborators/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Manage administrators
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         Manage administrators
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#add-an-administrator" class="md-nav__link">
+    Add an administrator
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#assign-admin-privileges-to-users" class="md-nav__link">
+    Assign admin privileges to users
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#delete-an-administrator" class="md-nav__link">
+    Delete an administrator
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -2881,7 +2976,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../guides/users/manage-customers/" class="md-nav__link">
+      <a href="../manage-users/" class="md-nav__link">
         Manage users
       </a>
     </li>
@@ -2895,7 +2990,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../guides/users/manage-groups/" class="md-nav__link">
+      <a href="../manage-groups/" class="md-nav__link">
         Manage groups
       </a>
     </li>
@@ -2909,7 +3004,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../guides/users/manage-sessions/" class="md-nav__link">
+      <a href="../manage-sessions/" class="md-nav__link">
         Manage active sessions
       </a>
     </li>
@@ -2922,10 +3017,108 @@
   
   
   
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_6_6" >
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../attributes/">Manage attributes and mappings</a>
+          
+            <label for="__nav_3_6_6">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_6_6_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_3_6_6">
+          <span class="md-nav__icon md-icon"></span>
+          Manage attributes and mappings
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
     <li class="md-nav__item">
-      <a href="../../guides/users/migrate-users/" class="md-nav__link">
-        Migrate users to WSO2 Identity Server
+      <a href="../attributes/manage-attributes/" class="md-nav__link">
+        User attributes
       </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../attributes/manage-oidc-attribute-mappings/" class="md-nav__link">
+        OIDC attribute mappings
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../attributes/manage-scim2-attribute-mappings/" class="md-nav__link">
+        SCIM2 attribute mappings
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../attributes/manage-scopes/" class="md-nav__link">
+        OIDC scopes
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
     </li>
   
 
@@ -2956,14 +3149,12 @@
         
           
         
-          
-        
       
       
         
         
         <div class="md-nav__link md-nav__link--index ">
-          <a href="../../guides/users/attributes/">Manage attributes and mappings</a>
+          <a href="../user-stores/">Manage user stores</a>
           
             <label for="__nav_3_6_7">
               <span class="md-nav__icon md-icon"></span>
@@ -2973,116 +3164,6 @@
       
       <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_6_7_label" aria-expanded="false">
         <label class="md-nav__title" for="__nav_3_6_7">
-          <span class="md-nav__icon md-icon"></span>
-          Manage attributes and mappings
-        </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../guides/users/attributes/manage-attributes/" class="md-nav__link">
-        User attributes
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../guides/users/attributes/manage-oidc-attribute-mappings/" class="md-nav__link">
-        OIDC attribute mappings
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../guides/users/attributes/manage-scim2-attribute-mappings/" class="md-nav__link">
-        SCIM2 attribute mappings
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../guides/users/attributes/manage-scopes/" class="md-nav__link">
-        OIDC scopes
-      </a>
-    </li>
-  
-
-            
-          
-        </ul>
-      </nav>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-      
-      
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_6_8" >
-      
-      
-        
-          
-            
-          
-        
-          
-        
-          
-        
-          
-        
-      
-      
-        
-        
-        <div class="md-nav__link md-nav__link--index ">
-          <a href="../../guides/users/user-stores/">Manage user stores</a>
-          
-            <label for="__nav_3_6_8">
-              <span class="md-nav__icon md-icon"></span>
-            </label>
-          
-        </div>
-      
-      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_6_8_label" aria-expanded="false">
-        <label class="md-nav__title" for="__nav_3_6_8">
           <span class="md-nav__icon md-icon"></span>
           Manage user stores
         </label>
@@ -3096,7 +3177,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../guides/users/user-stores/configure-a-user-store/" class="md-nav__link">
+      <a href="../user-stores/configure-a-user-store/" class="md-nav__link">
         Connect a remote user store
       </a>
     </li>
@@ -3110,7 +3191,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../guides/users/user-stores/configure-high-availability/" class="md-nav__link">
+      <a href="../user-stores/configure-high-availability/" class="md-nav__link">
         Configure high availability
       </a>
     </li>
@@ -3124,7 +3205,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../guides/users/user-stores/update-user-stores/" class="md-nav__link">
+      <a href="../user-stores/update-user-stores/" class="md-nav__link">
         Manage remote user stores
       </a>
     </li>
@@ -3180,7 +3261,7 @@
         
         
         <div class="md-nav__link md-nav__link--index ">
-          <a href="../../guides/user-accounts/">Account management</a>
+          <a href="../../user-accounts/">Account management</a>
           
             <label for="__nav_3_7">
               <span class="md-nav__icon md-icon"></span>
@@ -3203,7 +3284,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../guides/user-accounts/configure-self-service-portal/" class="md-nav__link">
+      <a href="../../user-accounts/configure-self-service-portal/" class="md-nav__link">
         Configure self-service portal
       </a>
     </li>
@@ -3217,7 +3298,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../guides/user-accounts/password-recovery/" class="md-nav__link">
+      <a href="../../user-accounts/password-recovery/" class="md-nav__link">
         Configure password recovery
       </a>
     </li>
@@ -3231,7 +3312,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../guides/user-accounts/configure-self-registration/" class="md-nav__link">
+      <a href="../../user-accounts/configure-self-registration/" class="md-nav__link">
         Configure self-registration
       </a>
     </li>
@@ -3280,7 +3361,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../guides/user-accounts/account-security/login-attempts-security/" class="md-nav__link">
+      <a href="../../user-accounts/account-security/login-attempts-security/" class="md-nav__link">
         Configure login-attempts security
       </a>
     </li>
@@ -3294,7 +3375,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../guides/user-accounts/account-security/bot-detection/" class="md-nav__link">
+      <a href="../../user-accounts/account-security/bot-detection/" class="md-nav__link">
         Configure bot detection
       </a>
     </li>
@@ -3308,7 +3389,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../guides/user-accounts/account-security/password-validation/" class="md-nav__link">
+      <a href="../../user-accounts/account-security/password-validation/" class="md-nav__link">
         Configure password validation
       </a>
     </li>
@@ -3360,7 +3441,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../guides/user-accounts/account-login/username-validation/" class="md-nav__link">
+      <a href="../../user-accounts/account-login/username-validation/" class="md-nav__link">
         Configure username validation
       </a>
     </li>
@@ -3410,7 +3491,7 @@
         
         
         <div class="md-nav__link md-nav__link--index ">
-          <a href="../../guides/user-self-service/">User self-service</a>
+          <a href="../../user-self-service/">User self-service</a>
           
             <label for="__nav_3_8">
               <span class="md-nav__icon md-icon"></span>
@@ -3488,7 +3569,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../guides/user-self-service/customer-self-service-portal/" class="md-nav__link">
+      <a href="../../user-self-service/customer-self-service-portal/" class="md-nav__link">
         Customer self service portal
       </a>
     </li>
@@ -3502,7 +3583,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../guides/user-self-service/update-profile-info/" class="md-nav__link">
+      <a href="../../user-self-service/update-profile-info/" class="md-nav__link">
         Update profile information
       </a>
     </li>
@@ -3516,7 +3597,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../guides/user-self-service/change-password/" class="md-nav__link">
+      <a href="../../user-self-service/change-password/" class="md-nav__link">
         Change password
       </a>
     </li>
@@ -3530,7 +3611,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../guides/user-self-service/manage-linked-accounts/" class="md-nav__link">
+      <a href="../../user-self-service/manage-linked-accounts/" class="md-nav__link">
         Manage linked social accounts
       </a>
     </li>
@@ -3544,7 +3625,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../guides/user-self-service/export-profile-information/" class="md-nav__link">
+      <a href="../../user-self-service/export-profile-information/" class="md-nav__link">
         Export profile information
       </a>
     </li>
@@ -3558,7 +3639,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../guides/user-self-service/manage-consents/" class="md-nav__link">
+      <a href="../../user-self-service/manage-consents/" class="md-nav__link">
         Manage consents
       </a>
     </li>
@@ -3572,7 +3653,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../guides/user-self-service/manage-login-sessions/" class="md-nav__link">
+      <a href="../../user-self-service/manage-login-sessions/" class="md-nav__link">
         Manage login sessions
       </a>
     </li>
@@ -3586,7 +3667,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../guides/user-self-service/self-register/" class="md-nav__link">
+      <a href="../../user-self-service/self-register/" class="md-nav__link">
         Self-register
       </a>
     </li>
@@ -3600,7 +3681,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../guides/user-self-service/register-security-key/" class="md-nav__link">
+      <a href="../../user-self-service/register-security-key/" class="md-nav__link">
         Register FIDO2 security key/biometrics
       </a>
     </li>
@@ -3614,7 +3695,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../guides/user-self-service/customer-password-recovery/" class="md-nav__link">
+      <a href="../../user-self-service/customer-password-recovery/" class="md-nav__link">
         Password recovery
       </a>
     </li>
@@ -3628,7 +3709,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../guides/user-self-service/enable-totp/" class="md-nav__link">
+      <a href="../../user-self-service/enable-totp/" class="md-nav__link">
         Enroll TOTP
       </a>
     </li>
@@ -3642,7 +3723,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../guides/user-self-service/manage-backup-codes/" class="md-nav__link">
+      <a href="../../user-self-service/manage-backup-codes/" class="md-nav__link">
         Manage backup codes
       </a>
     </li>
@@ -3656,7 +3737,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../guides/user-self-service/discover-applications/" class="md-nav__link">
+      <a href="../../user-self-service/discover-applications/" class="md-nav__link">
         Discover applications
       </a>
     </li>
@@ -3677,7 +3758,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../guides/user-self-service/build-self-service-capabilities/" class="md-nav__link">
+      <a href="../../user-self-service/build-self-service-capabilities/" class="md-nav__link">
         Build self-service capabilities
       </a>
     </li>
@@ -3722,7 +3803,7 @@
         
         
         <div class="md-nav__link md-nav__link--index ">
-          <a href="../../guides/organization-management/">Organization management</a>
+          <a href="../../organization-management/">Organization management</a>
           
             <label for="__nav_3_9">
               <span class="md-nav__icon md-icon"></span>
@@ -3745,7 +3826,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../guides/organization-management/manage-organizations/" class="md-nav__link">
+      <a href="../../organization-management/manage-organizations/" class="md-nav__link">
         Manage organizations
       </a>
     </li>
@@ -3789,7 +3870,7 @@
         
         
         <div class="md-nav__link md-nav__link--index ">
-          <a href="../../guides/organization-management/manage-b2b-organizations/">Manage B2B organizations</a>
+          <a href="../../organization-management/manage-b2b-organizations/">Manage B2B organizations</a>
           
             <label for="__nav_3_9_3">
               <span class="md-nav__icon md-icon"></span>
@@ -3812,7 +3893,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../guides/organization-management/manage-b2b-organizations/manage-suborganizations/" class="md-nav__link">
+      <a href="../../organization-management/manage-b2b-organizations/manage-suborganizations/" class="md-nav__link">
         Set up sub organizations
       </a>
     </li>
@@ -3826,7 +3907,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../guides/organization-management/manage-b2b-organizations/onboard-sub-org-admins/" class="md-nav__link">
+      <a href="../../organization-management/manage-b2b-organizations/onboard-sub-org-admins/" class="md-nav__link">
         Onboard sub organization admins
       </a>
     </li>
@@ -3840,7 +3921,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../guides/organization-management/manage-b2b-organizations/manage-b2b-administration/" class="md-nav__link">
+      <a href="../../organization-management/manage-b2b-organizations/manage-b2b-administration/" class="md-nav__link">
         Administration of sub organizations
       </a>
     </li>
@@ -3854,7 +3935,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../guides/organization-management/manage-b2b-organizations/share-applications/" class="md-nav__link">
+      <a href="../../organization-management/manage-b2b-organizations/share-applications/" class="md-nav__link">
         Share applications
       </a>
     </li>
@@ -3868,7 +3949,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../guides/organization-management/manage-b2b-organizations/try-a-b2b-use-case/" class="md-nav__link">
+      <a href="../../organization-management/manage-b2b-organizations/try-a-b2b-use-case/" class="md-nav__link">
         Try a B2B use case
       </a>
     </li>
@@ -3882,7 +3963,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../guides/organization-management/manage-b2b-organizations/api-authorization-for-b2b/" class="md-nav__link">
+      <a href="../../organization-management/manage-b2b-organizations/api-authorization-for-b2b/" class="md-nav__link">
         API authorization for sub organizations
       </a>
     </li>
@@ -3903,7 +3984,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../guides/organization-management/manage-environments/" class="md-nav__link">
+      <a href="../../organization-management/manage-environments/" class="md-nav__link">
         Manage environments
       </a>
     </li>
@@ -3950,7 +4031,7 @@
         
         
         <div class="md-nav__link md-nav__link--index ">
-          <a href="../../guides/your-is/">Your WSO2 Identity Server</a>
+          <a href="../../your-is/">Your WSO2 Identity Server</a>
           
             <label for="__nav_3_10">
               <span class="md-nav__icon md-icon"></span>
@@ -3973,7 +4054,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../guides/your-is/is-self-service/" class="md-nav__link">
+      <a href="../../your-is/is-self-service/" class="md-nav__link">
         Self-service
       </a>
     </li>
@@ -3987,7 +4068,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../guides/your-is/recover-password/" class="md-nav__link">
+      <a href="../../your-is/recover-password/" class="md-nav__link">
         Recover your password
       </a>
     </li>
@@ -4001,7 +4082,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../guides/your-is/delete-your-user-account/" class="md-nav__link">
+      <a href="../../your-is/delete-your-user-account/" class="md-nav__link">
         Delete your user account
       </a>
     </li>
@@ -4015,7 +4096,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../guides/your-is/manage-subscriptions/" class="md-nav__link">
+      <a href="../../your-is/manage-subscriptions/" class="md-nav__link">
         Manage subscriptions
       </a>
     </li>
@@ -4062,7 +4143,7 @@
         
         
         <div class="md-nav__link md-nav__link--index ">
-          <a href="../../integrations/">Integrations</a>
+          <a href="../../../integrations/">Integrations</a>
           
         </div>
       
@@ -4137,7 +4218,7 @@
         
         
         <div class="md-nav__link md-nav__link--index ">
-          <a href="../">APIs</a>
+          <a href="../../../apis/">APIs</a>
           
             <label for="__nav_5">
               <span class="md-nav__icon md-icon"></span>
@@ -4160,7 +4241,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../use-the-authentication-rest-apis/" class="md-nav__link">
+      <a href="../../../apis/use-the-authentication-rest-apis/" class="md-nav__link">
         Authentication API
       </a>
     </li>
@@ -4174,7 +4255,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../session-mgt-rest-api/" class="md-nav__link">
+      <a href="../../../apis/session-mgt-rest-api/" class="md-nav__link">
         Session management API
       </a>
     </li>
@@ -4188,7 +4269,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../entitlement-with-rest-apis/" class="md-nav__link">
+      <a href="../../../apis/entitlement-with-rest-apis/" class="md-nav__link">
         Entitlement management API
       </a>
     </li>
@@ -4245,7 +4326,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../scim-1.1-apis/" class="md-nav__link">
+      <a href="../../../apis/scim-1.1-apis/" class="md-nav__link">
         SCIM 1.1 API
       </a>
     </li>
@@ -4294,7 +4375,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../scim2-rest-apis/" class="md-nav__link">
+      <a href="../../../apis/scim2-rest-apis/" class="md-nav__link">
         SCIM 2.0 API Definition
       </a>
     </li>
@@ -4308,7 +4389,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../scim2-patch-operations/" class="md-nav__link">
+      <a href="../../../apis/scim2-patch-operations/" class="md-nav__link">
         SCIM 2.0 Patch Operations
       </a>
     </li>
@@ -4322,7 +4403,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../scim2-batch-operations/" class="md-nav__link">
+      <a href="../../../apis/scim2-batch-operations/" class="md-nav__link">
         SCIM 2.0 Batch Operations
       </a>
     </li>
@@ -4343,7 +4424,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../use-the-account-recovery-rest-apis/" class="md-nav__link">
+      <a href="../../../apis/use-the-account-recovery-rest-apis/" class="md-nav__link">
         Account recovery API
       </a>
     </li>
@@ -4357,7 +4438,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../association-rest-api/" class="md-nav__link">
+      <a href="../../../apis/association-rest-api/" class="md-nav__link">
         Associated accounts API
       </a>
     </li>
@@ -4371,7 +4452,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../challenge-questions/" class="md-nav__link">
+      <a href="../../../apis/challenge-questions/" class="md-nav__link">
         Challenge question API
       </a>
     </li>
@@ -4385,7 +4466,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../challenge-rest-api/" class="md-nav__link">
+      <a href="../../../apis/challenge-rest-api/" class="md-nav__link">
         Challenge answers API
       </a>
     </li>
@@ -4399,7 +4480,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../use-the-self-sign-up-rest-apis/" class="md-nav__link">
+      <a href="../../../apis/use-the-self-sign-up-rest-apis/" class="md-nav__link">
         Self Sign-Up API
       </a>
     </li>
@@ -4420,7 +4501,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../idp/" class="md-nav__link">
+      <a href="../../../apis/idp/" class="md-nav__link">
         Identity provider API
       </a>
     </li>
@@ -4434,7 +4515,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../idp-session-extender-endpoint/" class="md-nav__link">
+      <a href="../../../apis/idp-session-extender-endpoint/" class="md-nav__link">
         IdP session extension API
       </a>
     </li>
@@ -4485,7 +4566,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../fido-rest-api/" class="md-nav__link">
+      <a href="../../../apis/fido-rest-api/" class="md-nav__link">
         FIDO API
       </a>
     </li>
@@ -4499,7 +4580,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../totp-rest-api/" class="md-nav__link">
+      <a href="../../../apis/totp-rest-api/" class="md-nav__link">
         TOTP API
       </a>
     </li>
@@ -4513,7 +4594,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../user-discoverable-applications/" class="md-nav__link">
+      <a href="../../../apis/user-discoverable-applications/" class="md-nav__link">
         User discoverable application API
       </a>
     </li>
@@ -4527,7 +4608,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../approvals-rest-api/" class="md-nav__link">
+      <a href="../../../apis/approvals-rest-api/" class="md-nav__link">
         Approvals management API
       </a>
     </li>
@@ -4589,7 +4670,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../application-rest-api/" class="md-nav__link">
+      <a href="../../../apis/application-rest-api/" class="md-nav__link">
         Application management API
       </a>
     </li>
@@ -4636,7 +4717,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../authorized-apps-rest-api/" class="md-nav__link">
+      <a href="../../../apis/authorized-apps-rest-api/" class="md-nav__link">
         Authorized apps API V1
       </a>
     </li>
@@ -4650,7 +4731,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../authorized-apps-v2-rest-api/" class="md-nav__link">
+      <a href="../../../apis/authorized-apps-v2-rest-api/" class="md-nav__link">
         Authorized apps API V2
       </a>
     </li>
@@ -4671,7 +4752,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../oauth2-scope-management-rest-apis/" class="md-nav__link">
+      <a href="../../../apis/oauth2-scope-management-rest-apis/" class="md-nav__link">
         OAuth 2.0 scope management API
       </a>
     </li>
@@ -4685,7 +4766,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../oidc-scope-management-rest-apis/" class="md-nav__link">
+      <a href="../../../apis/oidc-scope-management-rest-apis/" class="md-nav__link">
         OpenID Connect scope management API
       </a>
     </li>
@@ -4699,7 +4780,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../use-the-openid-connect-dynamic-client-registration-rest-apis/" class="md-nav__link">
+      <a href="../../../apis/use-the-openid-connect-dynamic-client-registration-rest-apis/" class="md-nav__link">
         OIDC Dynamic Client Registration API
       </a>
     </li>
@@ -4713,7 +4794,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../script-library-rest-api/" class="md-nav__link">
+      <a href="../../../apis/script-library-rest-api/" class="md-nav__link">
         Script Library management API
       </a>
     </li>
@@ -4734,7 +4815,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../claim-management-rest-api/" class="md-nav__link">
+      <a href="../../../apis/claim-management-rest-api/" class="md-nav__link">
         Claim management API
       </a>
     </li>
@@ -4828,7 +4909,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../use-the-configuration-management-rest-apis/" class="md-nav__link">
+      <a href="../../../apis/use-the-configuration-management-rest-apis/" class="md-nav__link">
         Configuration management API
       </a>
     </li>
@@ -4842,7 +4923,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../retrieve-tenant-resources-based-on-search-parameters/" class="md-nav__link">
+      <a href="../../../apis/retrieve-tenant-resources-based-on-search-parameters/" class="md-nav__link">
         Retrieve Tenant Resources Based on Search Parameters
       </a>
     </li>
@@ -4896,7 +4977,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../governance-connectors/" class="md-nav__link">
+      <a href="../../../apis/governance-connectors/" class="md-nav__link">
         Identity Governance API introduction
       </a>
     </li>
@@ -4910,7 +4991,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../identity-governance-rest-api/" class="md-nav__link">
+      <a href="../../../apis/identity-governance-rest-api/" class="md-nav__link">
         Identity governance API
       </a>
     </li>
@@ -4931,7 +5012,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../keystore-rest-api/" class="md-nav__link">
+      <a href="../../../apis/keystore-rest-api/" class="md-nav__link">
         Keystore management API
       </a>
     </li>
@@ -4945,7 +5026,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../user-store-rest-api/" class="md-nav__link">
+      <a href="../../../apis/user-store-rest-api/" class="md-nav__link">
         User store management API
       </a>
     </li>
@@ -4959,7 +5040,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../tenant-management-rest-api/" class="md-nav__link">
+      <a href="../../../apis/tenant-management-rest-api/" class="md-nav__link">
         Tenant management API
       </a>
     </li>
@@ -4973,7 +5054,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../cors-rest-api/" class="md-nav__link">
+      <a href="../../../apis/cors-rest-api/" class="md-nav__link">
         CORS API
       </a>
     </li>
@@ -5020,7 +5101,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../use-the-consent-management-rest-apis/" class="md-nav__link">
+      <a href="../../../apis/use-the-consent-management-rest-apis/" class="md-nav__link">
         Overview
       </a>
     </li>
@@ -5034,7 +5115,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../consent-management-api-definition/" class="md-nav__link">
+      <a href="../../../apis/consent-management-api-definition/" class="md-nav__link">
         Consent management API
       </a>
     </li>
@@ -5055,7 +5136,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../email-templates-rest-api/" class="md-nav__link">
+      <a href="../../../apis/email-templates-rest-api/" class="md-nav__link">
         Email templates API
       </a>
     </li>
@@ -5069,7 +5150,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../workflow-engine-rest-api/" class="md-nav__link">
+      <a href="../../../apis/workflow-engine-rest-api/" class="md-nav__link">
         Workflow engine management API
       </a>
     </li>
@@ -5123,7 +5204,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../notification-sender/" class="md-nav__link">
+      <a href="../../../apis/notification-sender/" class="md-nav__link">
         Notification sender configurations
       </a>
     </li>
@@ -5137,7 +5218,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../notification-sender-rest-api/" class="md-nav__link">
+      <a href="../../../apis/notification-sender-rest-api/" class="md-nav__link">
         Notification sender API
       </a>
     </li>
@@ -5158,7 +5239,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../configs-rest-api/" class="md-nav__link">
+      <a href="../../../apis/configs-rest-api/" class="md-nav__link">
         Server configuration API
       </a>
     </li>
@@ -5172,7 +5253,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../permission-management-rest-api/" class="md-nav__link">
+      <a href="../../../apis/permission-management-rest-api/" class="md-nav__link">
         Permission management API
       </a>
     </li>
@@ -5186,7 +5267,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../user-functionality-mgt-rest-api/" class="md-nav__link">
+      <a href="../../../apis/user-functionality-mgt-rest-api/" class="md-nav__link">
         User Functionality management API
       </a>
     </li>
@@ -5233,7 +5314,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../call-admin-services/" class="md-nav__link">
+      <a href="../../../apis/call-admin-services/" class="md-nav__link">
         Call admin services
       </a>
     </li>
@@ -5247,7 +5328,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../admin-services-for-one-way-operations/" class="md-nav__link">
+      <a href="../../../apis/admin-services-for-one-way-operations/" class="md-nav__link">
         One way operations
       </a>
     </li>
@@ -5316,7 +5397,7 @@
         
         
         <div class="md-nav__link md-nav__link--index ">
-          <a href="../../references/">References</a>
+          <a href="../../../references/">References</a>
           
             <label for="__nav_6">
               <span class="md-nav__icon md-icon"></span>
@@ -5339,7 +5420,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../references/user-management/user-roles/" class="md-nav__link">
+      <a href="../../../references/user-management/user-roles/" class="md-nav__link">
         User roles
       </a>
     </li>
@@ -5375,7 +5456,7 @@
         
         
         <div class="md-nav__link md-nav__link--index ">
-          <a href="../../references/app-settings/">App configurations</a>
+          <a href="../../../references/app-settings/">App configurations</a>
           
             <label for="__nav_6_3">
               <span class="md-nav__icon md-icon"></span>
@@ -5398,7 +5479,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../references/app-settings/oidc-settings-for-app/" class="md-nav__link">
+      <a href="../../../references/app-settings/oidc-settings-for-app/" class="md-nav__link">
         OIDC configurations
       </a>
     </li>
@@ -5412,7 +5493,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../references/app-settings/saml-settings-for-app/" class="md-nav__link">
+      <a href="../../../references/app-settings/saml-settings-for-app/" class="md-nav__link">
         SAML configurations
       </a>
     </li>
@@ -5455,7 +5536,7 @@
         
         
         <div class="md-nav__link md-nav__link--index ">
-          <a href="../../references/idp-settings/">IdP configurations</a>
+          <a href="../../../references/idp-settings/">IdP configurations</a>
           
             <label for="__nav_6_4">
               <span class="md-nav__icon md-icon"></span>
@@ -5478,7 +5559,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../references/idp-settings/oidc-settings-for-idp/" class="md-nav__link">
+      <a href="../../../references/idp-settings/oidc-settings-for-idp/" class="md-nav__link">
         OIDC configurations
       </a>
     </li>
@@ -5492,7 +5573,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../references/idp-settings/saml-settings-for-idp/" class="md-nav__link">
+      <a href="../../../references/idp-settings/saml-settings-for-idp/" class="md-nav__link">
         SAML configurations
       </a>
     </li>
@@ -5513,7 +5594,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../references/grant-types/" class="md-nav__link">
+      <a href="../../../references/grant-types/" class="md-nav__link">
         OAuth2 grant types of WSO2 Identity Server
       </a>
     </li>
@@ -5527,7 +5608,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../references/pushed-authorization-requests/" class="md-nav__link">
+      <a href="../../../references/pushed-authorization-requests/" class="md-nav__link">
         OAuth2 Pushed Authorization Requests
       </a>
     </li>
@@ -5541,7 +5622,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../references/conditional-auth/api-reference/" class="md-nav__link">
+      <a href="../../../references/conditional-auth/api-reference/" class="md-nav__link">
         Conditional auth - API
       </a>
     </li>
@@ -5555,7 +5636,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../references/remote-user-store/remote-user-store-properties/" class="md-nav__link">
+      <a href="../../../references/remote-user-store/remote-user-store-properties/" class="md-nav__link">
         Remote user store properties
       </a>
     </li>
@@ -5569,7 +5650,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../references/authorization-policies-for-apps/" class="md-nav__link">
+      <a href="../../../references/authorization-policies-for-apps/" class="md-nav__link">
         Authorization policies for apps
       </a>
     </li>
@@ -5583,7 +5664,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../references/email-templates/" class="md-nav__link">
+      <a href="../../../references/email-templates/" class="md-nav__link">
         Email templates
       </a>
     </li>
@@ -5625,7 +5706,7 @@
         
         
         <div class="md-nav__link md-nav__link--index ">
-          <a href="../../references/compliance/">Compliance</a>
+          <a href="../../../references/compliance/">Compliance</a>
           
             <label for="__nav_6_11">
               <span class="md-nav__icon md-icon"></span>
@@ -5648,7 +5729,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../references/compliance/gdpr/" class="md-nav__link">
+      <a href="../../../references/compliance/gdpr/" class="md-nav__link">
         GDPR
       </a>
     </li>
@@ -5662,7 +5743,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../references/compliance/eidas/" class="md-nav__link">
+      <a href="../../../references/compliance/eidas/" class="md-nav__link">
         eIDAS
       </a>
     </li>
@@ -5676,7 +5757,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../references/compliance/ccpa/" class="md-nav__link">
+      <a href="../../../references/compliance/ccpa/" class="md-nav__link">
         CCPA
       </a>
     </li>
@@ -5690,7 +5771,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../references/compliance/fips/" class="md-nav__link">
+      <a href="../../../references/compliance/fips/" class="md-nav__link">
         FIPS
       </a>
     </li>
@@ -5704,7 +5785,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../references/compliance/accessibility/" class="md-nav__link">
+      <a href="../../../references/compliance/accessibility/" class="md-nav__link">
         Accessibility compliance
       </a>
     </li>
@@ -5725,7 +5806,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../references/localization/" class="md-nav__link">
+      <a href="../../../references/localization/" class="md-nav__link">
         Localization in  WSO2 Identity Server
       </a>
     </li>
@@ -5766,8 +5847,22 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#count-via-management-console" class="md-nav__link">
-    Count via management console
+  <a href="#add-an-administrator" class="md-nav__link">
+    Add an administrator
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#assign-admin-privileges-to-users" class="md-nav__link">
+    Assign admin privileges to users
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#delete-an-administrator" class="md-nav__link">
+    Delete an administrator
   </a>
   
 </li>
@@ -5787,61 +5882,62 @@
                   
 
 
-<h1 id="count-users-and-user-roles">Count Users and User Roles<a class="headerlink" href="#count-users-and-user-roles" title="Permanent link">&para;</a></h1>
-<p>WSO2 Identity Server enables easily counting the users and user roles using the <strong>Management Console</strong> and <strong>Admin Services</strong>. </p>
-<div class="admonition tip">
-<p class="admonition-title">Before you begin</p>
-<ol>
-<li>
-<p>Open the <code>deployment.toml</code> file in the <code>&lt;IS_HOME&gt;/repository/conf</code> directory and add the following configuration.</p>
-<div class="highlight"><pre><span></span><code><span class="k">[user_store]</span>
-<span class="n">count_retriever_class</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;org.wso2.carbon.identity.user.store.count.jdbc.JDBCUserStoreCountRetriever&quot;</span>
-</code></pre></div>
-
-</li>
-<li>
-<p>Restart the server.</p>
-</li>
-</ol>
-</div>
-<p>Let's get started! </p>
-<hr />
-<h2 id="count-via-management-console">Count via management console<a class="headerlink" href="#count-via-management-console" title="Permanent link">&para;</a></h2>
-<p>Follow the steps below to count users via the Management Console: </p>
-<ol>
-<li>On the <strong>Main</strong> menu of the Management Console, click <strong>Identity &gt; Users and Roles &gt; List</strong>.</li>
-<li>
-<p>To count users:</p>
-<ol>
-<li>Click <strong>Users</strong>.</li>
-<li>
-<p>Click <strong>Count Users</strong>. Note that you can count the number of users in each domain for different claims, user name patterns, etc. </p>
-<div class="admonition example">
-<p class="admonition-title">Example</p>
-<p>In this example, <code>%admin</code> is given as search pattern.
-<img alt="Count users view in Management Console" src="https://is.docs.wso2.com/en/next/assets/img/apis/count-users.png" /> </p>
-</div>
-</li>
-</ol>
-</li>
-<li>
-<p>Similarly, to count user roles:</p>
-<ol>
-<li>Click <strong>Roles</strong>.</li>
-<li>
-<p>Click <strong>Count Roles</strong>. Note that you can count the number of user roles in different userstore domains.</p>
-<div class="admonition example">
-<p class="admonition-title">Example</p>
-<p><img alt="Count roles view in Management Console" src="https://is.docs.wso2.com/en/next/assets/img/apis/count-roles.png" /> </p>
-</div>
-</li>
-</ol>
-</li>
-</ol>
+<h1 id="manage-administrators">Manage administrators<a class="headerlink" href="#manage-administrators" title="Permanent link">&para;</a></h1>
+<p>This guide walks you through the steps of managing an administrator account. If you are the owner or an existing administrator in the organization, you can add new administrators or delete existing administrator accounts.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>By default, only JDBC userstore implementations supports this service but the functionality can be extended to LDAP userstores or any other type of userstore as well.</p>
+<p>You cannot manage the user profiles of other administrators or update their passwords from the WSO2 Identity Server Console. Administrators must <a href="http://127.0.0.1:8000/en/7.0.0/guides/your-is/is-self-service/#change-password">manage their own profiles and passwords</a> using the <strong>My Account</strong> portal.</p>
 </div>
+<h2 id="add-an-administrator">Add an administrator<a class="headerlink" href="#add-an-administrator" title="Permanent link">&para;</a></h2>
+<p>Administrators of your organization can follow the steps below to add another administrator:</p>
+<ol>
+<li>
+<p>On the WSO2 Identity Server Console, go to <strong>Organizational Settings</strong> &gt; <strong>Administrators</strong>.</p>
+</li>
+<li>
+<p>Click <strong>Add Administrator</strong> and provide the required details.</p>
+<p><img alt="Add administrator user" src="http://127.0.0.1:8000/en/7.0.0/assets/img/guides/users/add-administrator.png" style="display: block; margin: 0 auto; border: 0.3px solid lightgrey;" width="600" /></p>
+</li>
+<li>
+<p>Click <strong>Next</strong> to view the summary and click <strong>Finish</strong>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Once created, an administrator will be assigned the admin role and be made a member of the admin group.</p>
+</div>
+</li>
+</ol>
+<h2 id="assign-admin-privileges-to-users">Assign admin privileges to users<a class="headerlink" href="#assign-admin-privileges-to-users" title="Permanent link">&para;</a></h2>
+<p>You can assign admin privileges to existing users by following the instructions given below.</p>
+<ol>
+<li>
+<p>On the WSO2 Identity Server Console, go to <strong>User Management</strong> &gt; <strong>Users</strong>.</p>
+</li>
+<li>
+<p>Click <strong>Edit</strong> next to the releveant user.</p>
+</li>
+<li>
+<p>Go to the <strong>Roles</strong> tab and click <strong>Edit</strong>.</p>
+</li>
+<li>
+<p>Select the <strong>admin</strong> role and click <strong>Save</strong>.</p>
+</li>
+</ol>
+<h2 id="delete-an-administrator">Delete an administrator<a class="headerlink" href="#delete-an-administrator" title="Permanent link">&para;</a></h2>
+<div class="admonition warning before you begin">
+<p class="admonition-title">Warning</p>
+<p>Note the following:</p>
+<ul>
+<li>If the administrator you delete is a user with admin privileges, you will only be revoking the administrator privileges from the user. Deleting this administrator does not delete the user account.</li>
+<li>If the administrator is not a user, you will be deleting the user account from the organization. This action is irreversible.</li>
+</ul>
+</div>
+<p>To delete an administrator:</p>
+<ol>
+<li>On the WSO2 Identity Server Console, click <strong>Organizational Settings</strong> &gt; <strong>Administrators</strong>.</li>
+<li>Click <strong>Delete</strong> for the administrator you want to remove.</li>
+<li>Select the checkbox to confirm your action.</li>
+<li>Click <strong>Confirm</strong>.</li>
+</ol>
 
 
 
@@ -5888,7 +5984,7 @@
 <div class="md-copyright">
     
         <div class="md-copyright__highlight">
-            WSO2 Identity Server - Documentation
+            © 2023 WSO2 LLC.
         </div>
     
     <div class="md-license__highlight">
@@ -5906,10 +6002,12 @@
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
-    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.indexes", "navigation.path", "navigation.top", "content.code.copy", "content.action.edit", "content.action.view", "content.tabs.link", "search.suggest", "search.share"], "search": "../../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.indexes", "navigation.path", "navigation.top", "content.code.copy", "content.action.edit", "content.action.view", "content.tabs.link", "search.suggest", "search.share"], "search": "../../../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.fc8c2696.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.fc8c2696.min.js"></script>
+      
+        <script src="../../../assets/js/theme.js"></script>
       
     
   </body>

@@ -12,7 +12,7 @@
         <meta name="author" content="WSO2">
       
       
-        <link rel="canonical" href="https://is.docs.wso2.com/en/7.0.0/guides/organization-management/manage-b2b-organizations/try-a-b2b-use-case/">
+        <link rel="canonical" href="https://is.docs.wso2.com/en/next/guides/organization-management/manage-b2b-organizations/try-a-b2b-use-case/">
       
       
         <link rel="prev" href="../share-applications/">
@@ -165,6 +165,38 @@
         
       </div>
     </div>
+    
+      
+      <div class="md-header__version-select-dropdown">
+        <a class="dropdown-link" href="#!">
+          
+            
+          
+          <span class="icon">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.3.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M201.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 338.7 54.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z"/></svg>
+          </span>
+        </a>
+        <ul class="dropdown-content" tabindex="0">
+          
+             
+              <li><a href="https://is.docs.wso2.com/en/6.1.0">6.1.0</a></li>
+            
+          
+             
+              <li><a href="https://is.docs.wso2.com/en/6.0.0">6.0.0</a></li>
+            
+          
+             
+              <li><a href="https://is.docs.wso2.com/en/5.11.0">5.11.0</a></li>
+            
+          
+          
+            <li><a href="https://is.docs.wso2.com/en/versions">Show all</a></li>
+          
+        </ul>
+      </div>
+    
     
       <form class="md-header__option" data-md-component="palette">
         
@@ -2845,8 +2877,6 @@
         
           
         
-          
-        
       
       
         
@@ -2875,7 +2905,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../users/manage-collaborators/" class="md-nav__link">
+      <a href="../../../users/manage-administrators/" class="md-nav__link">
         Manage administrators
       </a>
     </li>
@@ -2889,7 +2919,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../users/manage-customers/" class="md-nav__link">
+      <a href="../../../users/manage-users/" class="md-nav__link">
         Manage users
       </a>
     </li>
@@ -2930,27 +2960,13 @@
   
   
   
-    <li class="md-nav__item">
-      <a href="../../../users/migrate-users/" class="md-nav__link">
-        Migrate users to WSO2 Identity Server
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
     
     <li class="md-nav__item md-nav__item--nested">
       
       
       
       
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_6_7" >
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_6_6" >
       
       
         
@@ -2973,14 +2989,14 @@
         <div class="md-nav__link md-nav__link--index ">
           <a href="../../../users/attributes/">Manage attributes and mappings</a>
           
-            <label for="__nav_3_6_7">
+            <label for="__nav_3_6_6">
               <span class="md-nav__icon md-icon"></span>
             </label>
           
         </div>
       
-      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_6_7_label" aria-expanded="false">
-        <label class="md-nav__title" for="__nav_3_6_7">
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_6_6_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_3_6_6">
           <span class="md-nav__icon md-icon"></span>
           Manage attributes and mappings
         </label>
@@ -3062,7 +3078,7 @@
       
       
       
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_6_8" >
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_6_7" >
       
       
         
@@ -3083,14 +3099,14 @@
         <div class="md-nav__link md-nav__link--index ">
           <a href="../../../users/user-stores/">Manage user stores</a>
           
-            <label for="__nav_3_6_8">
+            <label for="__nav_3_6_7">
               <span class="md-nav__icon md-icon"></span>
             </label>
           
         </div>
       
-      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_6_8_label" aria-expanded="false">
-        <label class="md-nav__title" for="__nav_3_6_8">
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_6_7_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_3_6_7">
           <span class="md-nav__icon md-icon"></span>
           Manage user stores
         </label>
@@ -6050,15 +6066,15 @@
 <p>You are an administrator of <strong>Guardio Insurance</strong>, which is a company that provides its services to other business organizations.</p>
 <p><strong>Best Car Mart</strong> has a partnership with Guardio Insurance to provide life insurance policies to its employees. Guardio Insurance exposes its services to Best Car Mart's employees through its <strong>Guardio Insurance App</strong>.</p>
 <p>The employees of Best Car Mart should be able to log in to the Guardio Insurance App to consume its services. The administrators of Best Car Mart will manage the users of its organization and also determine the login experience that their users should have.</p>
-<p><img alt="Organizatoin login scenario" src="https://is.docs.wso2.com/en/next/assets/img/guides/organization/manage-organizations/organization-login-scenario.png" style="display: block; margin: 0 auto;" width="600" /></p>
+<p><img alt="Organizatoin login scenario" src="http://127.0.0.1:8000/en/7.0.0/assets/img/guides/organization/manage-organizations/organization-login-scenario.png" style="display: block; margin: 0 auto;" width="600" /></p>
 <h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h2>
-<p>You should <a href="https://is.docs.wso2.com/en/next/guides/organization-management/manage-organizations/#create-a-new-organization">create an organization</a>. For this example we have created an organization named <code>Guardio Insurance</code>.</p>
+<p>You should <a href="http://127.0.0.1:8000/en/7.0.0/guides/organization-management/manage-organizations/#create-a-new-organization">create an organization</a>. For this example we have created an organization named <code>Guardio Insurance</code>.</p>
 <h2 id="set-up-the-sub-organization">Set up the sub organization<a class="headerlink" href="#set-up-the-sub-organization" title="Permanent link">&para;</a></h2>
 <p>As the administrator of <strong>Guardio Insurance</strong>, you need to first set up a sub organization.</p>
 <h3 id="step-1-onboard-the-sub-organization">Step 1: Onboard the sub organization<a class="headerlink" href="#step-1-onboard-the-sub-organization" title="Permanent link">&para;</a></h3>
-<p><a href="https://is.docs.wso2.com/en/next/guides/organization-management/manage-b2b-organizations/manage-suborganizations/#create-a-suborganization">Create a sub  organization</a> on the WSO2 Identity Server Console with <code>Best Car Mart</code> as the <strong>Sub organization Name</strong>.</p>
+<p><a href="http://127.0.0.1:8000/en/7.0.0/guides/organization-management/manage-b2b-organizations/manage-suborganizations/#create-a-suborganization">Create a sub  organization</a> on the WSO2 Identity Server Console with <code>Best Car Mart</code> as the <strong>Sub organization Name</strong>.</p>
 <h3 id="step-2-onboard-a-sub-organziation-administrator">Step 2: Onboard a sub organziation administrator<a class="headerlink" href="#step-2-onboard-a-sub-organziation-administrator" title="Permanent link">&para;</a></h3>
-<p><a href="https://is.docs.wso2.com/en/next/guides/organization-management/manage-b2b-organizations/manage-b2b-administration/#onboard-suborganization-administrators">Onboard an administrator</a> to the Best Car Mart organization using the values given below.</p>
+<p><a href="http://127.0.0.1:8000/en/7.0.0/guides/organization-management/manage-b2b-organizations/manage-b2b-administration/#onboard-suborganization-administrators">Onboard an administrator</a> to the Best Car Mart organization using the values given below.</p>
 <table>
     <tr>
         <th>Username (Email)</th>
@@ -6090,7 +6106,7 @@
 <ol>
 <li>Switch to the primary organization.</li>
 <li>
-<p><a href="https://is.docs.wso2.com/en/next/guides/applications/register-standard-based-app/">Register a standard-based application</a> in your primary organization with the following settings:</p>
+<p><a href="http://127.0.0.1:8000/en/7.0.0/guides/applications/register-standard-based-app/">Register a standard-based application</a> in your primary organization with the following settings:</p>
 <p><table>
     <tr>
         <th>Application Name</th>
@@ -6112,7 +6128,7 @@
 </li>
 </ol>
 <h3 id="step-2-share-the-app-with-sub-organizations">Step 2: Share the app with sub organizations<a class="headerlink" href="#step-2-share-the-app-with-sub-organizations" title="Permanent link">&para;</a></h3>
-<p>Share the <b>Guardio Insurance app</b> with your <b>Best Car Mart</b> sub organization. See instructions on how to <a href="https://is.docs.wso2.com/en/next/guides/organization-management/manage-b2b-organizations/share-applications/">share applications with sub organizations</a>.</p>
+<p>Share the <b>Guardio Insurance app</b> with your <b>Best Car Mart</b> sub organization. See instructions on how to <a href="http://127.0.0.1:8000/en/7.0.0/guides/organization-management/manage-b2b-organizations/share-applications/">share applications with sub organizations</a>.</p>
 <p>By doing so, you enable <strong>Sign In with Organization Login</strong> as a login option in the application login screen, which sub organization users can use to log in.</p>
 <h3 id="step-3-configure-the-app-on-wso2-identity-server">Step 3: Configure the app on WSO2 Identity Server<a class="headerlink" href="#step-3-configure-the-app-on-wso2-identity-server" title="Permanent link">&para;</a></h3>
 <p>To configure the registered application on WSO2 Identity Server:</p>
@@ -6237,7 +6253,7 @@
 <ol>
 <li>
 <p>Open the application by copying the following URL to your browser: <code>http://localhost:3000/</code></p>
-<p><img alt="Guardio Application Login" src="https://is.docs.wso2.com/en/next/assets/img/guides/organization/manage-organizations/guardio-app-login.png" style="display: block; margin: 0 auto; border: 0.3px solid lightgrey;" /></p>
+<p><img alt="Guardio Application Login" src="http://127.0.0.1:8000/en/7.0.0/assets/img/guides/organization/manage-organizations/guardio-app-login.png" style="display: block; margin: 0 auto; border: 0.3px solid lightgrey;" /></p>
 </li>
 <li>
 <p>Click <strong>Sign In</strong> and see that you are diverted to the WSO2 Identity Server login screen.</p>
@@ -6247,7 +6263,7 @@
 </li>
 <li>
 <p>Enter <strong>Best Car Mart</strong> as the organization name and click <strong>Submit</strong>.</p>
-<p><img alt="Sign in with organization login" src="https://is.docs.wso2.com/en/next/assets/img/guides/organization/manage-organizations/sign-in-with-organization-login.png" style="display: block; margin: 0 auto; border: 0.3px solid lightgrey;" width="400" /></p>
+<p><img alt="Sign in with organization login" src="http://127.0.0.1:8000/en/7.0.0/assets/img/guides/organization/manage-organizations/sign-in-with-organization-login.png" style="display: block; margin: 0 auto; border: 0.3px solid lightgrey;" width="400" /></p>
 </li>
 <li>
 <p>Enter the username and password of a user who you have onboarded to Best Car Mart.</p>
@@ -6260,7 +6276,7 @@
 <h3 id="try-out-the-administration-portal">Try out the administration portal<a class="headerlink" href="#try-out-the-administration-portal" title="Permanent link">&para;</a></h3>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Learn how to build an administration portal for your B2B application in the <a href="https://is.docs.wso2.com/en/next/guides/organization-management/manage-b2b-organizations/manage-b2b-administration/#implement-an-administration-portal">implement an administration portal</a> section.</p>
+<p>Learn how to build an administration portal for your B2B application in the <a href="http://127.0.0.1:8000/en/7.0.0/guides/organization-management/manage-b2b-organizations/manage-b2b-administration/#implement-an-administration-portal">implement an administration portal</a> section.</p>
 </div>
 <p><strong>Best Car Mart</strong> needs to manage its employees through an external IdP. As the administrator of Best Car Mart, Alex, is tasked with enabling login from the external IdP for Best Car Mart employees.</p>
 <p>To configure an identity provider for <strong>Guardio Insurance App</strong>:</p>
@@ -6270,11 +6286,11 @@
 </li>
 <li>
 <p>On the application, go to <strong>Settings</strong> &gt; <strong>Identity Providers</strong> and click <strong>Add Identity Provider</strong>.</p>
-<p><img alt="Logged into best auto mart" src="https://is.docs.wso2.com/en/next/assets/img/guides/organization/manage-organizations/best-auto-mart-org-app.png" style="display: block; margin: 0 auto; border: 0.3px solid lightgrey;" width="700" /></p>
+<p><img alt="Logged into best auto mart" src="http://127.0.0.1:8000/en/7.0.0/assets/img/guides/organization/manage-organizations/best-auto-mart-org-app.png" style="display: block; margin: 0 auto; border: 0.3px solid lightgrey;" width="700" /></p>
 </li>
 <li>
 <p>Select <strong>Google</strong> if you are onboarding a Google IdP or <strong>Enterprise</strong> if you are onboarding an enterprise IdP.</p>
-<p><img alt="Select Identity Provider method" src="https://is.docs.wso2.com/en/next/assets/img/guides/organization/manage-organizations/select-idp-method.png" style="display: block; margin: 0 auto; border: 0.3px solid lightgrey;" width="600" /></p>
+<p><img alt="Select Identity Provider method" src="http://127.0.0.1:8000/en/7.0.0/assets/img/guides/organization/manage-organizations/select-idp-method.png" style="display: block; margin: 0 auto; border: 0.3px solid lightgrey;" width="600" /></p>
 </li>
 <li>
 <p>Provide the details specific to your IdP and click <strong>Create</strong>.</p>
@@ -6329,7 +6345,7 @@
 <div class="md-copyright">
     
         <div class="md-copyright__highlight">
-            WSO2 Identity Server - Documentation
+            © 2023 WSO2 LLC.
         </div>
     
     <div class="md-license__highlight">
@@ -6351,6 +6367,8 @@
     
     
       <script src="../../../../assets/javascripts/bundle.fc8c2696.min.js"></script>
+      
+        <script src="../../../../assets/js/theme.js"></script>
       
     
   </body>

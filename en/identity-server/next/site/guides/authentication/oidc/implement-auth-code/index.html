@@ -12,7 +12,7 @@
         <meta name="author" content="WSO2">
       
       
-        <link rel="canonical" href="https://is.docs.wso2.com/en/7.0.0/guides/authentication/oidc/implement-auth-code/">
+        <link rel="canonical" href="https://is.docs.wso2.com/en/next/guides/authentication/oidc/implement-auth-code/">
       
       
         <link rel="prev" href="../discover-oidc-configs/">
@@ -165,6 +165,38 @@
         
       </div>
     </div>
+    
+      
+      <div class="md-header__version-select-dropdown">
+        <a class="dropdown-link" href="#!">
+          
+            
+          
+          <span class="icon">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.3.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M201.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 338.7 54.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z"/></svg>
+          </span>
+        </a>
+        <ul class="dropdown-content" tabindex="0">
+          
+             
+              <li><a href="https://is.docs.wso2.com/en/6.1.0">6.1.0</a></li>
+            
+          
+             
+              <li><a href="https://is.docs.wso2.com/en/6.0.0">6.0.0</a></li>
+            
+          
+             
+              <li><a href="https://is.docs.wso2.com/en/5.11.0">5.11.0</a></li>
+            
+          
+          
+            <li><a href="https://is.docs.wso2.com/en/versions">Show all</a></li>
+          
+        </ul>
+      </div>
+    
     
       <form class="md-header__option" data-md-component="palette">
         
@@ -2904,8 +2936,6 @@
         
           
         
-          
-        
       
       
         
@@ -2934,7 +2964,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../users/manage-collaborators/" class="md-nav__link">
+      <a href="../../../users/manage-administrators/" class="md-nav__link">
         Manage administrators
       </a>
     </li>
@@ -2948,7 +2978,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../users/manage-customers/" class="md-nav__link">
+      <a href="../../../users/manage-users/" class="md-nav__link">
         Manage users
       </a>
     </li>
@@ -2989,27 +3019,13 @@
   
   
   
-    <li class="md-nav__item">
-      <a href="../../../users/migrate-users/" class="md-nav__link">
-        Migrate users to WSO2 Identity Server
-      </a>
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
-  
     
     <li class="md-nav__item md-nav__item--nested">
       
       
       
       
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_6_7" >
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_6_6" >
       
       
         
@@ -3032,14 +3048,14 @@
         <div class="md-nav__link md-nav__link--index ">
           <a href="../../../users/attributes/">Manage attributes and mappings</a>
           
-            <label for="__nav_3_6_7">
+            <label for="__nav_3_6_6">
               <span class="md-nav__icon md-icon"></span>
             </label>
           
         </div>
       
-      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_6_7_label" aria-expanded="false">
-        <label class="md-nav__title" for="__nav_3_6_7">
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_6_6_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_3_6_6">
           <span class="md-nav__icon md-icon"></span>
           Manage attributes and mappings
         </label>
@@ -3121,7 +3137,7 @@
       
       
       
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_6_8" >
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_6_7" >
       
       
         
@@ -3142,14 +3158,14 @@
         <div class="md-nav__link md-nav__link--index ">
           <a href="../../../users/user-stores/">Manage user stores</a>
           
-            <label for="__nav_3_6_8">
+            <label for="__nav_3_6_7">
               <span class="md-nav__icon md-icon"></span>
             </label>
           
         </div>
       
-      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_6_8_label" aria-expanded="false">
-        <label class="md-nav__title" for="__nav_3_6_8">
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_6_7_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_3_6_7">
           <span class="md-nav__icon md-icon"></span>
           Manage user stores
         </label>
@@ -5871,13 +5887,13 @@
 <h1 id="implement-login-using-the-authorization-code-flow">Implement login using the Authorization Code flow<a class="headerlink" href="#implement-login-using-the-authorization-code-flow" title="Permanent link">&para;</a></h1>
 <p>See the instructions given below to implement login with OpenID Connect in your application by using the authorization code flow. This method is suitable for confidential clients such as traditional web applications.</p>
 <p>The following diagram explains how this flow works with WSO2 Identity Server:</p>
-<p><img alt="Authorization code flow" src="https://is.docs.wso2.com/en/next/assets/img/guides/applications/oidc/auth_code_flow.png" /></p>
+<p><img alt="Authorization code flow" src="http://127.0.0.1:8000/en/7.0.0/assets/img/guides/applications/oidc/auth_code_flow.png" /></p>
 <p>As shown above, you need to configure your application to get the authorization code from WSO2 Identity Server, and then exchange it for the required tokens.</p>
 <h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h2>
-<p>To get started, you need to have an application registered in WSO2 Identity Server. If you don't already have one, <a href="https://is.docs.wso2.com/en/next/guides/applications/register-oidc-web-app/">register a web app with OIDC</a>.</p>
+<p>To get started, you need to have an application registered in WSO2 Identity Server. If you don't already have one, <a href="http://127.0.0.1:8000/en/7.0.0/guides/applications/register-oidc-web-app/">register a web app with OIDC</a>.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Note that only users can log in to business applications. Therefore, to test login on your application, you need a <a href="https://is.docs.wso2.com/en/next/guides/users/manage-customers/">user account</a>.</p>
+<p>Note that only users can log in to business applications. Therefore, to test login on your application, you need a <a href="http://127.0.0.1:8000/en/7.0.0/guides/users/manage-customers/">user account</a>.</p>
 </div>
 <h2 id="get-the-authorization-code">Get the authorization code<a class="headerlink" href="#get-the-authorization-code" title="Permanent link">&para;</a></h2>
 <p>First, your app must initiate a login request to the authorization endpoint of WSO2 Identity Server. After redirecting to WSO2 Identity Server, the user should be prompted with a login page if the user is not authenticated.</p>
@@ -6033,7 +6049,7 @@
 <p>Use a <strong>private key JWT</strong>: A secured JWT assertion with the data required for client authentication is sent in the token request. See the example given below.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Learn more about <a href="https://is.docs.wso2.com/en/next/guides/authentication/oidc/private-key-jwt-client-auth/">private key JWT client authentication</a> in Asgardeo.</p>
+<p>Learn more about <a href="http://127.0.0.1:8000/en/7.0.0/guides/authentication/oidc/private-key-jwt-client-auth/">private key JWT client authentication</a> in Asgardeo.</p>
 </div>
 <div class="highlight"><pre><span></span><code>--header<span class="w"> </span><span class="s1">&#39;Content-Type: application/x-www-form-urlencoded&#39;</span><span class="w"> </span><span class="se">\</span>
 --data-urlencode<span class="w"> </span><span class="s1">&#39;code={authorization_code}&#39;</span><span class="w"> </span><span class="se">\</span>
@@ -6130,7 +6146,7 @@
 <div class="md-copyright">
     
         <div class="md-copyright__highlight">
-            WSO2 Identity Server - Documentation
+            © 2023 WSO2 LLC.
         </div>
     
     <div class="md-license__highlight">
@@ -6152,6 +6168,8 @@
     
     
       <script src="../../../../assets/javascripts/bundle.fc8c2696.min.js"></script>
+      
+        <script src="../../../../assets/js/theme.js"></script>
       
     
   </body>

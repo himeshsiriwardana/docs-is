@@ -12,20 +12,20 @@
         <meta name="author" content="WSO2">
       
       
-        <link rel="canonical" href="https://is.docs.wso2.com/en/7.0.0/guides/users/migrate-users/">
+        <link rel="canonical" href="https://is.docs.wso2.com/en/next/guides/users/manage-users/">
       
       
-        <link rel="prev" href="../manage-sessions/">
+        <link rel="prev" href="../manage-administrators/">
       
       
-        <link rel="next" href="../attributes/">
+        <link rel="next" href="../manage-groups/">
       
       <link rel="icon" href="../../../assets/images/identity-server-favicon.png">
       <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.1.2">
     
     
       
-        <title>Migrate users to WSO2 Identity Server - </title>
+        <title>Manage users - </title>
       
     
     
@@ -81,7 +81,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#migrate-users-to-wso2-identity-server" class="md-skip">
+        <a href="#manage-users" class="md-skip">
           Skip to content
         </a>
       
@@ -158,13 +158,45 @@
           <div class="md-header__topic" data-md-component="header-topic">
             <span class="md-ellipsis">
                 
-                  Migrate users to WSO2 Identity Server
+                  Manage users
                 
             </span>
           </div>
         
       </div>
     </div>
+    
+      
+      <div class="md-header__version-select-dropdown">
+        <a class="dropdown-link" href="#!">
+          
+            
+          
+          <span class="icon">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.3.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M201.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 338.7 54.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z"/></svg>
+          </span>
+        </a>
+        <ul class="dropdown-content" tabindex="0">
+          
+             
+              <li><a href="https://is.docs.wso2.com/en/6.1.0">6.1.0</a></li>
+            
+          
+             
+              <li><a href="https://is.docs.wso2.com/en/6.0.0">6.0.0</a></li>
+            
+          
+             
+              <li><a href="https://is.docs.wso2.com/en/5.11.0">5.11.0</a></li>
+            
+          
+          
+            <li><a href="https://is.docs.wso2.com/en/versions">Show all</a></li>
+          
+        </ul>
+      </div>
+    
     
       <form class="md-header__option" data-md-component="palette">
         
@@ -2847,8 +2879,6 @@
         
           
         
-          
-        
       
       
         
@@ -2877,7 +2907,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../manage-collaborators/" class="md-nav__link">
+      <a href="../manage-administrators/" class="md-nav__link">
         Manage administrators
       </a>
     </li>
@@ -2889,11 +2919,107 @@
               
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../manage-customers/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Manage users
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         Manage users
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#onboard-a-user" class="md-nav__link">
+    Onboard a user
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#assign-groups" class="md-nav__link">
+    Assign groups
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#manage-user-profiles" class="md-nav__link">
+    Manage user profiles
+  </a>
+  
+    <nav class="md-nav" aria-label="Manage user profiles">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#view-profile-details" class="md-nav__link">
+    View profile details
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#update-the-profile" class="md-nav__link">
+    Update the profile
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reset-the-users-password" class="md-nav__link">
+    Reset the user's password
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lock-a-user-account" class="md-nav__link">
+    Lock a user account
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#delete-a-user" class="md-nav__link">
+    Delete a user
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -2931,75 +3057,6 @@
               
   
   
-    
-  
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          Migrate users to WSO2 Identity Server
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
-        Migrate users to WSO2 Identity Server
-      </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#when-is-user-migration-required" class="md-nav__link">
-    When is user migration required?
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#how-to-migrate-users-to-wso2-identity-server" class="md-nav__link">
-    How to migrate users to WSO2 Identity Server?
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#challenges-of-traditional-user-migration" class="md-nav__link">
-    Challenges of traditional user migration
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
-    </li>
-  
-
-            
-          
-            
-              
-  
-  
   
     
     <li class="md-nav__item md-nav__item--nested">
@@ -3007,7 +3064,7 @@
       
       
       
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_6_7" >
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_6_6" >
       
       
         
@@ -3030,14 +3087,14 @@
         <div class="md-nav__link md-nav__link--index ">
           <a href="../attributes/">Manage attributes and mappings</a>
           
-            <label for="__nav_3_6_7">
+            <label for="__nav_3_6_6">
               <span class="md-nav__icon md-icon"></span>
             </label>
           
         </div>
       
-      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_6_7_label" aria-expanded="false">
-        <label class="md-nav__title" for="__nav_3_6_7">
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_6_6_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_3_6_6">
           <span class="md-nav__icon md-icon"></span>
           Manage attributes and mappings
         </label>
@@ -3119,7 +3176,7 @@
       
       
       
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_6_8" >
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_6_7" >
       
       
         
@@ -3140,14 +3197,14 @@
         <div class="md-nav__link md-nav__link--index ">
           <a href="../user-stores/">Manage user stores</a>
           
-            <label for="__nav_3_6_8">
+            <label for="__nav_3_6_7">
               <span class="md-nav__icon md-icon"></span>
             </label>
           
         </div>
       
-      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_6_8_label" aria-expanded="false">
-        <label class="md-nav__title" for="__nav_3_6_8">
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_6_7_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_3_6_7">
           <span class="md-nav__icon md-icon"></span>
           Manage user stores
         </label>
@@ -5831,22 +5888,63 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#when-is-user-migration-required" class="md-nav__link">
-    When is user migration required?
+  <a href="#onboard-a-user" class="md-nav__link">
+    Onboard a user
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#how-to-migrate-users-to-wso2-identity-server" class="md-nav__link">
-    How to migrate users to WSO2 Identity Server?
+  <a href="#assign-groups" class="md-nav__link">
+    Assign groups
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#challenges-of-traditional-user-migration" class="md-nav__link">
-    Challenges of traditional user migration
+  <a href="#manage-user-profiles" class="md-nav__link">
+    Manage user profiles
+  </a>
+  
+    <nav class="md-nav" aria-label="Manage user profiles">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#view-profile-details" class="md-nav__link">
+    View profile details
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#update-the-profile" class="md-nav__link">
+    Update the profile
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reset-the-users-password" class="md-nav__link">
+    Reset the user's password
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lock-a-user-account" class="md-nav__link">
+    Lock a user account
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#delete-a-user" class="md-nav__link">
+    Delete a user
   </a>
   
 </li>
@@ -5866,50 +5964,188 @@
                   
 
 
-<h1 id="migrate-users-to-wso2-identity-server">Migrate users to WSO2 Identity Server<a class="headerlink" href="#migrate-users-to-wso2-identity-server" title="Permanent link">&para;</a></h1>
-<p>Owners of organizations in WSO2 Identity Server may need to migrate users from an existing identity provider (IdP) to the WSO2 Identity Server user store. This guide explains why you may need user migration and how to get it done.</p>
-<h2 id="when-is-user-migration-required">When is user migration required?<a class="headerlink" href="#when-is-user-migration-required" title="Permanent link">&para;</a></h2>
-<p>You may need to migrate users from an external IdP to WSO2 Identity Server if the organization requires:</p>
+<h1 id="manage-users">Manage users<a class="headerlink" href="#manage-users" title="Permanent link">&para;</a></h1>
+<p>This guide walks you through how you can manage user accounts as an administrator.</p>
+<h2 id="onboard-a-user">Onboard a user<a class="headerlink" href="#onboard-a-user" title="Permanent link">&para;</a></h2>
+<p>There are three ways to onboard a user:</p>
 <ul>
-<li>To combine users from multiple systems to one IdP for proper user management.</li>
-<li>To reorganize, restructure, and simplify data storage.</li>
-<li>To combine user data storages for centralized user management during company acquisitions and mergers.</li>
-<li>To move or separate identity data due to geopolitical, data protection, compliance, and regulatory reasons.</li>
-<li>Effective identity management that can provide additional protection over user data storage, scalability in IAM, and minimal maintenance costs.</li>
-</ul>
-<h2 id="how-to-migrate-users-to-wso2-identity-server">How to migrate users to WSO2 Identity Server?<a class="headerlink" href="#how-to-migrate-users-to-wso2-identity-server" title="Permanent link">&para;</a></h2>
-<p>You can contact the WSO2 Identity Server team at <strong>asgardeo-help@wso2.com</strong> for guidance on migrating your existing user base from your current IdP to your WSO2 Identity Server user store.</p>
+<li>The user can self-register via the My Account portal or the login page of an application if self-registration is enabled in the organization. Learn how to <a href="http://127.0.0.1:8000/en/7.0.0/guides/user-accounts/configure-self-registration/">configure self-registration</a>.</li>
+<li>
+<p>An administrator can onboard users from an on-premise user store by <a href="http://127.0.0.1:8000/en/7.0.0/guides/users/user-stores/configure-a-user-store/">connecting a remote user store to WSO2 Identity Server</a>.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Make sure you use your owner account or an administrator account to send the request.</p>
+<p>If the remote user store access type is read-only, you cannot update the user profiles of users onboarded from this read-only user store.</p>
 </div>
-<p>Alternatively, you can use traditional approaches to user migration. However, these methods run with challenges as listed in the section below.</p>
-<h2 id="challenges-of-traditional-user-migration">Challenges of traditional user migration<a class="headerlink" href="#challenges-of-traditional-user-migration" title="Permanent link">&para;</a></h2>
-<p>Identity providers generally support various automatic user migration methods, which help administrators import user records (including group details, attributes, and other characteristics) from external systems.</p>
-<p>These traditional methods come with various challenges as explained below, which become an operational overhead for administrators and provide a bad user experience:</p>
-<ul>
-<li>
-<p><strong>Credential transition</strong></p>
-<p>Identity providers use hashing algorithms to store user passwords securely. The password policies and hashing mechanisms vary across different IdPs. Due to this, a hashed password on one system will not be usable on another.</p>
 </li>
 <li>
-<p><strong>Schema matching</strong></p>
-<p>The schemas of one system might not match the schemas of the other system to which the organization is migrating. In such scenarios, the administrators will experience the overhead of matching the schemas one-to-one.</p>
-</li>
-<li>
-<p><strong>End-user experience</strong></p>
-<p>Due to the challenge of credential transition, when migrating users in bulk, the following methods are used to activate the user accounts:</p>
-<ul>
-<li>Setting a temporary password for each user.</li>
-<li>Sending an invitation email with a password reset link.</li>
-</ul>
-<p>The invitation emails may be missed out or ignored by the users, and users may even try to use the old password on the new systems. This causes user dissatisfaction with the organization.</p>
+<p>An administrator can onboard users from the WSO2 Identity Server Console.</p>
 </li>
 </ul>
+<p>Let's look at how administrators can onboard users from the WSO2 Identity Server Console.</p>
+<ol>
+<li>On the WSO2 Identity Server Console, go to <strong>User Management</strong> &gt; <strong>Users</strong>.</li>
+<li>
+<p>Click  <strong>Add User</strong> and provide the following details:</p>
+<p><img alt="Add user" src="http://127.0.0.1:8000/en/7.0.0/assets/img/guides/users/add-user-form.png" style="display: block; margin: 0 auto; border: 0.3px solid lightgrey;" width="600" /></p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>All the challenges mentioned above are handled by the WSO2 Identity Server team during user migration. This reduces the operational overhead on administrators and provides end-users with a better user experience.</p>
+<ul>
+<li>A username is always unique to the organization and you can't change the username once it is created.</li>
+<li>Instead of using a username to login, you can <a href="http://127.0.0.1:8000/en/7.0.0/guides/user-accounts/account-login/username-validation/">configure the email address as the login identifier</a>. Then, you will be asked to enter the email address when logging in.</li>
+<li>The user can change the password set by the administrator from the <a href="http://127.0.0.1:8000/en/7.0.0/guides/user-self-service/customer-self-service-portal/">My Account Portal</a>.</li>
+</ul>
 </div>
+</li>
+<li>
+<p>Click <strong>Next</strong>.</p>
+</li>
+<li>Add the user to a group, if necessary, and click <strong>Next</strong>.</li>
+<li>Assign the user a role, if necessary, and click <strong>Next</strong>.</li>
+<li>Review the summary and click <strong>Finish</strong>.</li>
+</ol>
+<h2 id="assign-groups">Assign groups<a class="headerlink" href="#assign-groups" title="Permanent link">&para;</a></h2>
+<p>Groups are useful when you wish to assign a certain permission level to multiple users. A user can be a member of multiple groups in the organization. Learn how to <a href="http://127.0.0.1:8000/en/7.0.0/guides/users/manage-groups/">manage groups</a>.</p>
+<p>To assign users to groups:</p>
+<ol>
+<li>On the WSO2 Identity Server Console, go to <strong>User Management</strong> &gt; <strong>Users</strong>.</li>
+<li>Click <strong>Edit</strong> for the user.</li>
+<li>Go to the <strong>Groups</strong> tab and click <strong>+ Assign Group</strong>.</li>
+<li>
+<p>Select the relevant groups and click <strong>Save</strong>.</p>
+<p><img alt="Add user" src="http://127.0.0.1:8000/en/7.0.0/assets/img/guides/users/assign-groups-to-users.png" style="display: block; margin: 0 auto; border: 0.3px solid lightgrey;" width="600" /></p>
+</li>
+</ol>
+<h2 id="manage-user-profiles">Manage user profiles<a class="headerlink" href="#manage-user-profiles" title="Permanent link">&para;</a></h2>
+<p>A user profile consists of attributes that represent the details of the user such as username, email address, contact information, other custom attributes, etc.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Administrators can configure the list of attributes that should be available in the user profile. See <a href="http://127.0.0.1:8000/en/7.0.0/guides/users/attributes/manage-attributes/">Manage attributes</a> for details.</p>
+</div>
+<h3 id="view-profile-details">View profile details<a class="headerlink" href="#view-profile-details" title="Permanent link">&para;</a></h3>
+<p>Administrators can view the user profile of any user as follows:</p>
+<ol>
+<li>
+<p>On the WSO2 Identity Server Console, go to <strong>User Management</strong> &gt; <strong>Users</strong>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you have connected a remote user store, and want to filter the users in your remote user store, select your user store from the drop-down menu.</p>
+</div>
+</li>
+<li>
+<p>Select the user to view the profile.</p>
+<p><img alt="view-user-profile" src="http://127.0.0.1:8000/en/7.0.0/assets/img/guides/users/view-user-profile.png" style="display: block; margin: 0 auto; border: 0.3px solid lightgrey;" width="600" /></p>
+</li>
+</ol>
+<h3 id="update-the-profile">Update the profile<a class="headerlink" href="#update-the-profile" title="Permanent link">&para;</a></h3>
+<p>An administrator can update the profile of a user via the WSO2 Identity Server Console.</p>
+<p>To update the user profile:</p>
+<ol>
+<li>
+<p>On the WSO2 Identity Server Console, go to <strong>User Management</strong> &gt; <strong>Users</strong>.</p>
+</li>
+<li>
+<p>Find the user's account and click <strong>Edit</strong>.</p>
+</li>
+<li>
+<p>Update the information on the user profile.</p>
+</li>
+<li>
+<p>Click <strong>Update</strong> to save.</p>
+</li>
+</ol>
+<h2 id="reset-the-users-password">Reset the user's password<a class="headerlink" href="#reset-the-users-password" title="Permanent link">&para;</a></h2>
+<p>Administrators can reset a user's password or initiate the password reset process from the WSO2 Identity Server Console.</p>
+<p>To reset the password:</p>
+<ol>
+<li>
+<p>Click <strong>Reset password</strong> at the top of the user's profile.</p>
+</li>
+<li>
+<p>Select a method to reset the user password:</p>
+<ul>
+<li>
+<p><strong>Set a new password for the user:</strong><br />
+    If this option is selected, the owner or an administrator can set a new password for the user.</p>
+</li>
+<li>
+<p><strong>Invite user to reset the password:</strong><br />
+    If this option is selected, a password reset request can be sent to the user using one of the password recovery methods you have enabled for the organization.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Enable the relevant password recovery methods by navigating to <strong>Login &amp; Registration</strong> &gt; <strong>Account Management</strong> &gt; <strong>Password Reset</strong>.</p>
+</div>
+</li>
+</ul>
+<p><img alt="Reset password" src="http://127.0.0.1:8000/en/7.0.0/assets/img/guides/users/reset-password-of-user.png" style="display: block; margin: 0 auto; border: 0.3px solid lightgrey;" width="600" /></p>
+</li>
+<li>
+<p>Click <strong>Reset Password</strong>.</p>
+</li>
+</ol>
+<p><strong>Using the API</strong></p>
+<p>You can also use Asgardeo's <a href="{{ base_apth }}/apis/scim2/#tag/Users-Endpoint/operation/patchUser">SCIM API</a> to initiate the admin initiated password recovery flow.</p>
+<ol>
+<li>
+<p><a href="http://127.0.0.1:8000/en/7.0.0/apis/authentication/#get-an-access-token">Get an access token</a> with the <code>internal_user_mgt_update</code> scope.</p>
+</li>
+<li>
+<p>Use the obtained access token to execute the following cURL.</p>
+<div class="highlight"><pre><span></span><code>curl --location --request PATCH &#39;https://localhost:9443/scim2/Users/&lt;user_id&gt;&#39; \
+--header &#39;Content-Type: application/json&#39; \
+--header &#39;Authorization: Bearer &lt;access_token&gt;&#39; \
+--data &#39;{
+   &quot;schemas&quot;: [
+      &quot;urn:ietf:params:scim:api:messages:2.0:PatchOp&quot;,
+      &quot;urn:ietf:params:scim:schemas:extension:enterprise:2.0:User&quot;
+   ],
+   &quot;Operations&quot;: [
+      {
+            &quot;op&quot;: &quot;add&quot;,
+            &quot;value&quot;: {
+               &quot;urn:ietf:params:scim:schemas:extension:enterprise:2.0:User&quot;: {
+                  &quot;forcePasswordReset&quot;: true
+               }
+            }
+      }
+   ]
+}&#39;
+</code></pre></div>
+
+</li>
+</ol>
+<p>Upon successful execution of the cURL the user will recieve an email to reset their password.</p>
+<h2 id="lock-a-user-account">Lock a user account<a class="headerlink" href="#lock-a-user-account" title="Permanent link">&para;</a></h2>
+<p>When you lock a user's account, the user will no longer be able to access any applications or the My Account portal.</p>
+<p>To lock a user account:</p>
+<ol>
+<li>On the WSO2 Identity Server Console, go to <strong>User Management</strong> &gt; <strong>Users</strong> and select the user.</li>
+<li>
+<p>Enable the <strong>Lock user</strong> toggle at the bottom of the user's profile.</p>
+<p><img alt="Lock user" src="http://127.0.0.1:8000/en/7.0.0/assets/img/guides/users/lock-user.png" style="display: block; margin: 0 auto; border: 0.3px solid lightgrey;" width="600" /></p>
+</li>
+<li>
+<p>Select the checkbox to confirm your action.</p>
+</li>
+<li>Click <strong>Confirm</strong>.</li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You can unlock a user account by switching the <strong>Lock user</strong> toggle off.</p>
+</div>
+<h2 id="delete-a-user">Delete a user<a class="headerlink" href="#delete-a-user" title="Permanent link">&para;</a></h2>
+<p>A user account can be deleted by administrators. Once an account is deleted, the action is irreversible.</p>
+<p>To delete a user account:</p>
+<ol>
+<li>On the WSO2 Identity Server Console, go to <strong>User Management</strong> &gt; <strong>Users</strong> and select the user.</li>
+<li>
+<p>Click <strong>Delete User</strong> at the bottom of the user's profile.</p>
+<p><img alt="Lock user" src="http://127.0.0.1:8000/en/7.0.0/assets/img/guides/users/delete-user.png" style="display: block; margin: 0 auto; border: 0.3px solid lightgrey;" width="600" /></p>
+</li>
+<li>
+<p>Select the checkbox to confirm your action.</p>
+</li>
+<li>Click <strong>Confirm</strong>.</li>
+</ol>
 
 
 
@@ -5956,7 +6192,7 @@
 <div class="md-copyright">
     
         <div class="md-copyright__highlight">
-            WSO2 Identity Server - Documentation
+            © 2023 WSO2 LLC.
         </div>
     
     <div class="md-license__highlight">
@@ -5978,6 +6214,8 @@
     
     
       <script src="../../../assets/javascripts/bundle.fc8c2696.min.js"></script>
+      
+        <script src="../../../assets/js/theme.js"></script>
       
     
   </body>
