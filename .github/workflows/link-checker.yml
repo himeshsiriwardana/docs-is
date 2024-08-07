@@ -11,7 +11,7 @@ on:
     - cron: '30 2 * * *' # Schedule to run once daily at 02:30 UTC
 
 env:
-  DEFAULT_URL: 'https://is.docs.wso2.com/en/latest/'
+  DEFAULT_URL: 'https://is.docs.wso2.com/en/latest/guides/'
 
 jobs:
   linkchecker:
