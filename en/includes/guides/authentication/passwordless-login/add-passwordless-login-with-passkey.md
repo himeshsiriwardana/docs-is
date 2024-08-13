@@ -98,6 +98,29 @@ Usernameless authentication enhances user experience by eliminating the need for
 !!! note
     Passkey usernameless authentication can only be configured at the organizational level and cannot be modified at the application level.
 
+## Configure passkey trusted origins
+
+{% if product_name == "WSO2 Identity Server"%}
+During passkey authentication, if your authentication request uses a base URL different from {{product_name}}'s default, <code>https://localhost:9443</code>, you need to add that URL as a trusted origin. This ensures that authentication requests are accepted from trusted and specified sources.
+
+{% else %}
+During passkey authentication, if your authentication request uses a base URL different from {{product_name}}'s defaults, <code>https://myaccount.asgardeo.io</code>, <code>https://api.asgardeo.io</code> and <code>https://accounts.asgardeo.io</code>, you need to add that URL as a trusted origin. This ensures that authentication requests are accepted from trusted and specified sources.
+{% endif %}
+
+To add the URL as a trusted origin,
+
+1. On the {{ product_name }} Console, go to **Connections**.
+
+2. Select the **Passkey** connection and go to its **Settings** tab.
+
+3. Under **Passkey Trusted Origins**, add your URLs one by one and click the **+** button.
+
+    ![Add passkey trusted origins]({{base_path}}/assets/img/guides/passwordless/passkey/add-trusted-origins.png){: width="700" style="display: block; margin: 0;border: 0.3px solid lightgrey;"}
+
+4. Click **Update** to save your changes.
+
+
+
 ## Try it out
 
 The following guides let you try out a scenario where, passkey progressive enrollment is **enabled** and passkey usernameless authentication is **disabled**.
