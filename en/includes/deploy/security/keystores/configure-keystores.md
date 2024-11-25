@@ -73,30 +73,32 @@ These files are originally located in the `<IS_HOME>/repository/resources/securi
 
 ## Use multiple keystores
 
-Currently, the primary keystore handles both internal data encryption and external message signing. However, it's often necessary to have dedicated keystores for these tasks for the following reasons:
+The primary keystore handles both internal data encryption and signing of external messages. However, it is often necessary to have dedicated keystores for these tasks for the following reasons:
 
-- External communication, such as SAML and OIDC ID token signing, require keystore certificates to be frequently renewed. 
+- External communication such as SAML and OIDC ID token signing require keystore certificates to be frequently renewed. 
 
-- Internal data encryption does not require frequent certificate changes as that can render encrypted data unusable.
+- Internal data encryption does not require frequent certificate changes as doing so can render encrypted data inaccessible.
 
 In production environments, it is recommended to use distinct keystores for each task with separate trust chains as mentioned below:
 
-- **Internal Keystore**: Used for encrypting and decrypting internal data (if [asymmetric encryption]({{base_path}}/deploy/security/asymmetric-encryption) is enabled) and for encrypting plaintext passwords in configuration files using the [cipher tool]({{base_path}}/deploy/security/encrypt-passwords-with-cipher-tool).
+- **Internal keystore**: Used for encrypting and decrypting internal data (if [asymmetric encryption]({{base_path}}/deploy/security/asymmetric-encryption) is enabled) and for encrypting plaintext passwords in configuration files using the [cipher tool]({{base_path}}/deploy/security/encrypt-passwords-with-cipher-tool).
 
-- **TLS Keystore**: Used for SSL connections to secure network communication via HTTPS. This keystore typically contains certificates required for establishing SSL/TLS connections.
+- **TLS keystore**: This keystore typically contains certificates required for establishing SSL/TLS connections.
 
-- **Primary Keystore**: Used for signing messages and other tasks, serving as the fallback keystore for both internal and external use cases unless specific keystores (like internal or SAML signing keystores) are defined.
+- **Protocol-specific keystores**: Used for signing/verifying identity tokens in authentication protocols (e.g. OAuth 2.0, WS-Federation, WS-Trust).
+
+- **Primary keystore**: Used for signing messages and other tasks and serves as the fallback keystore for both internal and external use cases when custom keystores are not defined.
 
 !!! note 
-    All keystores should be placed in `<IS_HOME>/repository/resources/security`.
+    
+    Learn how to [create keystores]({{base_path}}/deploy/security/keystores/create-new-keystores/).
 
 ### Configure the internal keystore
 
 !!! warning
     Adding a new keystore for internal data encryption for an existing deployment will make already encrypted data unusable. In such cases, an appropriate data migration effort is needed.
 
-
-To configure the new internal keystore, add the following configuration block to the `keystore.internal` tag of the `deployment.toml` file found in the `<IS_HOME>/repository/conf` folder.
+The internal keystore is used for encrypting internal data. To configure a custom internal keystore, add the following configuration block to the `deployment.toml` file found in the `<IS_HOME>/repository/conf` folder.
 
 === "JKS"
 
@@ -122,7 +124,7 @@ To configure the new internal keystore, add the following configuration block to
 
 ### Configure TLS keystore
 
-The TLS keystore is used to manage SSL/TLS connections to {{product_name}}. Given below is the default configuration used internally, which points to the default keystore in your product.
+The TLS keystore is used to manage SSL/TLS connections established with {{product_name}}. Given below is the default configuration used internally, which points to the default keystore in your product.
 
 If you need to configure a different keystore for SSL, you may change the values accordingly.
 
@@ -135,7 +137,7 @@ certificateKeyAlias = "$ref{keystore.tls.alias}"
 certificateKeyPassword = "$ref{keystore.tls.key_password}"
 ```
   
-The internally used trust-store configurations given below can be changed to define a custom truststore for SSL validations.
+For SSL validations, you may change the following internally-used trust-store configurations.
 
 ```toml
 [transport.https.sslHostConfig.properties]
@@ -143,6 +145,71 @@ truststoreFile="${carbon.home}/repository/resources/security/$ref{truststore.fil
 truststorePassword = "$ref{truststore.password}"
 truststoreType = "$ref{truststore.type}"
 ```
+
+### Configure protocol-specific keystores
+
+You may define protocol-specific keystores for OAuth 2.0, WS-Federation or WS-Trust (available as a [connector](https://store.wso2.com/connector/identity-inbound-auth-sts){target="_blank"}) to sign/verify identity tokens such as JWT and SAML assertions.
+
+To do so,
+
+1. [Create a custom keystore]({{base_path}}/deploy/security/keystores/create-new-keystores/) and add the following configuration to the `deployment.toml` file found in the `<IS_HOME>/repository/conf` folder.
+
+    === "JKS"
+
+        ``` toml
+        [keystore.custom]
+        file_name = "<keystore file name>.jks"
+        password = "<password>"
+        key_password = "<password>"
+        type = "JKS"
+        alias = "<alias of the private key>"
+        ```
+
+    === "PKCS12"
+
+        ``` toml
+        [keystore.custom]
+        file_name = "<keystore file name>.p12"
+        password = "<password>"
+        key_password = "<password>"
+        type = "PKCS12"
+        alias = "<alias of the private key>"
+        ```
+
+2. Map the custom keystore to the corresponding authentication protocol in the same `deployment.toml` file as shown below.
+
+    === "OAuth 2.0"
+        ``` toml
+        [keystore.mapping.oauth]
+        keystore_file_name = "<keystore name>"
+        use_in_all_tenants = true
+        ```
+
+    === "WS-Federation"
+        ``` toml
+        [keystore.mapping.ws_federation]
+        keystore_file_name = "<keystore name>"
+        use_in_all_tenants = true
+        ```
+
+    === "WS-Trust"
+        ``` toml
+        [keystore.mapping.ws_trust]
+        keystore_file_name = "<keystore name>"
+        use_in_all_tenants = true
+        ```
+
+    !!! note
+        
+        - For OAuth 2.0, custom keystores are only supported for the following grant types:
+
+            - Authorization code
+            - Client credential
+            - Refresh token
+            - Implicit
+            - Password
+
+        - The `use_in_all_tenants` parameter specifies whether in a [multi-tenant environment]({{base_path}}/guides/multitenancy/), the configurations will apply to the `carbon.super` root organization or all root organizations.
 
 ## Add new keys to an existing keystore
 
@@ -153,7 +220,7 @@ The following guides explain how you can add new keys to existing keystores.
 
 {% endif %}
 
-To add a key,
+To add a key pair,
 
 1. Navigate to the [default keystore](#configure-default-keystore-and-truststore) or other existing keystore on a terminal.
 
