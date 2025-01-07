@@ -114,7 +114,7 @@ Upon receiving the response outlined above, the user will receive an email notif
 
 ### Update the verified email addresses list
 
-If you have enabled support for multiple email addresses and mobile numbers, a user can have several verified email addresses and a single primary email address.
+If you have enabled support for multiple email addresses, a user can have several verified email addresses and a single primary email address.
 
 To verify an email address, 
 
