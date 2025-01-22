@@ -1,8 +1,8 @@
 # Configure X.509 certificate authenticator
 
-X.509 is a standard for Public Key Infrastructure (PKI) that defines the format of public key certificates. X.509 certificates are typically issued by a trusted Certificate Authority (CA). During X.509 certificate authentication, the user (or client) presents their certificate to the authentication server. The server then validates the certificate by checking the CA's digital signature to ensure the certificate is issued by a trusted CA.
+X.509 is a widely recognized standard within Public Key Infrastructure (PKI) that defines the format for public key certificates. These certificates are typically issued by trusted Certificate Authorities (CAs) and serve as a means of securely identifying users or systems. During the authentication process, the user (or client) presents their X.509 certificate to the authentication server, which then validates the certificate by checking the digital signature of the CA to confirm the certificate’s authenticity.
 
-This page guides you through configuring the X.509 certificate authenticator with {{ product_name }}.
+This guide will walk you through configuring the X.509 certificate authenticator in {{product_name}}, helping you set up secure certificate-based authentication for your users.
 
 !!!note
     You need to create the necessary certificates and truststores before you start configuring the x509 
