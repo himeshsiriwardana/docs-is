@@ -1,126 +1,152 @@
 # Configure X.509 certificate authenticator
 
+This guide walks you through configuring the X.509 certificate authenticator in {{product_name}}, helping you set up secure certificate-based authentication for your users.
+
 X.509 is a widely recognized standard within Public Key Infrastructure (PKI) that defines the format for public key certificates. These certificates are typically issued by trusted Certificate Authorities (CAs) and serve as a means of securely identifying users or systems. During the authentication process, the user (or client) presents their X.509 certificate to the authentication server, which then validates the certificate by checking the digital signature of the CA to confirm the certificate’s authenticity.
 
-This guide will walk you through configuring the X.509 certificate authenticator in {{product_name}}, helping you set up secure certificate-based authentication for your users.
-
-!!!note
+!!! note
     You need to create the necessary certificates and truststores before you start configuring the x509 
-    authenticator on {{ product_name }}.
+    authenticator on {{ product_name }}. Refer to [Keystores and Truststores]({{base_path}}/deploy/security/keystores/) for more information.
 
-X509 authentication requires the client to possess a Public Key Certificate (PKC). To create a sample certificate 
-and create your own Certificate Authority to sign the certificates, follow the give steps below: 
+## Step 1: Create a self-signed certificate
 
-1. Create the private RSA key using the following command.
+1. Generate a private key. The following command generates a private RSA key with a key size of 2048 bits.
 
     ``` shell
     openssl genrsa -out rootCA.key 2048
     ```
-    For this example, we have used the key size as `2048`, you can specify the key size as you wish.
+    In this example, the key size is 2048 bits, but you can adjust it according to your security requirements.
 
-2. Based on this key you can now generate an actual certificate which is valid for 10 years using the following command:
+2. Using the private key, generate a self-signed certificate. The following command generates a self-signed certificate that is valid for 10 years (3650 days).
 
     ```
     openssl req -new -x509 -days 3650 -key rootCA.key -out rootCA.crt
     ```
 
-3. You are prompted to provide the following details, and the details you provide are incorporated into the 
-    certificate request. An example is given below.
+3. When prompted, provide the necessary details. Below is an example of the input values:
 
     ```text
-    - Country Name (2 letter code) [AU]: SL
-    - State or Province Name (full name) [Some-State]: Western
-    - Locality Name (eg, city) [ ]: Colombo
-    - Organization Name (eg, company) [Internet Widgits Pty Ltd]: WSO2
-    - Organizational Unit Name (eg, section) [ ]: QA
-    - Common Name (e.g. serverFQDN or YOUR name) [ ]: wso2is.com
-    - Email Address [ ]: kim@wso2.com
+    Country Name (2 letter code) [AU]: SL
+    State or Province Name (full name) [Some-State]: Western
+    Locality Name (eg, city) [ ]: Colombo
+    Organization Name (eg, company) [Internet Widgits Pty Ltd]: WSO2
+    Organizational Unit Name (eg, section) [ ]: QA
+    Common Name (e.g. serverFQDN or YOUR name) [ ]: wso2is.com
+    Email Address [ ]: kim@wso2.com
     ```
 
-4. An OpenSSL CA requires new files and supporting directories. Therefore, create a new directory.
-    Create the directory structure according to your `openssl.conf` format.
+    Once you have gone through these steps, you now have a private key (rootCA.key) and a self-signed certificate (rootCA.crt).
+
+4. To manage certificates effectively, OpenSSL requires a specific directory structure. Create it as follows:
 
     ``` shell
     mkdir -p demoCA/newcerts
     ```
-    
-5. You also need some initial files inside your CA directory structure.
-    
+
+5. Create the necessary files as follows:
+
     ``` shell
     touch demoCA/index.txt
     echo '01' > demoCA/serial
     ```
 
-6. For the JVM to trust your certificate, import your certificate into your JVM truststore. 
-    You can use the following command by updating the values for `<path_to_the_jvm_truststore>` and `<password_of_the_truststore>`.
+## Step 2: Import the certificate to the {{product_name}} truststore
+
+To enable X.509 certificate-based authentication, you need to import the client's public certificate into the truststore. This process ensures that {{product_name}} can recognize and trust the certificates presented by users during authentication.
+
+``` shell
+keytool -import -noprompt -trustcacerts -alias rootCA -file rootCA.crt -keystore <path_to_the_client_truststore> -storepass <password_of_the_truststore>
+```
+
+!!! note "Default truststore values"
+    If you are using the default values,
+    <ul>
+        <li>truststore path is <code>&lt;IS_HOME&gt;/repository/resources/security/client-truststore.p12</code></li>
+        <li>password is <code>wso2carbon</code></li>
+    </ul>
+    Refer to [manage keystores]({{base_path}}/deploy/security/keystores/configure-keystores/) to learn how to change default keystores and truststores.
+
+
+!!! tip "Got the 'permission denied' error?"
+    If you get a permission denied error, run this command as an administrator to resolve the issue.
+
+## Step 3: Create a sever certificate
+
+In this step, we will generate the server certificate that {{product_name}} will use to authenticate itself to clients. This involves creating a keystore that contains the private key and public certificate for {{product_name}}, and then generating a Certificate Signing Request (CSR) to get this certificate signed by a CA.
+
+1. Generate a keystore that contains the private key and public certificate. This is the key pair that will be used by the server to identify itself to the client. The following command creates a new keystore (localcrt.jks) and generates a new RSA key pair with a validity of 10 years (3650 days).
 
     ``` shell
-    keytool -import -noprompt -trustcacerts -alias rootCA -file rootCA.crt -keystore <path_to_the_jvm_keystore> -storepass <password_of_the_keystore>
+    keytool -genkey -v -alias localcrt -keyalg RSA -validity 3650 -keystore localcrt.jks -storepass localpwd -keypass localpwd
     ```
 
-    !!! info "Got the 'permission denied' error?"
-        Note that when adding the certificate to the JVM trust store you may get the permission denied error. Running this command as an 
-        administrator resolves this permission issue.
-        
-        For example, if you are a Mac user, you can use sudo in front of this command to fix the permission issue.  
+    Enter the necessary details to create the keystore.
 
-7. Create the server certificate. To create the server certificate, follow the steps give below:
+    !!! tip
+        For `What is your first and last name?`, provide a name without spaces. 
 
-    1. Create the keystore that includes the private key by executing the following command:
+    This command will create a keystore with the following details: 
 
-        ``` shell
-        keytool -genkey -v -alias localcrt -keyalg RSA -validity 3650 -keystore localcrt.jks -storepass localpwd -keypass localpwd
+    ``` text
+    Keystore name: localcrt.jks
+    Alias of public certificate: localcrt
+    Keystore password: localpwd
+    Private key password: localpwd (this is required to be the same as keystore password)
+    ```
+
+2. Next, we generate a Certificate Signing Request (CSR) using the keystore we just created. The CSR will be submitted to a Certificate Authority (CA), which will sign it, proving that the certificate is trusted.
+
+    ``` shell
+    keytool -certreq -alias localcrt -file localcrt.csr -keystore localcrt.jks -storepass localpwd
+    ```
+
+3. To ensure {{product_name}} does not accept revoked certificates when using X.509 certificate-based authentication, configure OpenSSL to check for Certificate Revocation List (CRL) or use Online Certificate Status Protocol (OCSP). To do so,
+
+    1.  Open either of the following files in your openssl installation.
+        -  `validation.cnf`
+        -  `openssl.cnf`
+
+        ??? note "Location of the configuration files"
+            The location of the configuration file depends on the operating system and the openssl installation method.
+
+            - For Linux, 
+                - `/etc/ssl/openssl.cnf`
+                - `/usr/lib/ssl/openssl.cnf`
+            
+            - For MacOS, 
+                - `/opt/homebrew/etc/openssl@<version>/openssl.cnf`
+                - `/System/Library/OpenSSL/openssl.cnf` (System-wide, read-only file. Take a copy of it and avoid editing directly.)
+
+            - For Windows,
+                - `C:\Program Files\OpenSSL-Win64\bin\openssl.cnf`
+                - `C:\Program Files (x86)\GnuWin32\share\openssl.cnf`
+            
+            If you do not have permission to modify the system-wide configuration file, create a custom configuration file (e.g., validation.cnf) in your working directory.
+
+    2.  Set the following properties under `x509_extensions`.
+
+        ``` java
+        crlDistributionPoints = URI:http://pki.google.com/GIAG2.crl
+        authorityInfoAccess = OCSP;URI: http://clients1.google.com/ocsp
         ```
-
-        You will be prompted to enter the following details before creating the keystore.
-
-        !!! tip
-            You are prompted for details after executing the above command. For "What is your first and last name?" 
-            you need to give a name without space(e.g., wso2). 
-
-        This command will create a keystore with the following details: 
-
-        ``` text
-        - Keystore name: localcrt.jks
-        - Alias of public certificate: localcrt
-        - Keystore password: localpwd
-        - Private key password: localpwd (this is required to be the same as keystore password)
-        ```
-
-    2. Execute the following command to generate the certificate signing request(CSR) using the generated keystore file.
-
-        ``` shell
-        keytool -certreq -alias localcrt -file localcrt.csr -keystore localcrt.jks -storepass localpwd
-        ```
-
-    3. To enable CRL or OCSP based certificate revocation validation, configure the necessary openSSL extension configurations.
-        
-        1.  Open either of the following files.
-            -  `validation.cnf`
-            -  `/usr/lib/ssl/openssl.cnf`
-
-        2.  Set the following properties under `x509\_extensions`.
-
-            ``` java
-            crlDistributionPoints = URI:http://pki.google.com/GIAG2.crl
-            authorityInfoAccess = OCSP;URI: http://clients1.google.com/ocsp
-            ```
     
-    4. Once it is done, sign the CSR, which requires the CA root key.
+4. Once it is done, sign the CSR using the root CA key generated in Step 1 above.
 
-        ``` shell
-        openssl ca -batch -startdate 150813080000Z -enddate 250813090000Z -keyfile rootCA2.key -cert rootCA2.crt -policy 
-        policy_anything -config {File_Path}/openssl.cnf -notext -out localcrt.crt -infiles localcrt.csr
-        ```
+    ```shell
+    openssl ca -batch -startdate 150813080000Z -enddate 250813090000Z -keyfile rootCA2.key -cert rootCA2.crt -policy policy_anything -config <custom_config_location> -notext -out localcrt.crt -infiles localcrt.csr
+    ```
 
-        This creates a signed certificate called `localcrt.crt` that is valid for a specified period that is denoted by the `startdate` and `enddate`.
+    !!! note
+        The `-config` flag is only needed if you are using a custom configuration file.
 
-    5. The next step is to import the CA and signed certificate into the keystore.
+    This creates a signed certificate called `localcrt.crt` that is valid for a specified period that is denoted by the `startdate` and `enddate`.
 
-        ``` shell
-        keytool -importcert -alias rootCA -file rootCA.crt -keystore localcrt.jks -storepass localpwd -noprompt
+5. The next step is to import the CA and signed certificate into the keystore.
+
+    ``` shell
+    keytool -importcert -alias rootCA -file rootCA.crt -keystore localcrt.jks -storepass localpwd -noprompt
         
-        keytool -importcert -alias localcrt -file demoCA/newcerts/01.pem -keystore localcrt.jks -storepass localpwd -noprompt
+    keytool -importcert -alias localcrt -file demoCA/newcerts/01.pem -keystore localcrt.jks -storepass localpwd -noprompt
         ```
     
     6. Now, get the `pkcs12` out of `.crt` file using the command given below as it is been used to import certificates to the browser.
