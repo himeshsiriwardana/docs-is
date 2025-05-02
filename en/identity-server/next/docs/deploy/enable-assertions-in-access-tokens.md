@@ -6,6 +6,8 @@ By default, assertions are not enabled in the WSO2 Identity Server.
 
 You can enable it by adding the following configuration to the  `<IS_HOME>/repository/conf/deployment.toml` file. You can add a username to an access token when generating the key, and verify it by Base64-decoding the retrieved access token.
 
+This document aims to explain all the possible configurations that a user might need if they are working in a multi-tenant environment with dynamic policies.
+
 ``` toml
 [oauth.token_generation]
 include_username_in_access_token = true
