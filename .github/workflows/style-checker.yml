@@ -39,7 +39,7 @@ jobs:
               id: vale-lint
               if: steps.changed_files.outputs.files != ''
               run: |
-                    echo "${{ steps.changed_files.outputs.files }}" | xargs -n 1 vale --config=.vale.ini --output=JSON > vale-output.json || true
+                    echo "${{ steps.changed_files.outputs.files }}" | xargs -n 1 vale --config=en/.vale.ini --output=JSON > vale-output.json || true
               continue-on-error: true
             
             - name: No Markdown files changed
