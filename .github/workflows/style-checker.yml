@@ -29,7 +29,11 @@ jobs:
               run: |
                   git fetch origin ${{ github.base_ref }}
                   FILES=$(git diff --name-only origin/${{ github.base_ref }}...HEAD | grep '\.md$' || true)
-                  echo "files=$FILES" >> "$GITHUB_OUTPUT"
+                  {
+                  echo "files<<EOF"
+                  echo "$FILES"
+                  echo "EOF"
+                  } >> "$GITHUB_OUTPUT"
             
             - name: Run Vale
               id: vale-lint
