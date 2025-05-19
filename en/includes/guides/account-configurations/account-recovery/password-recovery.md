@@ -2,7 +2,7 @@
 
 {% if product_name == "WSO2 Identity Server" and is_version == "7.0.0" %}
 
-You may enable self-service password recovery for users so that they may reset their forgotten passwords right from the login page. Once enabled, users can click the `Forgot password?` option and receive a password reset link to their registered emails.
+You may enable self-service password recovery for users so that they may reset their forgotten passwords right from the login page. Once enabled, users can click the `Forgot password?` option and receive a password reset link to their registered emails. test1
 
 To do so,
 

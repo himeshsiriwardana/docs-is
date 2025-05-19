@@ -29,11 +29,8 @@ jobs:
               run: |
                   git fetch origin ${{ github.base_ref }}
                   FILES=$(git diff --name-only origin/${{ github.base_ref }}...HEAD | grep '\.md$' || true)
-                  {
-                  echo "files<<EOF"
+                  echo "Changed Markdown files:"
                   echo "$FILES"
-                  echo "EOF"
-                  } >> "$GITHUB_OUTPUT"
             
             - name: Run Vale
               id: vale-lint

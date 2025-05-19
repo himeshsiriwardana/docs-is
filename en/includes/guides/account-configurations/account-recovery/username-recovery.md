@@ -1,6 +1,6 @@
 # Username recovery
 
-You may enable self-service username recovery for users so that they may reset their forgotten usernames right from the login page. Once enabled, users can click the `Forgot username?` option and proceed to recover their usernames.
+You may enable self-service username recovery for users so that they may reset their forgotten usernames right from the login page. Once enabled, users can click the `Forgot username?` option and proceed to recover their usernames. test1
 
 To do so,
 
