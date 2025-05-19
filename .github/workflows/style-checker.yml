@@ -31,17 +31,16 @@ jobs:
                   FILES=$(git diff --name-only origin/${{ github.base_ref }}...HEAD | grep '\.md$' || true)
                   echo "Changed Markdown files:"
                   echo "$FILES"
+                  echo "$FILES" > changed_files.txt
             
-            - name: Run Vale
-              id: vale-lint
-              if: steps.changed_files.outputs.files != ''
-              run: |
-                    echo "${{ steps.changed_files.outputs.files }}" | xargs -n 1 vale --config=en/.vale.ini --output=JSON > vale-output.json || true
-              continue-on-error: true
-            
-            - name: No Markdown files changed
-              if: ${{ steps.changed_files.outputs.files == '' }}
-              run: echo "No Markdown files to lint."
+                  - name: Run Vale
+                  if: always()  # Or add a better conditional check if needed
+                  run: |
+                    if [ -f changed_files.txt ]; then
+                      cat changed_files.txt | xargs -n 1 vale --config=en/.vale.ini --output=CLI || true
+                    else
+                      echo "No Markdown files to lint."
+                    fi
             
 
 
