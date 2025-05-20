@@ -25,7 +25,7 @@ jobs:
             git fetch origin ${{ github.event.pull_request.base.ref }}
             BASE_SHA=$(git merge-base HEAD origin/${{ github.event.pull_request.base.ref }})
             git diff --name-only $BASE_SHA HEAD -- '*.md' > changed_files.txt
-            echo "files=$(cat changed_files.txt | paste -sd ' ' -)" >> "$GITHUB_OUTPUT"
+            echo "files=$(cat changed_files.txt | paste -sd , -)" >> "$GITHUB_OUTPUT"
         
       - name: Run Vale
         uses: errata-ai/vale-action@reviewdog
