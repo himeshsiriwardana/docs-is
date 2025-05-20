@@ -42,10 +42,10 @@ jobs:
                 if [ -s changed_files.txt ]; then
                     echo "Linting files:"
                     cat changed_files.txt
-                    vale --config=en/.vale.ini --output=Checkstyle "$(cat changed_files.txt)" | \
+                    xargs -a changed_files.txt vale --config=en/.vale.ini --output=Checkstyle | \
                     reviewdog -f=checkstyle -name="Vale" -reporter=github-pr-review -fail-on-error=false -filter-mode=file
-                 else
-                    echo "No Markdown files to lint."
+                else
+                echo "No Markdown files to lint."
                 fi
               env:
                 REVIEWDOG_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
