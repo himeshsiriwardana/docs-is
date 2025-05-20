@@ -1,10 +1,10 @@
 # A/B Testing with WSO2 Identity Server
 
-A/B testing is a method used for comparing two variants of a web page to determine which one performs better. When you integrate WSO2 Identity Server with your application, for example, to implement a login page, you can verify its usability using an A/B test.
+A/B testing is a method used for comparing two variants of a web page to determine which one performs better. When you integrate WSO2 Identity Server with your application, for example, to implement a login page, you can verify its usability using an A/B test. testing
 
 Imagine your login page allows [self-registration]({{base_path}}/guides/account-configurations/user-onboarding/self-registration). You may want to test alternate registration page layouts to understand which one will result in more user registrations. You may also want to test whether asking for fewer information from users during registration would result in more registrations.
 
-WSO2 Identity Server allows you to easily perform A/B testing using [VWO](https://vwo.com/).
+WSO2 Identity Server allows you to easily perform A/B testing using [VWO](https://vwo.com/). what?
 
 
 ## Setting up A/B Testing with VWO
