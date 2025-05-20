@@ -20,20 +20,21 @@ jobs:
           fetch-depth: 0
 
       - name: Get changed Markdown files
-        id: changed_files
+        id: changed
         run: |
-            git fetch origin ${{ github.base_ref }}
-            git diff --name-only origin/${{ github.base_ref }}...HEAD -- '*.md' > changed_files.txt
-            echo "Changed files:"
-            cat changed_files.txt
-
+            git fetch origin ${{ github.event.pull_request.base.ref }}
+            BASE_SHA=$(git merge-base HEAD origin/${{ github.event.pull_request.base.ref }})
+            git diff --name-only $BASE_SHA HEAD -- '*.md' > changed_files.txt
+            echo "files=$(cat changed_files.txt | paste -sd ' ' -)" >> "$GITHUB_OUTPUT"
         
-      - name: Vale
+      - name: Run Vale
         uses: errata-ai/vale-action@reviewdog
         with:
+            files: ${{ steps.changed.outputs.files }}
             filter_mode: file
             reporter: github-pr-check
-        env:
-            GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+          env:
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        
         
         
