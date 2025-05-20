@@ -40,9 +40,11 @@ jobs:
               if: always()
               run: |
                 if [ -s changed_files.txt ]; then
-                    vale --config=en/.vale.ini --output=Checkstyle $(cat changed_files.txt) | \
+                    echo "Linting files:"
+                    cat changed_files.txt
+                    vale --config=en/.vale.ini --output=Checkstyle "$(cat changed_files.txt)" | \
                     reviewdog -f=checkstyle -name="Vale" -reporter=github-pr-review -fail-on-error=false -filter-mode=file
-                else
+                 else
                     echo "No Markdown files to lint."
                 fi
               env:
