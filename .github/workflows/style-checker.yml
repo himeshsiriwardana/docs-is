@@ -33,7 +33,7 @@ jobs:
             files: ${{ steps.changed.outputs.files }}
             filter_mode: file
             reporter: github-pr-check
-          env:
+        env:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         
         
