@@ -7,7 +7,7 @@ For simplicity, let's assume that the APIs we’re calling are secured by the sa
 ## Using SDK Built-in HTTP client
 
 You can utilize Angular's `HttpClient` to make HTTP requests to secure endpoints. You don't need to manually attach the access token to requests if you use the Angular OAuth2 OIDC SDK correctly, as it will handle that automatically.
-The following is a simple example of how you might use the Angular OAuth2 OIDC SDK’s `HttpClient` to call a protected API endpoint, such as `/scim2/me` (to get the user profile details after signing in). In this case, the SCIM 2 endpoint is secured by the same Identity Provider (IdP) - {{product_name}}. {{product_name}} provides a SCIM 2 API for managing users within your organization. While user management with SCIM 2 is a topic for a different guide, we will use the API as part of our current guide.
+The following is a simple example of how you might use the Angular OAuth2 OIDC SDK’s `HttpClient` to call a protected API endpoint, such as `/scim2/me` (to get the user profile details after signing in). In this case, the SCIM 2 endpoint is secured by the same Identity Provider (IdP) - {{product_name}}. {{product_name}} provides a SCIM 2 API for managing users within your organization. While user management with SCIM 2 is a topic for a different guide, I will use the API as part of our current guide.
 
 ### Step 1: Import Required Modules
 
