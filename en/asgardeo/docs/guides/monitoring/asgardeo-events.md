@@ -112,38 +112,20 @@ Follow the steps below to programmatically define the business logic.
 
 ### Create a webhook in Choreo
 
-Follow the steps below to create and deploy a webhook in Choreo.
+Follow the steps below to set up a webhook in Choreo.
 
-1. Navigate to [Choreo](https://console.choreo.dev/login){:target="_blank"} and if you don't have one already, create an organization with the same name and email address you used to create your Asgardeo organization.
+1. Navigate to [Choreo](https://console.choreo.dev/login){:target="_blank"} and if you don't have one already, create an organization with the same name and email address as your Asgardeo organization.
 
     !!! info
         Organizations in Asgardeo and Choreo synchronize based on their names.
 
+2. Create and deploy a **Webhook** component in your Choreo organization. When creating the webhook,
 
-2. Select a project from the **Project** dropdown.
+    a. Click **Authorize with Github** and connect the relevant organization, repository, branch and the directory in which your Ballerina code resides.
 
-3. Go to **Components**, and click **Create**.
+    b. Use **Ballerina** as the **Build Preset**.
 
-4. Under the **Select a Type** tab, select **Webhook**. Learn more about webhooks in the Choreo [documentation](https://wso2.com/choreo/docs/develop/components/webhook/#develop-a-webhook){:target="_blank"}.
-
-    ![Create a Webhook in Choreo]({{base_path}}/assets/img/guides/asgardeo-events/asgardeo-events-create-webhook-in-choreo.png){: style="display: block; margin: 0; border: 0.3px solid lightgrey;"}
-
-5. Click **Authorize with Github** and connect the relevant organization, repository and the branch of the GitHub repository you created in the above section.
-
-    ![Authorize with Github]({{base_path}}/assets/img/guides/asgardeo-events/choreo-webhook-authorize-github.png){: style="display: block; margin: 0; border: 0.3px solid lightgrey;"}
-
-6. Select the **Component Directory** from your GitHub repository.
-
-7. Select **Ballerina** under Build Preset.
-
-8. Click **Create**.
-
-     ![Create Choreo Webhook]({{base_path}}/assets/img/guides/asgardeo-events/choreo-webhook-create.png){: style="display: block; margin: 0; border: 0.3px solid lightgrey;"}
-
-9. Follow the Choreo documentation and [deploy your webhook](https://wso2.com/choreo/docs/develop-components/develop-a-webhook/#step-2-deploy){:target="_blank"}.
-
-    !!! note
-        If the callback URL fails to populate, it is advised to manually copy the invoke URL and paste it into the designated field. This step ensures seamless continuity in the process.
+    Learn more about creating and deploying webhooks in the [Choreo documentation](https://wso2.com/choreo/docs/develop/components/webhook/#develop-a-webhook){:target="_blank"}.
 
 ### Try it out
 
