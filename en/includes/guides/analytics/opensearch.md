@@ -9,7 +9,7 @@
 
 ## Install Fluent Bit
 
-Fluent Bit is a lightweight and efficient log processor and forwarder that enables real-time log streaming to various destinations. To install it, follow one of the guides below based on your operating system.
+Fluent Bit is a lightweight and efficient log processor and forwarder that enables real-time log streaming to various destinations. To install it, follow one of the guides below based on your operating system. testing
 
 - If you are a Linux user, follow this [guide](https://docs.fluentbit.io/manual/installation/linux/ubuntu){: target="_blank"}
 

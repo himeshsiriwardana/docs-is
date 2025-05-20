@@ -2,7 +2,7 @@
 
 Are you new to **{{ product_name }}**? Let's get to know what we are all about!
 
-**{{ product_name }} (WSO2 IS)** simplifies the Customer Identity and Access Management (CIAM) needs of your organization. The product ensures easy integration with a variety of applications to facilitate single sign-on (SSO), social login, identity federation, API security, strong authentication, account management, privacy compliance, and so much more.
+**{{ product_name }} (WSO2 IS)** simplifies the Customer Identity and Access Management (CIAM) needs of your organization. The product ensures easy integration with a variety of applications to facilitate single sign-on (SSO), social login, identity federation, API security, strong authentication, account management, privacy compliance, and so much more. testing
 
 <div style="width: 100%; min-width: 300px; max-width: 700px;">
 <div style="position: relative; width: 100%; overflow: hidden; padding-top: 56.25%;">

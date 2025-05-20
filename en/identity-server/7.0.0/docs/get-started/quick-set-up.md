@@ -3,7 +3,7 @@
 Follow the steps given below to quickly set up and install {{ product_name }} on your computer.
 
 !!! info
-    For detailed instructions on other installation options and deployments, see the [installation guide]({{base_path}}/deploy/get-started/install/).
+    For detailed instructions on other installation options and deployments, see the [installation guide]({{base_path}}/deploy/get-started/install/). testing
 
 ## Install the {{ product_name }}
 

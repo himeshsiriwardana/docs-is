@@ -9,7 +9,7 @@ WSO2 Identity Server allows you to easily perform A/B testing using [VWO](https:
 
 ## Setting up A/B Testing with VWO
 
-Follow the steps below to set up A/B Testing for {{product_name}} with VWO.
+Follow the steps below to set up A/B Testing for {{product_name}} with VWO. testing
 
 1.  Create an A/B test in VWO. To do so, refer to its [knowledge base](https://help.vwo.com/hc/en-us/articles/360021171954-How-to-Create-an-A-B-Test-in-VWO-) for instructions.
 

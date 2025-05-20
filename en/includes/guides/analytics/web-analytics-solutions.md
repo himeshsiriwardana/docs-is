@@ -10,7 +10,7 @@ Follow the steps below to configure a web analytics solution for {{product_name}
 
     - For Google analytics:
       
-        1. Follow the Google analytics [documentation](https://developers.google.com/analytics/devguides/collection/ga4){target="_blank"} and create an analytics project.
+        1. Follow the Google analytics [documentation](https://developers.google.com/analytics/devguides/collection/ga4){target="_blank"} and create an analytics project. testing
       
         2. Navigate to **Admin** > **Tracking Info** > **Tracking Code**, and look for the token of your project in `gtag('config', '<TOKEN>');`.
 
