@@ -31,8 +31,8 @@ jobs:
         uses: errata-ai/vale-action@reviewdog
         with:
             files: ${{ steps.changed.outputs.files }}
-            filter_mode: file
-            reporter: github-pr-review
+            filter_mode: nofilter
+            reporter: github-pr-check
         env:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         
