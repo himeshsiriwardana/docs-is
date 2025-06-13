@@ -454,97 +454,101 @@ nav:
   - Guides: 
       - Guides: guides/index.md
       - Applications:
-          - Applications: guides/applications/index.md
-          - Register an SPA: guides/applications/register-single-page-app.md
-          - Register web app with OIDC: guides/applications/register-oidc-web-app.md
-          - Register web app with SAML: guides/applications/register-saml-web-app.md
-          - Register a standard-based app: guides/applications/register-standard-based-app.md
-          - Register a mobile app: guides/applications/register-mobile-app.md
-          - Register a machine-to-machine (M2M) app: guides/applications/register-machine-to-machine-app.md
-          - Register a FAPI-compliant app: guides/applications/register-a-fapi-compliant-app.md
-          - Register an MCP client app: guides/applications/register-mcp-client-app.md
+        - Overview: guides/applications/index.md
+        - Single Page Applications (SPA): guides/applications/register-single-page-app.md
+        - Web Applications:
+          - OIDC Web Apps: guides/applications/register-oidc-web-app.md
+          - SAML Web Apps: guides/applications/register-saml-web-app.md
+        - Standard-based Apps: guides/applications/register-standard-based-app.md
+        - Mobile & Machine Clients:
+          - Mobile Apps: guides/applications/register-mobile-app.md
+          - Machine-to-Machine (M2M) Apps: guides/applications/register-machine-to-machine-app.md
+        - Specialized Apps:
+          - FAPI-compliant Apps: guides/applications/register-a-fapi-compliant-app.md
+          - MCP Client Apps: guides/applications/register-mcp-client-app.md
       - Authentication:
-          - Authentication: guides/authentication/index.md
-          - Add login to apps:
-            - Add login to apps: guides/authentication/add-login-to-apps.md
-            - Add login to an SPA: guides/authentication/add-login-to-single-page-app.md
-            - Add login to a web app: guides/authentication/add-login-to-web-app.md
-            - Add login to a mobile app: guides/authentication/add-login-to-mobile-app.md
-          - Add login to SaaS apps:
-            - Add SSO login to SaaS apps: guides/authentication/sso-integrations/index.md
-            - Google Workspace: guides/authentication/sso-integrations/add-google-workspace-template.md
-            - Salesforce: guides/authentication/sso-integrations/add-salesforce-template.md
-            - Microsoft 365: guides/authentication/sso-integrations/add-microsoft-365-template.md
-            - Zoom: guides/authentication/sso-integrations/add-zoom-template.md
-            - Slack: guides/authentication/sso-integrations/add-slack-template.md
-          - Add passwordless login:
-            - Add passwordless login: guides/authentication/passwordless-login/index.md
-            - Add login with Magic link: guides/authentication/passwordless-login/add-passwordless-login-with-magic-link.md
-            - Passkeys:
-              - Add login with Passkey: guides/authentication/passwordless-login/add-passwordless-login-with-passkey.md
-              - Validate FIDO attestations: guides/authentication/passwordless-login/fido-attestation.md
-            - Add login with Email OTP: guides/authentication/passwordless-login/add-passwordless-login-with-email-otp.md
-            - Add login with SMS OTP: guides/authentication/passwordless-login/add-passwordless-login-with-sms-otp.md
-            - Add login with Push Notification: guides/authentication/passwordless-login/add-passwordless-login-with-push-notification.md
-          - Add multi-factor authentication:
-              - Add multi-factor authentication: guides/authentication/mfa/index.md
-              - Add TOTP: guides/authentication/mfa/add-totp-login.md
-              - Add Email OTP: guides/authentication/mfa/add-emailotp-login.md
-              - Add Passkey: guides/authentication/mfa/add-passkey-login.md
-              - Add SMS OTP: guides/authentication/mfa/add-smsotp-login.md
-              - Add Push Notification: guides/authentication/mfa/add-push-auth-login.md
-              - Add user-preferred MFA: guides/authentication/mfa/user-preferred-mfa-login.md
-              - Add x509 login : guides/authentication/mfa/add-x509-login.md
-          - Add federated login:
-            - Add federated login: guides/authentication/federated-login/index.md
-            - Add social login:
-              - Add social login: guides/authentication/social-login/index.md
-              - Add Facebook login: guides/authentication/social-login/add-facebook-login.md
-              - Add Google login: guides/authentication/social-login/add-google-login.md
-              - Add Github login: guides/authentication/social-login/add-github-login.md
-              - Add Microsoft login: guides/authentication/social-login/add-microsoft-login.md
-              - Add Apple login: guides/authentication/social-login/add-apple-login.md
-              - Add X login: guides/authentication/social-login/add-x-login.md
-            - Add standard-based login:
-              - Add standard-based login: guides/authentication/standard-based-login/index.md
-              - Add login with OIDC IdP: guides/authentication/standard-based-login/add-oidc-idp-login.md
-              - Add login with SAML IdP: guides/authentication/standard-based-login/add-saml-idp-login.md
-              - Add login with WS-Federation: guides/authentication/standard-based-login/add-ws-federation.md
-            - Add enterprise login:
-              - Add IWA login: guides/authentication/enterprise-login/add-iwa-login.md
-              - Add Microsoft 365 login: guides/authentication/enterprise-login/add-microsoft-365-login.md
-              - Add AD FS login: guides/authentication/enterprise-login/add-ad-fs-login.md
-            - Add eID login:
-              - Add Signicat login: guides/authentication/eid-login/add-signicat-login.md
-              - Add FranceConnect login: guides/authentication/eid-login/add-franceconnect-login.md
-              - Add SwissID login: guides/authentication/eid-login/add-swissid-login.md
-            - Configure a custom connector:  guides/authentication/configure-custom-connector.md
-          - Enable user attributes:
+        - Overview: guides/authentication/index.md
+        - Core authentication:
+          - Overview: guides/authentication/add-login-to-apps.md
+          - Single-page app: guides/authentication/add-login-to-single-page-app.md
+          - Web app: guides/authentication/add-login-to-web-app.md
+          - Mobile app: guides/authentication/add-login-to-mobile-app.md
+          - Standard-based apps::
+            - Overview: guides/authentication/standard-based-login/index.md
+            - OIDC IdP: guides/authentication/standard-based-login/add-oidc-idp-login.md
+            - SAML IdP: guides/authentication/standard-based-login/add-saml-idp-login.md
+            - WS-Federation: guides/authentication/standard-based-login/add-ws-federation.md
+        - Faderated authentication:
+          - Overview: guides/authentication/federated-login/index.md
+          - SaaS and enterprise logins:
+            - Overview: guides/authentication/sso-integrations/index.md
+            - SaaS apps:
+              - Google Workspace: guides/authentication/sso-integrations/add-google-workspace-template.md
+              - Salesforce: guides/authentication/sso-integrations/add-salesforce-template.md
+              - Microsoft 365: guides/authentication/sso-integrations/add-microsoft-365-template.md
+              - Zoom: guides/authentication/sso-integrations/add-zoom-template.md
+              - Slack: guides/authentication/sso-integrations/add-slack-template.md
+          - Enterprise login:
+            - IWA: guides/authentication/enterprise-login/add-iwa-login.md
+            - AD FS: guides/authentication/enterprise-login/add-ad-fs-login.md
+            - Microsoft 365: guides/authentication/enterprise-login/add-microsoft-365-login.md
+          - eID login:
+            - Signicat: guides/authentication/eid-login/add-signicat-login.md
+            - FranceConnect: guides/authentication/eid-login/add-franceconnect-login.md
+            - SwissID: guides/authentication/eid-login/add-swissid-login.md
+          - Social login:
+            - Overview: guides/authentication/social-login/index.md
+            - Facebook: guides/authentication/social-login/add-facebook-login.md
+            - Google: guides/authentication/social-login/add-google-login.md
+            - Github: guides/authentication/social-login/add-github-login.md
+            - Microsoft: guides/authentication/social-login/add-microsoft-login.md
+            - Apple: guides/authentication/social-login/add-apple-login.md
+            - X: guides/authentication/social-login/add-x-login.md
+          - Custom login: guides/authentication/configure-custom-connector.md
+        - Passwordless authentication:
+          - Overivew: guides/authentication/passwordless-login/index.md
+          - Magic link: guides/authentication/passwordless-login/add-passwordless-login-with-magic-link.md
+          - Passkeys:
+            - Set up passkeys: guides/authentication/passwordless-login/add-passwordless-login-with-passkey.md
+            - Validate FIDO attestations: guides/authentication/passwordless-login/fido-attestation.md
+          - Email OTP: guides/authentication/passwordless-login/add-passwordless-login-with-email-otp.md
+          - SMS OTP: guides/authentication/passwordless-login/add-passwordless-login-with-sms-otp.md
+          - Push Notifications: guides/authentication/passwordless-login/add-passwordless-login-with-push-notification.md
+        - Multi-factor authentication:
+          - Overview: guides/authentication/mfa/index.md
+          - TOTP: guides/authentication/mfa/add-totp-login.md
+          - Email OTP: guides/authentication/mfa/add-emailotp-login.md
+          - Passkey: guides/authentication/mfa/add-passkey-login.md
+          - SMS OTP: guides/authentication/mfa/add-smsotp-login.md
+          - Push Notifications: guides/authentication/mfa/add-push-auth-login.md
+          - User-preferred MFA: guides/authentication/mfa/user-preferred-mfa-login.md
+          - x509 login : guides/authentication/mfa/add-x509-login.md   
+        - Enable user attributes:
               - Enable user attributes: guides/authentication/user-attributes/index.md
               - Enable attributes for OIDC apps: guides/authentication/user-attributes/enable-attributes-for-oidc-app.md
               - Enable attributes for SAML apps: guides/authentication/user-attributes/enable-attributes-for-saml-app.md
-          - Manage consent for user attributes: guides/authentication/manage-consent-for-attributes.md
-          - Configure Just-in-Time user provisioning: guides/authentication/jit-user-provisioning.md
-          - Add conditional authentication:
-            - Add conditional authentication: guides/authentication/conditional-auth/index.md
-            - Set up conditional authentication: guides/authentication/conditional-auth/configure-conditional-auth.md
-            - Add access control:
-              - Add access control: guides/authentication/conditional-auth/access-control.md
-              - Age-based access: guides/authentication/conditional-auth/user-age-based-template.md
-              - Concurrent session-based access: guides/authentication/conditional-auth/concurrent-session-based-template.md
+        - Manage consent for user attributes: guides/authentication/manage-consent-for-attributes.md
+        - Configure Just-in-Time user provisioning: guides/authentication/jit-user-provisioning.md
+        - Add conditional authentication:
+          - Add conditional authentication: guides/authentication/conditional-auth/index.md
+          - Set up conditional authentication: guides/authentication/conditional-auth/configure-conditional-auth.md
+          - Add access control:
+            - Add access control: guides/authentication/conditional-auth/access-control.md
+            - Age-based access: guides/authentication/conditional-auth/user-age-based-template.md
+            - Concurrent session-based access: guides/authentication/conditional-auth/concurrent-session-based-template.md
               #- Group-based access: guides/authentication/conditional-auth/group-based-template-access-control.md
-            - Add adaptive MFA:
-              - Add adaptive MFA: guides/authentication/conditional-auth/adaptive-mfa.md
-              - MFA based on user role: guides/authentication/conditional-auth/role-based-template.md
-              - MFA based on auth context: guides/authentication/conditional-auth/acr-based-adaptive-auth.md
-              - MFA based on user store: guides/authentication/conditional-auth/user-store-based-template.md
-              - MFA based on login-attempts: guides/authentication/conditional-auth/login-attempt-based-template.md
-              - MFA based on user group: guides/authentication/conditional-auth/group-based-template.md
+          - Add adaptive MFA:
+            - Add adaptive MFA: guides/authentication/conditional-auth/adaptive-mfa.md
+            - MFA based on user role: guides/authentication/conditional-auth/role-based-template.md
+            - MFA based on auth context: guides/authentication/conditional-auth/acr-based-adaptive-auth.md
+            - MFA based on user store: guides/authentication/conditional-auth/user-store-based-template.md
+            - MFA based on login-attempts: guides/authentication/conditional-auth/login-attempt-based-template.md
+            - MFA based on user group: guides/authentication/conditional-auth/group-based-template.md
               #- MFA based on sign-in option: guides/authentication/conditional-auth/sign-in-option-based-template.md
-              - MFA based on user device: guides/authentication/conditional-auth/new-device-based-template.md
-              - MFA based on IP address: guides/authentication/conditional-auth/ip-based-template.md
-              - MFA based on ELK-risk: guides/authentication/conditional-auth/elk-risk-based-template.md
-              - MFA based on TypingDNA: guides/authentication/conditional-auth/typingdna-based-adaptive-auth.md
+            - MFA based on user device: guides/authentication/conditional-auth/new-device-based-template.md
+            - MFA based on IP address: guides/authentication/conditional-auth/ip-based-template.md
+            - MFA based on ELK-risk: guides/authentication/conditional-auth/elk-risk-based-template.md
+            - MFA based on TypingDNA: guides/authentication/conditional-auth/typingdna-based-adaptive-auth.md
             - Add passkey progressive enrollment: guides/authentication/conditional-auth/passkey-progressive-enrollment-based-template.md
             - Add push notification device progressive enrollment: guides/authentication/conditional-auth/push-device-progressive-enrollment-based-template.md
             - Add on-demand silent password migration: guides/authentication/conditional-auth/on-demand-silent-password-migration-template.md
@@ -591,68 +595,69 @@ nav:
       - Identity Verification:
         - Identity Verification: guides/identity-verification/index.md
         - Configure an Identity Verification Provider: guides/identity-verification/configure-identity-verification-provider.md
-      - User management:
-        - User management: guides/users/index.md
-        - Manage administrators: guides/users/manage-administrators.md
-        - Manage users: guides/users/manage-users.md
-        - Manage groups: guides/users/manage-groups.md
-        - Manage roles: guides/users/manage-roles.md
-        - Manage active sessions: guides/users/manage-sessions.md
-        - Provisioning:
-          - Inbound provisioning: guides/users/inbound-provisioning/inbound-provisioning.md
-          - Outbound provisioning:
-            - Outbound provisioning: guides/users/outbound-provisioning/index.md
-            - Enable outbound provisioning:
-              - Organization-level provisioning: guides/users/outbound-provisioning/provisioning-levels/org-level.md
-              - IdP-level provisioning: guides/users/outbound-provisioning/provisioning-levels/idp-level.md
-            - Role-based provisioning: guides/users/outbound-provisioning/role-based-provisioning.md
-            - Configure an outbound connector:
-              - Google: guides/users/outbound-provisioning/outbound-connectors/google.md
-              - Salesforce: guides/users/outbound-provisioning/outbound-connectors/salesforce.md
-              - SCIM2: guides/users/outbound-provisioning/outbound-connectors/scim2.md
-              - Custom Outbound Connector: guides/users/outbound-provisioning/outbound-connectors/custom-outbound-connectors.md
-            - Provisioning patterns: guides/users/outbound-provisioning/provisioning-patterns.md
-        - Sync User Accounts:
-            - Overview: guides/users/sync-user-accounts/sync-account-overview.md
-            - Hubspot: guides/users/sync-user-accounts/sync-with-hubspot.md
-            - Salesforce: guides/users/sync-user-accounts/sync-with-salesforce.md
-            - Pipedrive CRM: guides/users/sync-user-accounts/sync-with-pipedrive.md
-            - Sendgrid: guides/users/sync-user-accounts/sync-with-sendgrid.md
-            - Zoho CRM: guides/users/sync-user-accounts/sync-with-zoho.md
-        - Manage attributes and mappings:
-          - Manage attributes and mappings: guides/users/attributes/index.md
-          - User attributes: guides/users/attributes/manage-attributes.md
-          - OIDC attribute mappings: guides/users/attributes/manage-oidc-attribute-mappings.md
-          - OIDC scopes: guides/users/attributes/manage-scopes.md
-          - SCIM2 attribute mappings: guides/users/attributes/manage-scim2-attribute-mappings.md
-          - Configure email address as the username: guides/users/attributes/enable-email-as-username.md
-          - Configure unique attributes: guides/users/attributes/configure-unique-attributes.md
-          - Verification and notification settings for attribute updates:
-            - Configure settings: guides/users/attributes/user-attribute-change-verification.md
-            - Try it out:
-              - Email address update verification: guides/users/attributes/email-verification-on-update.md
-              - Mobile number update verification: guides/users/attributes/mobile-verification-on-update.md
-        - Manage user stores:
-          - Manage user stores: guides/users/user-stores/index.md
-          - Configure the primary user store:
-            - Configure the primary user store: guides/users/user-stores/primary-user-store/index.md
-            - Configure a JDBC user store: guides/users/user-stores/primary-user-store/configure-a-jdbc-user-store.md
-            - Configure a read-only LDAP user store: guides/users/user-stores/primary-user-store/configure-a-read-only-ldap-user-store.md
-            - Configure a read-write Active Directory user store: guides/users/user-stores/primary-user-store/configure-a-read-write-active-directory-user-store.md
-            - Configure a read-write LDAP user store: guides/users/user-stores/primary-user-store/configure-a-read-write-ldap-user-store.md
-          - Configure secondary user stores: guides/users/user-stores/configure-secondary-user-stores.md
-          - User store properties: 
-            - User store properties: guides/users/user-stores/user-store-properties/index.md
-            - Properties used in JDBC user store manager: guides/users/user-stores/user-store-properties/properties-jdbc-user-store.md
-            - Properties used in read-only LDAP user store manager: guides/users/user-stores/user-store-properties/properties-read-only-ldap-user-store.md
-            - Properties used in read-Write Active Directory user store manager: guides/users/user-stores/user-store-properties/properties-read-write-active-directory-user-store.md
-            - Properties used in read-write LDAP user store manager: guides/users/user-stores/user-store-properties/properties-read-write-ldap-user-store.md
-          - Configure user stores for SCIM 2.0: guides/users/user-stores/configure-user-stores-for-scim2.md
-          - Configure Active Directory user stores for SCIM 2.0: guides/users/user-stores/configure-active-directory-user-stores-for-scim2.md
-        - Migrate users to WSO2 Identity Server:
-          - Migrate users to WSO2 Identity Server: guides/users/migrate-users/index.md
-          - Migrate user accounts: guides/users/migrate-users/migrate-users.md
-          - Migrate user passwords: guides/users/migrate-users/migrate-passwords.md
+      - User Management:
+        - Overview: guides/users/index.md
+        - Users & Admins:
+          - Manage Users: guides/users/manage-users.md
+          - Manage Administrators: guides/users/manage-administrators.md
+          - Manage Active Sessions: guides/users/manage-sessions.md
+        - Groups & Roles:
+          - Manage Groups: guides/users/manage-groups.md
+          - Manage Roles: guides/users/manage-roles.md
+      - User provisioning:
+          - Overview: guides/users/outbound-provisioning/index.md
+          - Inbound Provisioning: guides/users/inbound-provisioning/inbound-provisioning.md
+          - Outbound Provisioning:
+            - Organization-level: guides/users/outbound-provisioning/provisioning-levels/org-level.md
+            - IdP-level: guides/users/outbound-provisioning/provisioning-levels/idp-level.md
+            - Role-based Provisioning: guides/users/outbound-provisioning/role-based-provisioning.md
+          - Outbound Connectors:
+            - Google: guides/users/outbound-provisioning/outbound-connectors/google.md
+            - Salesforce: guides/users/outbound-provisioning/outbound-connectors/salesforce.md
+            - SCIM2: guides/users/outbound-provisioning/outbound-connectors/scim2.md
+            - Custom Connector: guides/users/outbound-provisioning/outbound-connectors/custom-outbound-connectors.md
+          - Provisioning Patterns: guides/users/outbound-provisioning/provisioning-patterns.md
+      - Account Sync:
+        - Overview: guides/users/sync-user-accounts/sync-account-overview.md
+        - HubSpot: guides/users/sync-user-accounts/sync-with-hubspot.md
+        - Salesforce: guides/users/sync-user-accounts/sync-with-salesforce.md
+        - Pipedrive: guides/users/sync-user-accounts/sync-with-pipedrive.md
+        - SendGrid: guides/users/sync-user-accounts/sync-with-sendgrid.md
+        - Zoho CRM: guides/users/sync-user-accounts/sync-with-zoho.md
+      - Attributes & Identity Info:
+        - Overview: guides/users/attributes/index.md
+        - User Attributes: guides/users/attributes/manage-attributes.md
+        - OIDC Attribute Mappings: guides/users/attributes/manage-oidc-attribute-mappings.md
+        - OIDC Scopes: guides/users/attributes/manage-scopes.md
+        - SCIM2 Attribute Mappings: guides/users/attributes/manage-scim2-attribute-mappings.md
+        - Use Email as Username: guides/users/attributes/enable-email-as-username.md
+        - Configure Unique Attributes: guides/users/attributes/configure-unique-attributes.md
+        - Attribute Update Verification:
+          - Configure Settings: guides/users/attributes/user-attribute-change-verification.md
+          - Email Address Update: guides/users/attributes/email-verification-on-update.md
+          - Mobile Number Update: guides/users/attributes/mobile-verification-on-update.md
+      - User Stores:
+          - Overview: guides/users/user-stores/index.md
+          - Primary User Store:
+            - Overview: guides/users/user-stores/primary-user-store/index.md
+            - JDBC: guides/users/user-stores/primary-user-store/configure-a-jdbc-user-store.md
+            - Read-Only LDAP: guides/users/user-stores/primary-user-store/configure-a-read-only-ldap-user-store.md
+            - Read-Write LDAP: guides/users/user-stores/primary-user-store/configure-a-read-write-ldap-user-store.md
+            - Active Directory: guides/users/user-stores/primary-user-store/configure-a-read-write-active-directory-user-store.md
+          - Secondary User Stores: guides/users/user-stores/configure-secondary-user-stores.md
+          - User Store Properties:
+            - Overview: guides/users/user-stores/user-store-properties/index.md
+            - JDBC Properties: guides/users/user-stores/user-store-properties/properties-jdbc-user-store.md
+            - Read-Only LDAP Properties: guides/users/user-stores/user-store-properties/properties-read-only-ldap-user-store.md
+            - Read-Write LDAP Properties: guides/users/user-stores/user-store-properties/properties-read-write-ldap-user-store.md
+            - Active Directory Properties: guides/users/user-stores/user-store-properties/properties-read-write-active-directory-user-store.md
+          - SCIM 2.0 Config:
+            - Generic: guides/users/user-stores/configure-user-stores-for-scim2.md
+            - Active Directory: guides/users/user-stores/configure-active-directory-user-stores-for-scim2.md
+      - User Migration:
+        - Overview: guides/users/migrate-users/index.md
+        - Migrate Accounts: guides/users/migrate-users/migrate-users.md
+        - Migrate Passwords: guides/users/migrate-users/migrate-passwords.md
       - Account configurations:
         - Account configurations: guides/account-configurations/index.md
         - Login security:
