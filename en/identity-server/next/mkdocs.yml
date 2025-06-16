@@ -430,18 +430,18 @@ nav:
   - Get started:
     - Introduction: get-started/quick-start-guide.md
     - Quick Setup: get-started/quick-set-up.md
-    - Start integrating apps:
-      - Start integrating apps: get-started/start-integrating-apps/index.md
-      - Try for a sample app:
-        - Try for a sample app: get-started/try-samples/index.md
-        - Single Page apps:
+    - Connect apps with WSO2 Identity Server:
+      - Connect apps with WSO2 Identity Server: get-started/start-integrating-apps/index.md
+      - Sample app:
+        - Try out a sample app: get-started/try-samples/index.md
+        - Single page apps:
           - React: get-started/try-samples/qsg-spa-react.md
           - JavaScript: get-started/try-samples/qsg-spa-javascript.md
         - Web apps:
           - OIDC Java EE: get-started/try-samples/qsg-oidc-webapp-java-ee.md
           - SAML Java EE: get-started/try-samples/qsg-saml-webapp-java-ee.md
           - WS-Federation: get-started/try-samples/ws-federation-webapp.md
-      - Try for your own app:
+      - Your own app:
         - Try for your own app: get-started/try-your-own-app/index.md
         - Single Page apps:
           - React: get-started/try-your-own-app/react.md
@@ -453,59 +453,58 @@ nav:
     - About this release: get-started/about-this-release.md
   - Guides: 
       - Guides: guides/index.md
-      - Applications:
+      - Register applications:
         - Overview: guides/applications/index.md
         - Single Page Applications (SPA): guides/applications/register-single-page-app.md
-        - Web Applications:
-          - OIDC Web Apps: guides/applications/register-oidc-web-app.md
-          - SAML Web Apps: guides/applications/register-saml-web-app.md
-        - Standard-based Apps: guides/applications/register-standard-based-app.md
-        - Mobile & Machine Clients:
-          - Mobile Apps: guides/applications/register-mobile-app.md
-          - Machine-to-Machine (M2M) Apps: guides/applications/register-machine-to-machine-app.md
-        - Specialized Apps:
-          - FAPI-compliant Apps: guides/applications/register-a-fapi-compliant-app.md
-          - MCP Client Apps: guides/applications/register-mcp-client-app.md
-      - Authentication:
+        - Web applications:
+          - OIDC: guides/applications/register-oidc-web-app.md
+          - SAML: guides/applications/register-saml-web-app.md
+        - Standard-based apps: guides/applications/register-standard-based-app.md
+        - Mobile apps: guides/applications/register-mobile-app.md
+        - Machine-to-Machine (M2M) apps: guides/applications/register-machine-to-machine-app.md
+        - Specialized apps:
+          - FAPI-compliant apps: guides/applications/register-a-fapi-compliant-app.md
+          - MCP client apps: guides/applications/register-mcp-client-app.md
+      - Authenticate:
         - Overview: guides/authentication/index.md
-        - Core authentication:
+        - Basic login:
           - Overview: guides/authentication/add-login-to-apps.md
-          - Single-page app: guides/authentication/add-login-to-single-page-app.md
-          - Web app: guides/authentication/add-login-to-web-app.md
-          - Mobile app: guides/authentication/add-login-to-mobile-app.md
-          - Standard-based apps::
+          - Single-page apps: guides/authentication/add-login-to-single-page-app.md
+          - Web apps: guides/authentication/add-login-to-web-app.md
+          - Mobile apps: guides/authentication/add-login-to-mobile-app.md
+          - Standard-based apps:
             - Overview: guides/authentication/standard-based-login/index.md
             - OIDC IdP: guides/authentication/standard-based-login/add-oidc-idp-login.md
             - SAML IdP: guides/authentication/standard-based-login/add-saml-idp-login.md
             - WS-Federation: guides/authentication/standard-based-login/add-ws-federation.md
-        - Faderated authentication:
+        - Federated login:
           - Overview: guides/authentication/federated-login/index.md
-          - SaaS and enterprise logins:
+          - Log into external applications with WSO2 Identity Server:
             - Overview: guides/authentication/sso-integrations/index.md
-            - SaaS apps:
-              - Google Workspace: guides/authentication/sso-integrations/add-google-workspace-template.md
-              - Salesforce: guides/authentication/sso-integrations/add-salesforce-template.md
-              - Microsoft 365: guides/authentication/sso-integrations/add-microsoft-365-template.md
-              - Zoom: guides/authentication/sso-integrations/add-zoom-template.md
-              - Slack: guides/authentication/sso-integrations/add-slack-template.md
-          - Enterprise login:
-            - IWA: guides/authentication/enterprise-login/add-iwa-login.md
-            - AD FS: guides/authentication/enterprise-login/add-ad-fs-login.md
-            - Microsoft 365: guides/authentication/enterprise-login/add-microsoft-365-login.md
-          - eID login:
-            - Signicat: guides/authentication/eid-login/add-signicat-login.md
-            - FranceConnect: guides/authentication/eid-login/add-franceconnect-login.md
-            - SwissID: guides/authentication/eid-login/add-swissid-login.md
-          - Social login:
-            - Overview: guides/authentication/social-login/index.md
-            - Facebook: guides/authentication/social-login/add-facebook-login.md
-            - Google: guides/authentication/social-login/add-google-login.md
-            - Github: guides/authentication/social-login/add-github-login.md
-            - Microsoft: guides/authentication/social-login/add-microsoft-login.md
-            - Apple: guides/authentication/social-login/add-apple-login.md
-            - X: guides/authentication/social-login/add-x-login.md
-          - Custom login: guides/authentication/configure-custom-connector.md
-        - Passwordless authentication:
+            - Google Workspace: guides/authentication/sso-integrations/add-google-workspace-template.md
+            - Salesforce: guides/authentication/sso-integrations/add-salesforce-template.md
+            - Microsoft 365: guides/authentication/sso-integrations/add-microsoft-365-template.md
+            - Zoom: guides/authentication/sso-integrations/add-zoom-template.md
+            - Slack: guides/authentication/sso-integrations/add-slack-template.md
+          - Log into WSO2 Identity Server applications with external IdPs:
+            - Enterprise IdP:
+              - IWA: guides/authentication/enterprise-login/add-iwa-login.md
+              - AD FS: guides/authentication/enterprise-login/add-ad-fs-login.md
+              - Microsoft 365: guides/authentication/enterprise-login/add-microsoft-365-login.md
+            - eID IdP:
+              - Signicat: guides/authentication/eid-login/add-signicat-login.md
+              - FranceConnect: guides/authentication/eid-login/add-franceconnect-login.md
+              - SwissID: guides/authentication/eid-login/add-swissid-login.md
+            - Social IdP:
+              - Overview: guides/authentication/social-login/index.md
+              - Facebook: guides/authentication/social-login/add-facebook-login.md
+              - Google: guides/authentication/social-login/add-google-login.md
+              - Github: guides/authentication/social-login/add-github-login.md
+              - Microsoft: guides/authentication/social-login/add-microsoft-login.md
+              - Apple: guides/authentication/social-login/add-apple-login.md
+              - X: guides/authentication/social-login/add-x-login.md
+            - Custom IdP: guides/authentication/configure-custom-connector.md
+        - Passwordless login:
           - Overivew: guides/authentication/passwordless-login/index.md
           - Magic link: guides/authentication/passwordless-login/add-passwordless-login-with-magic-link.md
           - Passkeys:
@@ -522,68 +521,68 @@ nav:
           - SMS OTP: guides/authentication/mfa/add-smsotp-login.md
           - Push Notifications: guides/authentication/mfa/add-push-auth-login.md
           - User-preferred MFA: guides/authentication/mfa/user-preferred-mfa-login.md
-          - x509 login : guides/authentication/mfa/add-x509-login.md   
+          - x509 login : guides/authentication/mfa/add-x509-login.md
+        - Conditional authentication:
+          - Add conditional authentication: guides/authentication/conditional-auth/index.md
+          - Set up conditional authentication: guides/authentication/conditional-auth/configure-conditional-auth.md
+          - Access control templates:
+            - Overview: guides/authentication/conditional-auth/access-control.md
+            - Age-based: guides/authentication/conditional-auth/user-age-based-template.md
+            - Concurrent session-based: guides/authentication/conditional-auth/concurrent-session-based-template.md
+              #- Group-based access: guides/authentication/conditional-auth/group-based-template-access-control.md
+          - Adaptive MFA templates:
+            - Overview: guides/authentication/conditional-auth/adaptive-mfa.md
+            - User role: guides/authentication/conditional-auth/role-based-template.md
+            - Auth context: guides/authentication/conditional-auth/acr-based-adaptive-auth.md
+            - User store: guides/authentication/conditional-auth/user-store-based-template.md
+            - Login-attempts: guides/authentication/conditional-auth/login-attempt-based-template.md
+            - User group: guides/authentication/conditional-auth/group-based-template.md
+              #- MFA based on sign-in option: guides/authentication/conditional-auth/sign-in-option-based-template.md
+            - User device: guides/authentication/conditional-auth/new-device-based-template.md
+            - IP address: guides/authentication/conditional-auth/ip-based-template.md
+            - ELK-risk: guides/authentication/conditional-auth/elk-risk-based-template.md
+            - TypingDNA: guides/authentication/conditional-auth/typingdna-based-adaptive-auth.md
+          - Additional templates:
+            - Passkey progressive enrollment: guides/authentication/conditional-auth/passkey-progressive-enrollment-based-template.md
+            - Push notification device progressive enrollment: guides/authentication/conditional-auth/push-device-progressive-enrollment-based-template.md
+            - On-demand silent password migration: guides/authentication/conditional-auth/on-demand-silent-password-migration-template.md
+            - Write a custom authentication script: guides/authentication/conditional-auth/write-your-first-script.md
+        - App-native authentication:
+          - App-native authentication: guides/authentication/app-native-authentication/index.md
+          - Add app-native authentication: guides/authentication/app-native-authentication/add-app-native-authentication.md
+          - Secure app-native authentication flows: guides/authentication/app-native-authentication/secure-app-native-authentication-flows.md
+          - Handle advanced login scenarios: guides/authentication/app-native-authentication/handle-advanced-login-scenarios.md
+        - Login Flow AI: guides/authentication/login-flow-ai.md
         - Enable user attributes:
               - Enable user attributes: guides/authentication/user-attributes/index.md
               - Enable attributes for OIDC apps: guides/authentication/user-attributes/enable-attributes-for-oidc-app.md
               - Enable attributes for SAML apps: guides/authentication/user-attributes/enable-attributes-for-saml-app.md
         - Manage consent for user attributes: guides/authentication/manage-consent-for-attributes.md
         - Configure Just-in-Time user provisioning: guides/authentication/jit-user-provisioning.md
-        - Add conditional authentication:
-          - Add conditional authentication: guides/authentication/conditional-auth/index.md
-          - Set up conditional authentication: guides/authentication/conditional-auth/configure-conditional-auth.md
-          - Add access control:
-            - Add access control: guides/authentication/conditional-auth/access-control.md
-            - Age-based access: guides/authentication/conditional-auth/user-age-based-template.md
-            - Concurrent session-based access: guides/authentication/conditional-auth/concurrent-session-based-template.md
-              #- Group-based access: guides/authentication/conditional-auth/group-based-template-access-control.md
-          - Add adaptive MFA:
-            - Add adaptive MFA: guides/authentication/conditional-auth/adaptive-mfa.md
-            - MFA based on user role: guides/authentication/conditional-auth/role-based-template.md
-            - MFA based on auth context: guides/authentication/conditional-auth/acr-based-adaptive-auth.md
-            - MFA based on user store: guides/authentication/conditional-auth/user-store-based-template.md
-            - MFA based on login-attempts: guides/authentication/conditional-auth/login-attempt-based-template.md
-            - MFA based on user group: guides/authentication/conditional-auth/group-based-template.md
-              #- MFA based on sign-in option: guides/authentication/conditional-auth/sign-in-option-based-template.md
-            - MFA based on user device: guides/authentication/conditional-auth/new-device-based-template.md
-            - MFA based on IP address: guides/authentication/conditional-auth/ip-based-template.md
-            - MFA based on ELK-risk: guides/authentication/conditional-auth/elk-risk-based-template.md
-            - MFA based on TypingDNA: guides/authentication/conditional-auth/typingdna-based-adaptive-auth.md
-            - Add passkey progressive enrollment: guides/authentication/conditional-auth/passkey-progressive-enrollment-based-template.md
-            - Add push notification device progressive enrollment: guides/authentication/conditional-auth/push-device-progressive-enrollment-based-template.md
-            - Add on-demand silent password migration: guides/authentication/conditional-auth/on-demand-silent-password-migration-template.md
-            - Write a custom authentication script: guides/authentication/conditional-auth/write-your-first-script.md
-          - Configure multi-attribute login: guides/authentication/multi-attribute-login.md
-          - App-native authentication:
-            - App-native authentication: guides/authentication/app-native-authentication/index.md
-            - Add app-native authentication: guides/authentication/app-native-authentication/add-app-native-authentication.md
-            - Secure app-native authentication flows: guides/authentication/app-native-authentication/secure-app-native-authentication-flows.md
-            - Handle advanced login scenarios: guides/authentication/app-native-authentication/handle-advanced-login-scenarios.md
-          - Login Flow AI: guides/authentication/login-flow-ai.md
-          - Configure OIDC flows:
-            - Configure OIDC flows: guides/authentication/oidc/index.md
-            - Discover OIDC endpoints: guides/authentication/oidc/discover-oidc-configs.md
-            - Implement login using the Authorization Code flow: guides/authentication/oidc/implement-auth-code.md
-            - Implement login using the Authorization Code flow and PKCE: guides/authentication/oidc/implement-auth-code-with-pkce.md
-            - Implement private key JWT client authentication for OIDC: guides/authentication/oidc/private-key-jwt-client-auth.md
-            - Implement login using Pushed Authorization Requests: guides/authentication/oidc/implement-login-with-par.md
-            - Implement login using the Device Authorization flow: guides/authentication/oidc/implement-device-flow.md
-            - JWT Secured Authorization Response Mode (JARM) for OAuth 2.0: guides/authentication/oidc/jarm.md
-            - Implement login using the OIDC Hybrid Flow: guides/authentication/oidc/implement-oidc-hybrid-flow.md
-            - Configure token exchange: guides/authentication/configure-token-exchange.md
-            - Validate ID tokens: guides/authentication/oidc/validate-id-tokens.md
-            - Request user information: guides/authentication/oidc/request-user-info.md
-            - Validate tokens: guides/authentication/oidc/token-validation-resource-server.md
-            - Revoke tokens: guides/authentication/oidc/revoke-tokens.md
-            - Implement logout: guides/authentication/oidc/add-logout.md
-            - Implement back channel logout: guides/authentication/oidc/add-back-channel-logout.md
-            - Implement federated IdP-initiated logout: guides/authentication/oidc/oidc-federated-idp-initiated-logout.md
-            
-          - Configure SAML flows:
-            - Configure SAML flows: guides/authentication/saml/index.md
-            - Discover SAML endpoints and settings: guides/authentication/saml/discover-saml-configs.md
-            - Implement SAML federated IdP-initiated SSO: guides/authentication/saml/saml-federated-idp-initiated-sso.md
-      - Authorization:
+        - Configure multi-attribute login: guides/authentication/multi-attribute-login.md
+        - Configure OIDC flows:
+          - Configure OIDC flows: guides/authentication/oidc/index.md
+          - Discover OIDC endpoints: guides/authentication/oidc/discover-oidc-configs.md
+          - Implement login using the Authorization Code flow: guides/authentication/oidc/implement-auth-code.md
+          - Implement login using the Authorization Code flow and PKCE: guides/authentication/oidc/implement-auth-code-with-pkce.md
+          - Implement private key JWT client authentication for OIDC: guides/authentication/oidc/private-key-jwt-client-auth.md
+          - Implement login using Pushed Authorization Requests: guides/authentication/oidc/implement-login-with-par.md
+          - Implement login using the Device Authorization flow: guides/authentication/oidc/implement-device-flow.md
+          - JWT Secured Authorization Response Mode (JARM) for OAuth 2.0: guides/authentication/oidc/jarm.md
+          - Implement login using the OIDC Hybrid Flow: guides/authentication/oidc/implement-oidc-hybrid-flow.md
+          - Configure token exchange: guides/authentication/configure-token-exchange.md
+          - Validate ID tokens: guides/authentication/oidc/validate-id-tokens.md
+          - Request user information: guides/authentication/oidc/request-user-info.md
+          - Validate tokens: guides/authentication/oidc/token-validation-resource-server.md
+          - Revoke tokens: guides/authentication/oidc/revoke-tokens.md
+          - Implement logout: guides/authentication/oidc/add-logout.md
+          - Implement back channel logout: guides/authentication/oidc/add-back-channel-logout.md
+          - Implement federated IdP-initiated logout: guides/authentication/oidc/oidc-federated-idp-initiated-logout.md 
+        - Configure SAML flows:
+          - Configure SAML flows: guides/authentication/saml/index.md
+          - Discover SAML endpoints and settings: guides/authentication/saml/discover-saml-configs.md
+          - Implement SAML federated IdP-initiated SSO: guides/authentication/saml/saml-federated-idp-initiated-sso.md
+      - Authorize:
         - Authorization: guides/authorization/index.md
         - API authorization:
           - Role-based access control: guides/authorization/api-authorization/api-authorization.md
@@ -595,7 +594,7 @@ nav:
       - Identity Verification:
         - Identity Verification: guides/identity-verification/index.md
         - Configure an Identity Verification Provider: guides/identity-verification/configure-identity-verification-provider.md
-      - User Management:
+      - Manage users:
         - Overview: guides/users/index.md
         - Users & Admins:
           - Manage Users: guides/users/manage-users.md
@@ -694,7 +693,7 @@ nav:
           - Manage backup codes: guides/user-self-service/manage-backup-codes.md
           - Discover applications: guides/user-self-service/discover-applications.md
         - Build self-service capabilities: guides/user-self-service/build-self-service-capabilities.md
-      - Organizations:
+      - Manage organizations:
           - Organizations: guides/organization-management/index.md
           - Try a B2B use case: guides/organization-management/try-a-b2b-use-case.md
           - Set up organizations: guides/organization-management/manage-organizations.md
@@ -711,11 +710,11 @@ nav:
           - Share user profiles with organizations: guides/organization-management/share-user-profiles.md
           - API authorization for organizations: guides/organization-management/api-authorization-for-b2b.md
           - Email domain based organization discovery: guides/organization-management/email-domain-based-organization-discovery.md
-      - Notification Channels:
+      - Notify:
           - Configure Email Provider: guides/notification-channels/configure-email-provider.md
           - Configure SMS Provider: guides/notification-channels/configure-sms-provider.md
           - Configure Push Provider: guides/notification-channels/configure-push-provider.md
-      - Customizations:
+      - Customize:
           - Customize branding:
             - Branding: guides/branding/index.md
             - Configure UI branding: guides/branding/configure-ui-branding.md
@@ -733,7 +732,7 @@ nav:
               - Pre issue access token action: guides/service-extensions/pre-flow-extensions/pre-issue-access-token-action.md
               - Pre update password action: guides/service-extensions/pre-flow-extensions/pre-update-password-action.md
               - Pre update profile action: guides/service-extensions/pre-flow-extensions/pre-update-profile-action.md
-      - Analytics:
+      - Monitor:
         - ELK Analytics:
           - Elk analytics: guides/analytics/elk-analytics/index.md
           - Access analytics: guides/analytics/elk-analytics/accessing-the-analytics-dashboard.md
