@@ -474,19 +474,19 @@ nav:
           - Mobile apps: guides/authentication/add-login-to-mobile-app.md
           - Standard-based apps:
             - Overview: guides/authentication/standard-based-login/index.md
-            - OIDC IdP: guides/authentication/standard-based-login/add-oidc-idp-login.md
-            - SAML IdP: guides/authentication/standard-based-login/add-saml-idp-login.md
+            - OIDC: guides/authentication/standard-based-login/add-oidc-idp-login.md
+            - SAML: guides/authentication/standard-based-login/add-saml-idp-login.md
             - WS-Federation: guides/authentication/standard-based-login/add-ws-federation.md
         - Federated login:
           - Overview: guides/authentication/federated-login/index.md
-          - Log into external applications with WSO2 Identity Server:
+          - Configure WSO2 Identity Server as an IdP (outbound federation):
             - Overview: guides/authentication/sso-integrations/index.md
             - Google Workspace: guides/authentication/sso-integrations/add-google-workspace-template.md
             - Salesforce: guides/authentication/sso-integrations/add-salesforce-template.md
             - Microsoft 365: guides/authentication/sso-integrations/add-microsoft-365-template.md
             - Zoom: guides/authentication/sso-integrations/add-zoom-template.md
             - Slack: guides/authentication/sso-integrations/add-slack-template.md
-          - Log into WSO2 Identity Server applications with external IdPs:
+          - Configure WSO2 Identity Server as an application (inbound federation):
             - Enterprise IdP:
               - IWA: guides/authentication/enterprise-login/add-iwa-login.md
               - AD FS: guides/authentication/enterprise-login/add-ad-fs-login.md
@@ -546,13 +546,42 @@ nav:
             - Passkey progressive enrollment: guides/authentication/conditional-auth/passkey-progressive-enrollment-based-template.md
             - Push notification device progressive enrollment: guides/authentication/conditional-auth/push-device-progressive-enrollment-based-template.md
             - On-demand silent password migration: guides/authentication/conditional-auth/on-demand-silent-password-migration-template.md
-            - Write a custom authentication script: guides/authentication/conditional-auth/write-your-first-script.md
+          - Custom authentication scripts:
+            - Write a custom script: guides/authentication/conditional-auth/write-your-first-script.md
+            - Scripting reference: references/conditional-auth/api-reference.md
         - App-native authentication:
           - App-native authentication: guides/authentication/app-native-authentication/index.md
           - Add app-native authentication: guides/authentication/app-native-authentication/add-app-native-authentication.md
           - Secure app-native authentication flows: guides/authentication/app-native-authentication/secure-app-native-authentication-flows.md
           - Handle advanced login scenarios: guides/authentication/app-native-authentication/handle-advanced-login-scenarios.md
         - Login Flow AI: guides/authentication/login-flow-ai.md
+        - OpenID Connect flows:
+          - OIDC flows: guides/authentication/oidc/index.md
+          - Discover OIDC endpoints: guides/authentication/oidc/discover-oidc-configs.md
+          - Request user information: guides/authentication/oidc/request-user-info.md
+          - Login:
+            - Authorization code flow: guides/authentication/oidc/implement-auth-code.md
+            - Authorization code flow with PKCE: guides/authentication/oidc/implement-auth-code-with-pkce.md
+            - Hybrid flow: guides/authentication/oidc/implement-oidc-hybrid-flow.md
+            - Device Authorization flow: guides/authentication/oidc/implement-device-flow.md
+            - Pushed authorization requests: guides/authentication/oidc/implement-login-with-par.md
+          - Client authentication:
+            - Private key JWT client authentication: guides/authentication/oidc/private-key-jwt-client-auth.md
+          - Token management:
+             - Validate tokens: guides/authentication/oidc/token-validation-resource-server.md
+             - Validate ID tokens: guides/authentication/oidc/validate-id-tokens.md
+             - Exchange tokens: guides/authentication/configure-token-exchange.md
+             - Revoke tokens: guides/authentication/oidc/revoke-tokens.md
+          - Logout:
+            - Logout: guides/authentication/oidc/add-logout.md
+            - Back-channel logout: guides/authentication/oidc/add-back-channel-logout.md
+            - Federated IdP-initiated logout: guides/authentication/oidc/oidc-federated-idp-initiated-logout.md 
+          - Advanced flows:
+            - JWT Secured Authorization Response Mode (JARM) for OAuth 2.0: guides/authentication/oidc/jarm.md
+        - SAML SSO flows:
+          - SAML SSO flows: guides/authentication/saml/index.md
+          - Discover SAML endpoints and settings: guides/authentication/saml/discover-saml-configs.md
+          - Implement SAML federated IdP-initiated SSO: guides/authentication/saml/saml-federated-idp-initiated-sso.md
         - Enable user attributes:
               - Enable user attributes: guides/authentication/user-attributes/index.md
               - Enable attributes for OIDC apps: guides/authentication/user-attributes/enable-attributes-for-oidc-app.md
@@ -560,28 +589,6 @@ nav:
         - Manage consent for user attributes: guides/authentication/manage-consent-for-attributes.md
         - Configure Just-in-Time user provisioning: guides/authentication/jit-user-provisioning.md
         - Configure multi-attribute login: guides/authentication/multi-attribute-login.md
-        - Configure OIDC flows:
-          - Configure OIDC flows: guides/authentication/oidc/index.md
-          - Discover OIDC endpoints: guides/authentication/oidc/discover-oidc-configs.md
-          - Implement login using the Authorization Code flow: guides/authentication/oidc/implement-auth-code.md
-          - Implement login using the Authorization Code flow and PKCE: guides/authentication/oidc/implement-auth-code-with-pkce.md
-          - Implement private key JWT client authentication for OIDC: guides/authentication/oidc/private-key-jwt-client-auth.md
-          - Implement login using Pushed Authorization Requests: guides/authentication/oidc/implement-login-with-par.md
-          - Implement login using the Device Authorization flow: guides/authentication/oidc/implement-device-flow.md
-          - JWT Secured Authorization Response Mode (JARM) for OAuth 2.0: guides/authentication/oidc/jarm.md
-          - Implement login using the OIDC Hybrid Flow: guides/authentication/oidc/implement-oidc-hybrid-flow.md
-          - Configure token exchange: guides/authentication/configure-token-exchange.md
-          - Validate ID tokens: guides/authentication/oidc/validate-id-tokens.md
-          - Request user information: guides/authentication/oidc/request-user-info.md
-          - Validate tokens: guides/authentication/oidc/token-validation-resource-server.md
-          - Revoke tokens: guides/authentication/oidc/revoke-tokens.md
-          - Implement logout: guides/authentication/oidc/add-logout.md
-          - Implement back channel logout: guides/authentication/oidc/add-back-channel-logout.md
-          - Implement federated IdP-initiated logout: guides/authentication/oidc/oidc-federated-idp-initiated-logout.md 
-        - Configure SAML flows:
-          - Configure SAML flows: guides/authentication/saml/index.md
-          - Discover SAML endpoints and settings: guides/authentication/saml/discover-saml-configs.md
-          - Implement SAML federated IdP-initiated SSO: guides/authentication/saml/saml-federated-idp-initiated-sso.md
       - Authorize:
         - Authorization: guides/authorization/index.md
         - API authorization:
@@ -1031,8 +1038,6 @@ nav:
       - IdP configurations: references/idp-settings/index.md
       - OIDC configurations: references/idp-settings/oidc-settings-for-idp.md
       - SAML configurations: references/idp-settings/saml-settings-for-idp.md
-    - Conditional authentication:
-      - Conditional auth - API: references/conditional-auth/api-reference.md
     - Authorization policies for apps: references/authorization-policies-for-apps.md
     - Notification templates:
       - Email templates: references/email-templates.md
