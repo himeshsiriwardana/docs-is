@@ -479,7 +479,7 @@ nav:
             - WS-Federation: guides/authentication/standard-based-login/add-ws-federation.md
         - Federated login:
           - Overview: guides/authentication/federated-login/index.md
-          - Configure WSO2 Identity Server as an IdP (outbound federation):
+          - Configure WSO2 Identity Server as an identity provider (outbound federation):
             - Overview: guides/authentication/sso-integrations/index.md
             - Google Workspace: guides/authentication/sso-integrations/add-google-workspace-template.md
             - Salesforce: guides/authentication/sso-integrations/add-salesforce-template.md
@@ -504,6 +504,7 @@ nav:
               - Apple: guides/authentication/social-login/add-apple-login.md
               - X: guides/authentication/social-login/add-x-login.md
             - Custom IdP: guides/authentication/configure-custom-connector.md
+            - Configure Just-in-Time (JIT) user provisioning for inbound federation: guides/authentication/jit-user-provisioning.md
         - Passwordless login:
           - Overivew: guides/authentication/passwordless-login/index.md
           - Magic link: guides/authentication/passwordless-login/add-passwordless-login-with-magic-link.md
@@ -581,14 +582,15 @@ nav:
         - SAML SSO flows:
           - SAML SSO flows: guides/authentication/saml/index.md
           - Discover SAML endpoints and settings: guides/authentication/saml/discover-saml-configs.md
-          - Implement SAML federated IdP-initiated SSO: guides/authentication/saml/saml-federated-idp-initiated-sso.md
-        - Enable user attributes:
-              - Enable user attributes: guides/authentication/user-attributes/index.md
-              - Enable attributes for OIDC apps: guides/authentication/user-attributes/enable-attributes-for-oidc-app.md
-              - Enable attributes for SAML apps: guides/authentication/user-attributes/enable-attributes-for-saml-app.md
-        - Manage consent for user attributes: guides/authentication/manage-consent-for-attributes.md
-        - Configure Just-in-Time user provisioning: guides/authentication/jit-user-provisioning.md
-        - Configure multi-attribute login: guides/authentication/multi-attribute-login.md
+          - Single Sign-On (SSO):
+            - Federated IdP-initiated SSO: guides/authentication/saml/saml-federated-idp-initiated-sso.md
+        - Handle user attributes during login:
+          - Request user attributes:
+            - Request user attributes: guides/authentication/user-attributes/index.md
+            - OIDC apps: guides/authentication/user-attributes/enable-attributes-for-oidc-app.md
+            - SAML apps: guides/authentication/user-attributes/enable-attributes-for-saml-app.md
+          - Manage consent for user attributes: guides/authentication/manage-consent-for-attributes.md
+          - Configure multi-attribute login: guides/authentication/multi-attribute-login.md
       - Authorize:
         - Authorization: guides/authorization/index.md
         - API authorization:
@@ -601,48 +603,100 @@ nav:
       - Identity Verification:
         - Identity Verification: guides/identity-verification/index.md
         - Configure an Identity Verification Provider: guides/identity-verification/configure-identity-verification-provider.md
-      - Manage users:
+      - Users and attributes:
         - Overview: guides/users/index.md
-        - Users & Admins:
-          - Manage Users: guides/users/manage-users.md
-          - Manage Administrators: guides/users/manage-administrators.md
-          - Manage Active Sessions: guides/users/manage-sessions.md
-        - Groups & Roles:
-          - Manage Groups: guides/users/manage-groups.md
-          - Manage Roles: guides/users/manage-roles.md
-      - User provisioning:
+        - Manage users and administrators:
+          - Accounts:
+            - Administrators: guides/users/manage-administrators.md
+            - Users: guides/users/manage-users.md
+          - Groups: guides/users/manage-groups.md
+          - Roles: 
+            - User roles: guides/users/manage-roles.md
+            - Console roles: guides/your-is/manage-console-access.md
+          - Active user sessions: guides/users/manage-sessions.md 
+        - Configure user account policies:
+          - User account policies: guides/account-configurations/index.md
+          - Login security:
+            - Set password validation rules: guides/account-configurations/login-security/password-validation.md
+            - Limit failed login attempts: guides/account-configurations/login-security/login-attempts.md
+            - Detect and block bots: guides/account-configurations/login-security/bot-detection.md
+            - Configure session timeout: guides/account-configurations/login-security/session-management.md
+          - User onboarding:
+            - Allow self-registration: guides/account-configurations/user-onboarding/self-registration.md
+            - Invite users to set password: guides/account-configurations/user-onboarding/invite-user-to-set-password.md
+          - Account recovery:
+            - Password recovery: guides/account-configurations/account-recovery/password-recovery.md
+            - Username recovery: guides/account-configurations/account-recovery/username-recovery.md
+            - Admin-initiated password reset: guides/account-configurations/account-recovery/admin-initiated-password-reset.md
+          - Account notifications : guides/account-configurations/notification-settings.md
+          - Account disabling: guides/account-configurations/account-disabling.md
+        - Self-service:
+          - Admin self-service:
+            - Admin self-service: guides/your-is/index.md
+            - Self-service actions for admins: guides/your-is/is-self-service.md
+            - Recover admin accounts:
+              - Recover password: guides/your-is/recover-password.md
+              - Recover username: guides/your-is/recover-username.md
+              - Recover super admin account: guides/your-is/recover-super-admin-account.md
+          - User self-service:
+            - User self-service: guides/user-self-service/index.md
+            - Use the My Account portal:
+              - Configure the My Account portal: guides/user-self-service/configure-self-service-portal.md
+              - Manage user profile:
+                - Update profile information: guides/user-self-service/update-profile-info.md
+                - Change password: guides/user-self-service/change-password.md
+                - Manage linked social accounts: guides/user-self-service/manage-linked-accounts.md
+                - Export profile information: guides/user-self-service/export-profile-information.md
+              - Recover user accounts:
+                - Recover password: guides/user-self-service/user-password-recovery.md
+                - Recover username: guides/user-self-service/user-username-recovery.md
+              - Manage authentication methods:
+                - Register passkeys: guides/user-self-service/register-passkey.md
+                - Register push notification device: guides/user-self-service/register-push-notification-device.md
+                - Enroll TOTP: guides/user-self-service/enable-totp.md
+                - Manage backup codes: guides/user-self-service/manage-backup-codes.md
+              - Manage acount activity:
+                - Review attribute consents: guides/user-self-service/manage-consents.md
+                - Terminate login sessions: guides/user-self-service/manage-login-sessions.md
+              - Discover applications: guides/user-self-service/discover-applications.md
+            - Build your own self-service portal: guides/user-self-service/build-self-service-capabilities.md
+        - User self-registration:
+          - Self-register: guides/user-self-service/self-register.md
+          - Confirm self-registered accounts: guides/user-self-service/account-confirmation-for-self-register.md
+        - Provision users:
           - Overview: guides/users/outbound-provisioning/index.md
-          - Inbound Provisioning: guides/users/inbound-provisioning/inbound-provisioning.md
-          - Outbound Provisioning:
-            - Organization-level: guides/users/outbound-provisioning/provisioning-levels/org-level.md
-            - IdP-level: guides/users/outbound-provisioning/provisioning-levels/idp-level.md
-            - Role-based Provisioning: guides/users/outbound-provisioning/role-based-provisioning.md
+          - Provision users to WSO2 Identity Server (Inbound provisioning): guides/users/inbound-provisioning/inbound-provisioning.md
+          - Provision users to external systems (Outbound provisioning):
+            - Based on account type:
+              - Users with a local account (Organization-level): guides/users/outbound-provisioning/provisioning-levels/org-level.md
+              - Users without a local account (Identity provider-level): guides/users/outbound-provisioning/provisioning-levels/idp-level.md
+            - Based on role: guides/users/outbound-provisioning/role-based-provisioning.md
+            - Provisioning Patterns: guides/users/outbound-provisioning/provisioning-patterns.md
           - Outbound Connectors:
-            - Google: guides/users/outbound-provisioning/outbound-connectors/google.md
+            - Google Workspace: guides/users/outbound-provisioning/outbound-connectors/google.md
             - Salesforce: guides/users/outbound-provisioning/outbound-connectors/salesforce.md
-            - SCIM2: guides/users/outbound-provisioning/outbound-connectors/scim2.md
-            - Custom Connector: guides/users/outbound-provisioning/outbound-connectors/custom-outbound-connectors.md
-          - Provisioning Patterns: guides/users/outbound-provisioning/provisioning-patterns.md
-      - Account Sync:
-        - Overview: guides/users/sync-user-accounts/sync-account-overview.md
-        - HubSpot: guides/users/sync-user-accounts/sync-with-hubspot.md
-        - Salesforce: guides/users/sync-user-accounts/sync-with-salesforce.md
-        - Pipedrive: guides/users/sync-user-accounts/sync-with-pipedrive.md
-        - SendGrid: guides/users/sync-user-accounts/sync-with-sendgrid.md
-        - Zoho CRM: guides/users/sync-user-accounts/sync-with-zoho.md
-      - Attributes & Identity Info:
-        - Overview: guides/users/attributes/index.md
-        - User Attributes: guides/users/attributes/manage-attributes.md
-        - OIDC Attribute Mappings: guides/users/attributes/manage-oidc-attribute-mappings.md
-        - OIDC Scopes: guides/users/attributes/manage-scopes.md
-        - SCIM2 Attribute Mappings: guides/users/attributes/manage-scim2-attribute-mappings.md
-        - Use Email as Username: guides/users/attributes/enable-email-as-username.md
-        - Configure Unique Attributes: guides/users/attributes/configure-unique-attributes.md
-        - Attribute Update Verification:
-          - Configure Settings: guides/users/attributes/user-attribute-change-verification.md
-          - Email Address Update: guides/users/attributes/email-verification-on-update.md
-          - Mobile Number Update: guides/users/attributes/mobile-verification-on-update.md
-      - User Stores:
+            - SCIM 2.0: guides/users/outbound-provisioning/outbound-connectors/scim2.md
+            - Custom Connector Integration: guides/users/outbound-provisioning/outbound-connectors/custom-outbound-connectors.md
+        - Account Sync:
+          - Overview: guides/users/sync-user-accounts/sync-account-overview.md
+          - HubSpot: guides/users/sync-user-accounts/sync-with-hubspot.md
+          - Salesforce: guides/users/sync-user-accounts/sync-with-salesforce.md
+          - Pipedrive: guides/users/sync-user-accounts/sync-with-pipedrive.md
+          - SendGrid: guides/users/sync-user-accounts/sync-with-sendgrid.md
+          - Zoho CRM: guides/users/sync-user-accounts/sync-with-zoho.md
+        - Attributes & Identity Info:
+          - Overview: guides/users/attributes/index.md
+          - User Attributes: guides/users/attributes/manage-attributes.md
+          - OIDC Attribute Mappings: guides/users/attributes/manage-oidc-attribute-mappings.md
+          - OIDC Scopes: guides/users/attributes/manage-scopes.md
+          - SCIM2 Attribute Mappings: guides/users/attributes/manage-scim2-attribute-mappings.md
+          - Use Email as Username: guides/users/attributes/enable-email-as-username.md
+          - Configure Unique Attributes: guides/users/attributes/configure-unique-attributes.md
+          - Attribute Update Verification:
+            - Configure Settings: guides/users/attributes/user-attribute-change-verification.md
+            - Email Address Update: guides/users/attributes/email-verification-on-update.md
+            - Mobile Number Update: guides/users/attributes/mobile-verification-on-update.md
+        - User Stores:
           - Overview: guides/users/user-stores/index.md
           - Primary User Store:
             - Overview: guides/users/user-stores/primary-user-store/index.md
@@ -660,46 +714,10 @@ nav:
           - SCIM 2.0 Config:
             - Generic: guides/users/user-stores/configure-user-stores-for-scim2.md
             - Active Directory: guides/users/user-stores/configure-active-directory-user-stores-for-scim2.md
-      - User Migration:
-        - Overview: guides/users/migrate-users/index.md
-        - Migrate Accounts: guides/users/migrate-users/migrate-users.md
-        - Migrate Passwords: guides/users/migrate-users/migrate-passwords.md
-      - Account configurations:
-        - Account configurations: guides/account-configurations/index.md
-        - Login security:
-          - Password validation: guides/account-configurations/login-security/password-validation.md
-          - Login attempts: guides/account-configurations/login-security/login-attempts.md
-          - Bot detection: guides/account-configurations/login-security/bot-detection.md
-          - Session management: guides/account-configurations/login-security/session-management.md
-        - User Onboarding:
-          - Self registration: guides/account-configurations/user-onboarding/self-registration.md
-          - Invite user to set password: guides/account-configurations/user-onboarding/invite-user-to-set-password.md
-        - Account recovery:
-          - Password recovery: guides/account-configurations/account-recovery/password-recovery.md
-          - Username recovery: guides/account-configurations/account-recovery/username-recovery.md
-          - Admin Initiated Password Reset: guides/account-configurations/account-recovery/admin-initiated-password-reset.md
-        - Notification settings: guides/account-configurations/notification-settings.md
-        - Account disabling: guides/account-configurations/account-disabling.md
-      - User self-service:
-        - User self-service: guides/user-self-service/index.md
-        - Self-service portal:
-          - Configure the self-service portal: guides/user-self-service/configure-self-service-portal.md
-          - Update profile information: guides/user-self-service/update-profile-info.md
-          - Change password: guides/user-self-service/change-password.md
-          - Manage linked social accounts: guides/user-self-service/manage-linked-accounts.md
-          - Export profile information: guides/user-self-service/export-profile-information.md
-          - Manage consents: guides/user-self-service/manage-consents.md
-          - Manage login sessions: guides/user-self-service/manage-login-sessions.md
-          - Self-register: guides/user-self-service/self-register.md
-          - Account confirmation for self-register: guides/user-self-service/account-confirmation-for-self-register.md
-          - Register passkeys: guides/user-self-service/register-passkey.md
-          - Register Push Notification Device: guides/user-self-service/register-push-notification-device.md
-          - Password recovery: guides/user-self-service/user-password-recovery.md
-          - Username recovery: guides/user-self-service/user-username-recovery.md
-          - Enroll TOTP: guides/user-self-service/enable-totp.md
-          - Manage backup codes: guides/user-self-service/manage-backup-codes.md
-          - Discover applications: guides/user-self-service/discover-applications.md
-        - Build self-service capabilities: guides/user-self-service/build-self-service-capabilities.md
+        - User Migration:
+          - Overview: guides/users/migrate-users/index.md
+          - Migrate Accounts: guides/users/migrate-users/migrate-users.md
+          - Migrate Passwords: guides/users/migrate-users/migrate-passwords.md
       - Manage organizations:
           - Organizations: guides/organization-management/index.md
           - Try a B2B use case: guides/organization-management/try-a-b2b-use-case.md
@@ -752,13 +770,6 @@ nav:
         - Multitenancy: guides/multitenancy/index.md
         - Manage Root Organizations (Tenants): guides/multitenancy/manage-tenants.md
         - Tenant loading policy: guides/multitenancy/configure-the-tenant-loading-policy.md
-      - Your WSO2 Identity Server:
-        - Your WSO2 Identity Server: guides/your-is/index.md
-        - Manage Console access: guides/your-is/manage-console-access.md
-        - Self-service: guides/your-is/is-self-service.md
-        - Recover your password: guides/your-is/recover-password.md
-        - Recover your username: guides/your-is/recover-username.md
-        - Recover super admin account: guides/your-is/recover-super-admin-account.md
   - Setup:
       - Install:
         - Install: deploy/get-started/install.md
