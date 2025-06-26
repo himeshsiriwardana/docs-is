@@ -660,9 +660,24 @@ nav:
                 - Terminate login sessions: guides/user-self-service/manage-login-sessions.md
               - Discover applications: guides/user-self-service/discover-applications.md
             - Build your own self-service portal: guides/user-self-service/build-self-service-capabilities.md
-        - User self-registration:
+        - Self-registration:
           - Self-register: guides/user-self-service/self-register.md
           - Confirm self-registered accounts: guides/user-self-service/account-confirmation-for-self-register.md
+        - User attributes and scopes:
+          - Overview: guides/users/attributes/index.md
+          - Manage attributes:
+            - User Attributes: guides/users/attributes/manage-attributes.md
+            - Configure Unique Attributes: guides/users/attributes/configure-unique-attributes.md
+            - Use Email as Username: guides/users/attributes/enable-email-as-username.md
+            - Attribute Update Verification:
+              - Configure Settings: guides/users/attributes/user-attribute-change-verification.md
+              - Email Address Update: guides/users/attributes/email-verification-on-update.md
+              - Mobile Number Update: guides/users/attributes/mobile-verification-on-update.md
+          - Manage attribute mappings:
+            - OIDC Attribute Mappings: guides/users/attributes/manage-oidc-attribute-mappings.md
+            - SCIM2 Attribute Mappings: guides/users/attributes/manage-scim2-attribute-mappings.md
+          - Manage scopes:
+            - OIDC Scopes: guides/users/attributes/manage-scopes.md
         - Provision users:
           - Overview: guides/users/outbound-provisioning/index.md
           - Provision users to WSO2 Identity Server (Inbound provisioning): guides/users/inbound-provisioning/inbound-provisioning.md
@@ -671,31 +686,19 @@ nav:
               - Users with a local account (Organization-level): guides/users/outbound-provisioning/provisioning-levels/org-level.md
               - Users without a local account (Identity provider-level): guides/users/outbound-provisioning/provisioning-levels/idp-level.md
             - Based on role: guides/users/outbound-provisioning/role-based-provisioning.md
-            - Provisioning Patterns: guides/users/outbound-provisioning/provisioning-patterns.md
-          - Outbound Connectors:
-            - Google Workspace: guides/users/outbound-provisioning/outbound-connectors/google.md
-            - Salesforce: guides/users/outbound-provisioning/outbound-connectors/salesforce.md
-            - SCIM 2.0: guides/users/outbound-provisioning/outbound-connectors/scim2.md
-            - Custom Connector Integration: guides/users/outbound-provisioning/outbound-connectors/custom-outbound-connectors.md
-        - Account Sync:
+            - Set unique usernames when provisioning: guides/users/outbound-provisioning/provisioning-patterns.md
+            - Configure outbound connectors:
+              - Google Workspace: guides/users/outbound-provisioning/outbound-connectors/google.md
+              - Salesforce: guides/users/outbound-provisioning/outbound-connectors/salesforce.md
+              - SCIM 2.0: guides/users/outbound-provisioning/outbound-connectors/scim2.md
+              - Custom connector: guides/users/outbound-provisioning/outbound-connectors/custom-outbound-connectors.md
+        - Export users from WSO2 Identity Server:
           - Overview: guides/users/sync-user-accounts/sync-account-overview.md
           - HubSpot: guides/users/sync-user-accounts/sync-with-hubspot.md
           - Salesforce: guides/users/sync-user-accounts/sync-with-salesforce.md
           - Pipedrive: guides/users/sync-user-accounts/sync-with-pipedrive.md
           - SendGrid: guides/users/sync-user-accounts/sync-with-sendgrid.md
-          - Zoho CRM: guides/users/sync-user-accounts/sync-with-zoho.md
-        - Attributes & Identity Info:
-          - Overview: guides/users/attributes/index.md
-          - User Attributes: guides/users/attributes/manage-attributes.md
-          - OIDC Attribute Mappings: guides/users/attributes/manage-oidc-attribute-mappings.md
-          - OIDC Scopes: guides/users/attributes/manage-scopes.md
-          - SCIM2 Attribute Mappings: guides/users/attributes/manage-scim2-attribute-mappings.md
-          - Use Email as Username: guides/users/attributes/enable-email-as-username.md
-          - Configure Unique Attributes: guides/users/attributes/configure-unique-attributes.md
-          - Attribute Update Verification:
-            - Configure Settings: guides/users/attributes/user-attribute-change-verification.md
-            - Email Address Update: guides/users/attributes/email-verification-on-update.md
-            - Mobile Number Update: guides/users/attributes/mobile-verification-on-update.md
+          - Zoho CRM: guides/users/sync-user-accounts/sync-with-zoho.md  
         - User Stores:
           - Overview: guides/users/user-stores/index.md
           - Primary User Store:
