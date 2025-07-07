@@ -666,16 +666,16 @@ nav:
         - User attributes and scopes:
           - Overview: guides/users/attributes/index.md
           - Manage attributes:
-            - User Attributes: guides/users/attributes/manage-attributes.md
-            - Configure Unique Attributes: guides/users/attributes/configure-unique-attributes.md
-            - Use Email as Username: guides/users/attributes/enable-email-as-username.md
-            - Attribute Update Verification:
-              - Configure Settings: guides/users/attributes/user-attribute-change-verification.md
-              - Email Address Update: guides/users/attributes/email-verification-on-update.md
-              - Mobile Number Update: guides/users/attributes/mobile-verification-on-update.md
+            - User attributes: guides/users/attributes/manage-attributes.md
+            - Configure unique attributes: guides/users/attributes/configure-unique-attributes.md
+            - Use email as username: guides/users/attributes/enable-email-as-username.md
+            - Verify attribute updates:
+              - Configure verification settings: guides/users/attributes/user-attribute-change-verification.md
+              - Verify email address updates: guides/users/attributes/email-verification-on-update.md
+              - Verify mobile Number updates: guides/users/attributes/mobile-verification-on-update.md
           - Manage attribute mappings:
-            - OIDC Attribute Mappings: guides/users/attributes/manage-oidc-attribute-mappings.md
-            - SCIM2 Attribute Mappings: guides/users/attributes/manage-scim2-attribute-mappings.md
+            - OIDC attribute mappings: guides/users/attributes/manage-oidc-attribute-mappings.md
+            - SCIM2 attribute mappings: guides/users/attributes/manage-scim2-attribute-mappings.md
           - Manage scopes:
             - OIDC Scopes: guides/users/attributes/manage-scopes.md
         - Provision users:
