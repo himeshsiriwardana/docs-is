@@ -465,7 +465,7 @@ nav:
         - Specialized apps:
           - FAPI-compliant apps: guides/applications/register-a-fapi-compliant-app.md
           - MCP client apps: guides/applications/register-mcp-client-app.md
-      - Authenticate:
+      - Add Login:
         - Overview: guides/authentication/index.md
         - Basic login:
           - Overview: guides/authentication/add-login-to-apps.md
@@ -479,7 +479,7 @@ nav:
             - WS-Federation: guides/authentication/standard-based-login/add-ws-federation.md
         - Federated login:
           - Overview: guides/authentication/federated-login/index.md
-          - Configure WSO2 Identity Server as an identity provider (outbound federation):
+          - Integrate WSO2 Identity Server as an Identity Provider in external applications:
             - Overview: guides/authentication/sso-integrations/index.md
             - Google Workspace: guides/authentication/sso-integrations/add-google-workspace-template.md
             - Salesforce: guides/authentication/sso-integrations/add-salesforce-template.md
