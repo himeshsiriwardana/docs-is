@@ -584,6 +584,9 @@ nav:
           - Discover SAML endpoints and settings: guides/authentication/saml/discover-saml-configs.md
           - Single Sign-On (SSO):
             - Federated IdP-initiated SSO: guides/authentication/saml/saml-federated-idp-initiated-sso.md
+        - Verify identities during login:
+          - Verify identities during login: guides/identity-verification/index.md
+          - Configure an identity verification provider: guides/identity-verification/configure-identity-verification-provider.md
         - Handle user attributes during login:
           - Request user attributes:
             - Request user attributes: guides/authentication/user-attributes/index.md
@@ -600,9 +603,6 @@ nav:
           - via Console: guides/authorization/user-impersonation/via-console.md
           - via business application (advanced): guides/authorization/user-impersonation/via-business-application.md
         - Rich Authorization Requests: guides/authorization/rich-authorization-requests.md
-      - Identity Verification:
-        - Identity Verification: guides/identity-verification/index.md
-        - Configure an Identity Verification Provider: guides/identity-verification/configure-identity-verification-provider.md
       - Users and attributes:
         - Overview: guides/users/index.md
         - Manage users and administrators:
