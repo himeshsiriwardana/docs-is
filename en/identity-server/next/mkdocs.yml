@@ -841,26 +841,29 @@ nav:
             - Manage CA-Signed certificates in a keystore: deploy/security/keystores/manage-ca-signed-certificates-in-a-keystore.md
             - Configure custom keystores for authentication protocols: deploy/security/keystores/configure-custom-keystores.md
       - Deploy:
-        - Deployment patterns: deploy/deployment-guide.md
-        - Deployment checklist: deploy/deployment-checklist.md
-        - Deploy as a contanarized application:
-          - Kuberenetes: deploy/deploy-is-on-kubernetes.md
-          - Openshift: deploy/deploy-is-on-openshift.md
-        - WSO2 clusters with Nginx: deploy/front-with-the-nginx-load-balancer.md
-        - Databases for clustering: deploy/set-up-separate-databases-for-clustering.md
-        - Change the hostname: deploy/change-the-hostname.md
-        - Configure Hazelcast: deploy/configure-hazelcast.md
-        - Backup and recovery recommendations: deploy/backup-and-recovery-recommendations.md
-        - Troubleshoot in production environments: deploy/monitor/troubleshoot-in-production-environments.md
-        - Performance:
-          - Performance tuning recommendations: deploy/performance/performance-tuning-recommendations.md
-          - Configure cache layers: deploy/performance/configure-cache-layers.md
-        - Product compatibility: deploy/product-compatibility.md
-        - Promote configurations across environments: deploy/promote-configurations.md
+        - Deployment fundamentals:
+          - Deployment patterns: deploy/deployment-guide.md
+          - Deployment checklist: deploy/deployment-checklist.md
+          - Product compatibility: deploy/product-compatibility.md
+          - Change the hostname: deploy/change-the-hostname.md
+          - Promote configurations: deploy/promote-configurations.md
+        - High availability:
+          - Clustering with Nginx: deploy/front-with-the-nginx-load-balancer.md
+          - Databases for clustering: deploy/set-up-separate-databases-for-clustering.md
+          - Configure Hazelcast: deploy/configure-hazelcast.md
+        - Performance tuning:
+          - Tuning Recommendations: deploy/performance/performance-tuning-recommendations.md
+          - Configuring Cache Layers: deploy/performance/configure-cache-layers.md
         - Disaster recovery:
-          - Understanding disaster recovery: deploy/disaster-recovery/understanding-disaster-recovery.md
-          - Deployment patterns: deploy/disaster-recovery/disaster-recovery-deployment-patterns.md
-          - Additional reading: deploy/disaster-recovery/additional-reading-on-disaster-recovery.md
+          - Overview: deploy/disaster-recovery/understanding-disaster-recovery.md
+          - Deployment Patterns: deploy/disaster-recovery/disaster-recovery-deployment-patterns.md
+          - Additional Reading: deploy/disaster-recovery/additional-reading-on-disaster-recovery.md
+        - Containerized deployments:
+          - Deploy on Kubernetes: deploy/deploy-is-on-kubernetes.md
+          - Deploy on OpenShift: deploy/deploy-is-on-openshift.md
+        - Maintenance and troubleshooting:
+          - Backup and Recovery: deploy/backup-and-recovery-recommendations.md
+          - Production Troubleshooting: deploy/monitor/troubleshoot-in-production-environments.md
       - Compliance:
           - Compliance: deploy/compliance/index.md
           - GDPR: deploy/compliance/gdpr.md
