@@ -462,128 +462,127 @@ nav:
         - Specialized apps:
           - FAPI-compliant apps: guides/applications/register-a-fapi-compliant-app.md
           - MCP client apps: guides/applications/register-mcp-client-app.md
-      - Add Login:
+      - Login:
         - Overview: guides/authentication/index.md
-        - Basic login:
-          - Overview: guides/authentication/add-login-to-apps.md
-          - Single-page apps: guides/authentication/add-login-to-single-page-app.md
-          - Web apps: guides/authentication/add-login-to-web-app.md
-          - Mobile apps: guides/authentication/add-login-to-mobile-app.md
-          - Standard-based apps:
-            - Overview: guides/authentication/standard-based-login/index.md
-            - OIDC: guides/authentication/standard-based-login/add-oidc-idp-login.md
-            - SAML: guides/authentication/standard-based-login/add-saml-idp-login.md
-            - WS-Federation: guides/authentication/standard-based-login/add-ws-federation.md
-        - Federated login:
-          - Overview: guides/authentication/federated-login/index.md
-          - Integrate WSO2 Identity Server as an Identity Provider in external applications:
+        - Add login:
+          - Basic login:
+            - Overview: guides/authentication/add-login-to-apps.md
+            - Single-page apps: guides/authentication/add-login-to-single-page-app.md
+            - Web apps: guides/authentication/add-login-to-web-app.md
+            - Mobile apps: guides/authentication/add-login-to-mobile-app.md
+            - Standard-based apps:
+              - Overview: guides/authentication/standard-based-login/index.md
+              - OIDC: guides/authentication/standard-based-login/add-oidc-idp-login.md
+              - SAML: guides/authentication/standard-based-login/add-saml-idp-login.md
+              - WS-Federation: guides/authentication/standard-based-login/add-ws-federation.md
+          - Social login:
+            - Overview: guides/authentication/social-login/index.md
+            - Facebook: guides/authentication/social-login/add-facebook-login.md
+            - Google: guides/authentication/social-login/add-google-login.md
+            - Github: guides/authentication/social-login/add-github-login.md
+            - Microsoft: guides/authentication/social-login/add-microsoft-login.md
+            - Apple: guides/authentication/social-login/add-apple-login.md
+            - X: guides/authentication/social-login/add-x-login.md
+          - Passwordless login:
+            - Overivew: guides/authentication/passwordless-login/index.md
+            - Magic link: guides/authentication/passwordless-login/add-passwordless-login-with-magic-link.md
+            - Passkeys:
+              - Set up passkeys: guides/authentication/passwordless-login/add-passwordless-login-with-passkey.md
+              - Validate FIDO attestations: guides/authentication/passwordless-login/fido-attestation.md
+            - Email OTP: guides/authentication/passwordless-login/add-passwordless-login-with-email-otp.md
+            - SMS OTP: guides/authentication/passwordless-login/add-passwordless-login-with-sms-otp.md
+            - Push Notifications: guides/authentication/passwordless-login/add-passwordless-login-with-push-notification.md
+          - Multi-factor authentication:
+            - Overview: guides/authentication/mfa/index.md
+            - TOTP: guides/authentication/mfa/add-totp-login.md
+            - Email OTP: guides/authentication/mfa/add-emailotp-login.md
+            - Passkey: guides/authentication/mfa/add-passkey-login.md
+            - SMS OTP: guides/authentication/mfa/add-smsotp-login.md
+            - Push Notifications: guides/authentication/mfa/add-push-auth-login.md
+            - User-preferred MFA: guides/authentication/mfa/user-preferred-mfa-login.md
+            - x509 login : guides/authentication/mfa/add-x509-login.md
+          - Conditional authentication:
+            - Add conditional authentication: guides/authentication/conditional-auth/index.md
+            - Set up conditional authentication: guides/authentication/conditional-auth/configure-conditional-auth.md
+            - Access control templates:
+              - Overview: guides/authentication/conditional-auth/access-control.md
+              - Age-based: guides/authentication/conditional-auth/user-age-based-template.md
+              - Concurrent session-based: guides/authentication/conditional-auth/concurrent-session-based-template.md
+                #- Group-based access: guides/authentication/conditional-auth/group-based-template-access-control.md
+            - Adaptive MFA templates:
+              - Overview: guides/authentication/conditional-auth/adaptive-mfa.md
+              - User role: guides/authentication/conditional-auth/role-based-template.md
+              - Auth context: guides/authentication/conditional-auth/acr-based-adaptive-auth.md
+              - User store: guides/authentication/conditional-auth/user-store-based-template.md
+              - Login-attempts: guides/authentication/conditional-auth/login-attempt-based-template.md
+              - User group: guides/authentication/conditional-auth/group-based-template.md
+                #- MFA based on sign-in option: guides/authentication/conditional-auth/sign-in-option-based-template.md
+              - User device: guides/authentication/conditional-auth/new-device-based-template.md
+              - IP address: guides/authentication/conditional-auth/ip-based-template.md
+              - ELK-risk: guides/authentication/conditional-auth/elk-risk-based-template.md
+              - TypingDNA: guides/authentication/conditional-auth/typingdna-based-adaptive-auth.md
+            - Additional templates:
+              - Passkey progressive enrollment: guides/authentication/conditional-auth/passkey-progressive-enrollment-based-template.md
+              - Push notification device progressive enrollment: guides/authentication/conditional-auth/push-device-progressive-enrollment-based-template.md
+              - On-demand silent password migration: guides/authentication/conditional-auth/on-demand-silent-password-migration-template.md
+            - Custom authentication scripts:
+              - Write a custom script: guides/authentication/conditional-auth/write-your-first-script.md
+              - Scripting reference: references/conditional-auth/api-reference.md
+          - Native-login:
+            - Native-login: guides/authentication/app-native-authentication/index.md
+            - Add app-native authentication: guides/authentication/app-native-authentication/add-app-native-authentication.md
+            - Secure app-native authentication flows: guides/authentication/app-native-authentication/secure-app-native-authentication-flows.md
+            - Handle advanced login scenarios: guides/authentication/app-native-authentication/handle-advanced-login-scenarios.md
+          - Enterprise login:
+            - IWA: guides/authentication/enterprise-login/add-iwa-login.md
+            - AD FS: guides/authentication/enterprise-login/add-ad-fs-login.md
+            - Microsoft 365: guides/authentication/enterprise-login/add-microsoft-365-login.md
+          - Government login:
+            - Signicat: guides/authentication/eid-login/add-signicat-login.md
+            - FranceConnect: guides/authentication/eid-login/add-franceconnect-login.md
+            - SwissID: guides/authentication/eid-login/add-swissid-login.md
+          - Custom login: guides/authentication/configure-custom-connector.md
+        - Login flow AI: guides/authentication/login-flow-ai.md
+        - Protocol-based login:
+            - OIDC:
+              - OIDC flows: guides/authentication/oidc/index.md
+              - Discover OIDC endpoints: guides/authentication/oidc/discover-oidc-configs.md
+              - Request user information: guides/authentication/oidc/request-user-info.md
+              - Login:
+                - Authorization code flow: guides/authentication/oidc/implement-auth-code.md
+                - Authorization code flow with PKCE: guides/authentication/oidc/implement-auth-code-with-pkce.md
+                - Hybrid flow: guides/authentication/oidc/implement-oidc-hybrid-flow.md
+                - Device Authorization flow: guides/authentication/oidc/implement-device-flow.md
+                - Pushed authorization requests: guides/authentication/oidc/implement-login-with-par.md
+              - Client authentication:
+                - Private key JWT client authentication: guides/authentication/oidc/private-key-jwt-client-auth.md
+              - Token management:
+                 - Validate tokens: guides/authentication/oidc/token-validation-resource-server.md
+                 - Validate ID tokens: guides/authentication/oidc/validate-id-tokens.md
+                 - Exchange tokens: guides/authentication/configure-token-exchange.md
+                 - Revoke tokens: guides/authentication/oidc/revoke-tokens.md
+              - Logout:
+                - Logout: guides/authentication/oidc/add-logout.md
+                - Back-channel logout: guides/authentication/oidc/add-back-channel-logout.md
+                - Federated IdP-initiated logout: guides/authentication/oidc/oidc-federated-idp-initiated-logout.md 
+              - Advanced flows:
+                - JWT Secured Authorization Response Mode (JARM) for OAuth 2.0: guides/authentication/oidc/jarm.md
+            - SAML:
+              - SAML SSO flows: guides/authentication/saml/index.md
+              - Discover SAML endpoints and settings: guides/authentication/saml/discover-saml-configs.md
+              - Single Sign-On (SSO):
+                - Federated IdP-initiated SSO: guides/authentication/saml/saml-federated-idp-initiated-sso.md
+        - Verify login:
+          - Verify login: guides/identity-verification/index.md
+          - Configure an identity verification provider: guides/identity-verification/configure-identity-verification-provider.md
+        - Single Sign-On to external applications:
             - Overview: guides/authentication/sso-integrations/index.md
             - Google Workspace: guides/authentication/sso-integrations/add-google-workspace-template.md
             - Salesforce: guides/authentication/sso-integrations/add-salesforce-template.md
             - Microsoft 365: guides/authentication/sso-integrations/add-microsoft-365-template.md
             - Zoom: guides/authentication/sso-integrations/add-zoom-template.md
             - Slack: guides/authentication/sso-integrations/add-slack-template.md
-          - Configure WSO2 Identity Server as an application (inbound federation):
-            - Enterprise IdP:
-              - IWA: guides/authentication/enterprise-login/add-iwa-login.md
-              - AD FS: guides/authentication/enterprise-login/add-ad-fs-login.md
-              - Microsoft 365: guides/authentication/enterprise-login/add-microsoft-365-login.md
-            - eID IdP:
-              - Signicat: guides/authentication/eid-login/add-signicat-login.md
-              - FranceConnect: guides/authentication/eid-login/add-franceconnect-login.md
-              - SwissID: guides/authentication/eid-login/add-swissid-login.md
-            - Social IdP:
-              - Overview: guides/authentication/social-login/index.md
-              - Facebook: guides/authentication/social-login/add-facebook-login.md
-              - Google: guides/authentication/social-login/add-google-login.md
-              - Github: guides/authentication/social-login/add-github-login.md
-              - Microsoft: guides/authentication/social-login/add-microsoft-login.md
-              - Apple: guides/authentication/social-login/add-apple-login.md
-              - X: guides/authentication/social-login/add-x-login.md
-            - Custom IdP: guides/authentication/configure-custom-connector.md
-            - Configure Just-in-Time (JIT) user provisioning for inbound federation: guides/authentication/jit-user-provisioning.md
-        - Passwordless login:
-          - Overivew: guides/authentication/passwordless-login/index.md
-          - Magic link: guides/authentication/passwordless-login/add-passwordless-login-with-magic-link.md
-          - Passkeys:
-            - Set up passkeys: guides/authentication/passwordless-login/add-passwordless-login-with-passkey.md
-            - Validate FIDO attestations: guides/authentication/passwordless-login/fido-attestation.md
-          - Email OTP: guides/authentication/passwordless-login/add-passwordless-login-with-email-otp.md
-          - SMS OTP: guides/authentication/passwordless-login/add-passwordless-login-with-sms-otp.md
-          - Push Notifications: guides/authentication/passwordless-login/add-passwordless-login-with-push-notification.md
-        - Multi-factor authentication:
-          - Overview: guides/authentication/mfa/index.md
-          - TOTP: guides/authentication/mfa/add-totp-login.md
-          - Email OTP: guides/authentication/mfa/add-emailotp-login.md
-          - Passkey: guides/authentication/mfa/add-passkey-login.md
-          - SMS OTP: guides/authentication/mfa/add-smsotp-login.md
-          - Push Notifications: guides/authentication/mfa/add-push-auth-login.md
-          - User-preferred MFA: guides/authentication/mfa/user-preferred-mfa-login.md
-          - x509 login : guides/authentication/mfa/add-x509-login.md
-        - Conditional authentication:
-          - Add conditional authentication: guides/authentication/conditional-auth/index.md
-          - Set up conditional authentication: guides/authentication/conditional-auth/configure-conditional-auth.md
-          - Access control templates:
-            - Overview: guides/authentication/conditional-auth/access-control.md
-            - Age-based: guides/authentication/conditional-auth/user-age-based-template.md
-            - Concurrent session-based: guides/authentication/conditional-auth/concurrent-session-based-template.md
-              #- Group-based access: guides/authentication/conditional-auth/group-based-template-access-control.md
-          - Adaptive MFA templates:
-            - Overview: guides/authentication/conditional-auth/adaptive-mfa.md
-            - User role: guides/authentication/conditional-auth/role-based-template.md
-            - Auth context: guides/authentication/conditional-auth/acr-based-adaptive-auth.md
-            - User store: guides/authentication/conditional-auth/user-store-based-template.md
-            - Login-attempts: guides/authentication/conditional-auth/login-attempt-based-template.md
-            - User group: guides/authentication/conditional-auth/group-based-template.md
-              #- MFA based on sign-in option: guides/authentication/conditional-auth/sign-in-option-based-template.md
-            - User device: guides/authentication/conditional-auth/new-device-based-template.md
-            - IP address: guides/authentication/conditional-auth/ip-based-template.md
-            - ELK-risk: guides/authentication/conditional-auth/elk-risk-based-template.md
-            - TypingDNA: guides/authentication/conditional-auth/typingdna-based-adaptive-auth.md
-          - Additional templates:
-            - Passkey progressive enrollment: guides/authentication/conditional-auth/passkey-progressive-enrollment-based-template.md
-            - Push notification device progressive enrollment: guides/authentication/conditional-auth/push-device-progressive-enrollment-based-template.md
-            - On-demand silent password migration: guides/authentication/conditional-auth/on-demand-silent-password-migration-template.md
-          - Custom authentication scripts:
-            - Write a custom script: guides/authentication/conditional-auth/write-your-first-script.md
-            - Scripting reference: references/conditional-auth/api-reference.md
-        - App-native authentication:
-          - App-native authentication: guides/authentication/app-native-authentication/index.md
-          - Add app-native authentication: guides/authentication/app-native-authentication/add-app-native-authentication.md
-          - Secure app-native authentication flows: guides/authentication/app-native-authentication/secure-app-native-authentication-flows.md
-          - Handle advanced login scenarios: guides/authentication/app-native-authentication/handle-advanced-login-scenarios.md
-        - Login Flow AI: guides/authentication/login-flow-ai.md
-        - OpenID Connect flows:
-          - OIDC flows: guides/authentication/oidc/index.md
-          - Discover OIDC endpoints: guides/authentication/oidc/discover-oidc-configs.md
-          - Request user information: guides/authentication/oidc/request-user-info.md
-          - Login:
-            - Authorization code flow: guides/authentication/oidc/implement-auth-code.md
-            - Authorization code flow with PKCE: guides/authentication/oidc/implement-auth-code-with-pkce.md
-            - Hybrid flow: guides/authentication/oidc/implement-oidc-hybrid-flow.md
-            - Device Authorization flow: guides/authentication/oidc/implement-device-flow.md
-            - Pushed authorization requests: guides/authentication/oidc/implement-login-with-par.md
-          - Client authentication:
-            - Private key JWT client authentication: guides/authentication/oidc/private-key-jwt-client-auth.md
-          - Token management:
-             - Validate tokens: guides/authentication/oidc/token-validation-resource-server.md
-             - Validate ID tokens: guides/authentication/oidc/validate-id-tokens.md
-             - Exchange tokens: guides/authentication/configure-token-exchange.md
-             - Revoke tokens: guides/authentication/oidc/revoke-tokens.md
-          - Logout:
-            - Logout: guides/authentication/oidc/add-logout.md
-            - Back-channel logout: guides/authentication/oidc/add-back-channel-logout.md
-            - Federated IdP-initiated logout: guides/authentication/oidc/oidc-federated-idp-initiated-logout.md 
-          - Advanced flows:
-            - JWT Secured Authorization Response Mode (JARM) for OAuth 2.0: guides/authentication/oidc/jarm.md
-        - SAML SSO flows:
-          - SAML SSO flows: guides/authentication/saml/index.md
-          - Discover SAML endpoints and settings: guides/authentication/saml/discover-saml-configs.md
-          - Single Sign-On (SSO):
-            - Federated IdP-initiated SSO: guides/authentication/saml/saml-federated-idp-initiated-sso.md
-        - Verify identities during login:
-          - Verify identities during login: guides/identity-verification/index.md
-          - Configure an identity verification provider: guides/identity-verification/configure-identity-verification-provider.md
+        - Just-in-Time (JIT) user provisioning: guides/authentication/jit-user-provisioning.md   
         - Handle user attributes during login:
           - Request user attributes:
             - Request user attributes: guides/authentication/user-attributes/index.md
