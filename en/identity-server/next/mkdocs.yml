@@ -528,8 +528,8 @@ nav:
             - Custom authentication scripts:
               - Write a custom script: guides/authentication/conditional-auth/write-your-first-script.md
               - Scripting reference: references/conditional-auth/api-reference.md
-          - Native-login:
-            - Native-login: guides/authentication/app-native-authentication/index.md
+          - App-native authentication:
+            - App-native authentication: guides/authentication/app-native-authentication/index.md
             - Add app-native authentication: guides/authentication/app-native-authentication/add-app-native-authentication.md
             - Secure app-native authentication flows: guides/authentication/app-native-authentication/secure-app-native-authentication-flows.md
             - Handle advanced login scenarios: guides/authentication/app-native-authentication/handle-advanced-login-scenarios.md
