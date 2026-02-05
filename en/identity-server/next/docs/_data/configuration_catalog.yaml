@@ -1,0 +1,36 @@
+sections:
+  - id: server
+    title: Server
+    required: true
+    description: >
+      Configurations required for deploying and identifying a WSO2 Identity Server node.
+
+    configs:
+      - key: hostname
+        toml_path: server.hostname
+        type: string
+        required: true
+        default: localhost
+        restart_required: true
+        scope: [startup]
+        security:
+          sensitive: false
+        description: >
+          The hostname of the machine hosting the Identity Server instance.
+        example: identity.example.com
+
+      - key: node_ip
+        toml_path: server.node_ip
+        type: string
+        required: true
+        default: 127.0.0.1
+        restart_required: true
+        scope: [startup]
+        security:
+          sensitive: false
+        description: >
+          The IP address of the machine hosting the Identity Server instance.
+        example: 10.0.0.12
+  
+  
+

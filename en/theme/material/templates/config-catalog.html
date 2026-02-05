@@ -1,0 +1,79 @@
+<!--
+ * Copyright (c) 2024, WSO2 LLC. (https://www.wso2.com).
+ *
+ * WSO2 LLC. licenses this file to you under the Apache License,
+ * Version 2.0 (the "License"); you may not use this file except
+ * in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing,
+ * software distributed under the License is distributed on an
+ * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ * KIND, either express or implied. See the License for the
+ * specific language governing permissions and limitations
+ * under the License.
+-->
+
+{% extends "base.html" %}
+
+{% block styles %}
+  {{ super() }}
+  <link rel="stylesheet" href="{{ 'assets/css/config-catalog.css' | url }}">
+{% endblock %}
+
+{% block container %}
+  <div class="md-content" data-md-component="content">
+    <article class="md-content__inner md-typeset">
+      <h1 class="md-typeset">Configuration catalog</h1>
+
+      <p class="md-typeset">
+        The configuration model of WSO2 Identity Server is based on the toml format.
+        The <code>&lt;IS_HOME&gt;/repository/conf/deployment.toml</code> file is the single source used to configure and tune various features.
+      </p>
+
+      <p class="md-typeset">
+        This document describes all the configuration parameters used in {{ config.extra.product_name }}
+      </p>
+
+      {% for section in config.extra.configuration_catalog.sections %}
+        <h2 class="md-typeset">{{ section.title }}</h2>
+        <p class="md-typeset">{{ section.description }}</p>
+
+        <div class="configuration-section">
+            <div class="configuration-example-toggle">
+            </div>
+          <div class="configuration-example highlight">
+            <pre><span></span><code class="language-toml">[{{ section.id }}]
+{% for param in section.configs -%}
+{{ param.key }} = {{ param.default }}
+{% endfor -%}
+            </code></pre>
+            </div>
+          <div class="configuration-parameters">
+            <div class="configuration-parameters-header">
+                <code>[{{ section.id }}]</code>
+                <span class="badge-required">{% if section.required %}Required{% else %}{% endif %}</span>
+            </div>
+            <div class="configuration-parameter-wrap">
+            {% for param in section.configs %}
+              <div class="configuration-parameter">
+                <h3 class="configuration-parameter-name">{{ param.key }}</h3>
+                <p class="configuration-parameter-description">{{ param.description }}</p>
+                <p class="configuration-parameter-default"><strong>Default:</strong> <code>{{ param.default }}</code></p>
+                {% if param.example %}
+                  <div class="configuration-parameter-example">
+                    <strong>Example:</strong>
+                    <pre><code class="language-toml">{{ param.example }}</code></pre>
+                  </div>
+                {% endif %}
+              </div>
+            {% endfor %}
+            </div>
+        </div>
+      {% endfor %}
+
+    </article>
+  </div>
+{% endblock %}
