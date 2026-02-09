@@ -24,56 +24,106 @@
 {% endblock %}
 
 {% block container %}
-  <div class="md-content" data-md-component="content">
-    <article class="md-content__inner md-typeset">
-      <h1 class="md-typeset">Configuration catalog</h1>
 
-      <p class="md-typeset">
+    <div class="md-content" data-md-component="content">
+    <article class="md-content__inner md-typeset">
+
+      <h1 id="configuration-catalog">
+        Configuration catalog
+        <a class="headerlink" href="#configuration-catalog" title="Permanent link">¶</a>
+      </h1>
+
+      <p>
         The configuration model of WSO2 Identity Server is based on the toml format.
         The <code>&lt;IS_HOME&gt;/repository/conf/deployment.toml</code> file is the single source used to configure and tune various features.
       </p>
 
-      <p class="md-typeset">
-        This document describes all the configuration parameters used in {{ config.extra.product_name }}
+      <p>
+        This document describes all the configuration parameters used in {{ config.extra.product_name }}.
       </p>
 
       {% for section in config.extra.configuration_catalog.sections %}
-        <h2 class="md-typeset">{{ section.title }}</h2>
-        <p class="md-typeset">{{ section.description }}</p>
+        <h2 id="{{ section.hyperlink }}">
+          {{ section.title }}
+          <a class="headerlink" href="#{{ section.hyperlink }}" title="Permanent link">¶</a>
+        </h2>
 
-        <div class="configuration-section">
-            <div class="configuration-example-toggle">
-            </div>
-          <div class="configuration-example highlight">
-            <pre><span></span><code class="language-toml">[{{ section.id }}]
+        <div class="mb-config-catalog">
+          <section>
+            <div class="mb-config-options">
+              <div class="superfences-tabs">
+                <input type="checkbox" id="toggle-{{ section.id }}" class="toggle-checkbox" />
+                <label for="toggle-{{ section.id }}" class="toggle-label"></label>
+                <i class="icon fa fa-code"></i>
+
+                <div class="superfences-content">
+                  <div class="mb-config-example">
+                    <pre><code class="language-toml">[{{ section.id }}]
 {% for param in section.configs -%}
 {{ param.key }} = {{ param.default }}
 {% endfor -%}
-            </code></pre>
-            </div>
-          <div class="configuration-parameters">
-            <div class="configuration-parameters-header">
-                <code>[{{ section.id }}]</code>
-                <span class="badge-required">{% if section.required %}Required{% else %}{% endif %}</span>
-            </div>
-            <div class="configuration-parameter-wrap">
-            {% for param in section.configs %}
-              <div class="configuration-parameter">
-                <h3 class="configuration-parameter-name">{{ param.key }}</h3>
-                <p class="configuration-parameter-description">{{ param.description }}</p>
-                <p class="configuration-parameter-default"><strong>Default:</strong> <code>{{ param.default }}</code></p>
-                {% if param.example %}
-                  <div class="configuration-parameter-example">
-                    <strong>Example:</strong>
-                    <pre><code class="language-toml">{{ param.example }}</code></pre>
+</code></pre>
                   </div>
-                {% endif %}
+                </div>
               </div>
-            {% endfor %}
+
+              <div class="doc-wrapper">
+                <div class="mb-config">
+                  <div class="config-wrap">
+                    <code>[{{ section.id }}]</code>
+                    <span class="badge-required">Required</span>
+                    <p>{{ section.description }}</p>
+                  </div>
+
+                  <div class="params-wrap">
+                    {% for param in section.configs %}
+                      <div class="param">
+                        <div class="param-name">
+                          <span class="param-name-wrap">
+                            <code>{{ param.key }}</code>
+                          </span>
+                        </div>
+
+                        <div class="param-info">
+                          <div>
+                            <p>
+                              <span class="param-type string">{{ param.type }}</span>
+                              {% if param.required %}
+                                <span class="badge-required">Required</span>
+                              {% endif %}
+                            </p>
+                            </div>
+
+                            <div class="param-default">
+                              <span class="param-default-value">
+                                Default: <code>{{ param.default }}</code>
+                              </span>
+                            </div>
+                            {% if param.possible_values %}
+                            <div class="param-possible">
+                              <span class="param-possible-values">
+                                Possible values: <code>{{ param.possible_values | join(', ') }}</code>
+                              </span>
+                            </div>
+                            {% endif %}
+                            <div class="param-description">
+                              <p>{{ param.description }}</p>
+                          </div>
+                        </div>
+                      </div>
+                    {% endfor %}
+                  </div>
+
+                </div>
+              </div>
+
             </div>
+          </section>
         </div>
       {% endfor %}
 
     </article>
   </div>
+
 {% endblock %}
+

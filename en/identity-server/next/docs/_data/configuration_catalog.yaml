@@ -1,5 +1,6 @@
 sections:
   - id: server
+    hyperlink: server
     title: Server
     required: true
     description: >
@@ -11,26 +12,54 @@ sections:
         type: string
         required: true
         default: localhost
-        restart_required: true
-        scope: [startup]
-        security:
-          sensitive: false
+        possible_values: ["localhost", "identity.example.com"]
         description: >
           The hostname of the machine hosting the Identity Server instance.
-        example: identity.example.com
 
       - key: node_ip
         toml_path: server.node_ip
         type: string
         required: true
         default: 127.0.0.1
-        restart_required: true
-        scope: [startup]
-        security:
-          sensitive: false
+        possible_values: ["127.0.0.1"]
         description: >
           The IP address of the machine hosting the Identity Server instance.
-        example: 10.0.0.12
+      
+      - key: database
+        toml_path: server.database
+        type: string
+        required: false
+        default: localhost
+        possible_values: ["localhost", "identity.example.com"]
+        description: >
+          The database of the machine hosting the Identity Server instance.
+  
+  - id: keystore.primary
+    hyperlink: primary-keystore
+    title: Primary keystore
+    required: true
+    description: >
+      Configurations related to the primary keystore.
+
+    configs:
+      - key: name
+        toml_path: keystore.hostname
+        type: string
+        required: true
+        default: localhost
+        possible_values: ["localhost", "identity.example.com"]
+        description: >
+          The hostname of the machine hosting the Identity Server instance.
+
+      - key: password
+        toml_path: keystore.node_ip
+        type: string
+        required: false
+        default: wso2carbon
+        possible_values: ["127.0.0.1"]
+        description: >
+          The password of the keystore file
+
   
   
 
