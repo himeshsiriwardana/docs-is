@@ -8,16 +8,14 @@ sections:
 
     configs:
       - key: hostname
-        toml_path: server.hostname
         type: string
         required: true
         default: localhost
-        possible_values: ["localhost", "identity.example.com"]
+        possible_values: [localhost","127.0.0.1"]
         description: >
           The hostname of the machine hosting the Identity Server instance.
 
       - key: node_ip
-        toml_path: server.node_ip
         type: string
         required: true
         default: 127.0.0.1
@@ -25,14 +23,13 @@ sections:
         description: >
           The IP address of the machine hosting the Identity Server instance.
       
-      - key: database
-        toml_path: server.database
+      - key: base_path
         type: string
         required: false
-        default: localhost
+        default: localhost:9443
         possible_values: ["localhost", "identity.example.com"]
         description: >
-          The database of the machine hosting the Identity Server instance.
+          Defines the base path URL to access the server.
   
   - id: keystore.primary
     hyperlink: primary-keystore
@@ -43,7 +40,6 @@ sections:
 
     configs:
       - key: name
-        toml_path: keystore.hostname
         type: string
         required: true
         default: localhost
@@ -52,7 +48,6 @@ sections:
           The hostname of the machine hosting the Identity Server instance.
 
       - key: password
-        toml_path: keystore.node_ip
         type: string
         required: false
         default: wso2carbon
