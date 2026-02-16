@@ -1031,6 +1031,7 @@ nav:
             - Manage CA-Signed certificates in a keystore: deploy/security/keystores/manage-ca-signed-certificates-in-a-keystore.md
             - Configure custom keystores for authentication protocols: deploy/security/keystores/configure-custom-keystores.md
       - Deploy:
+        - Deploy: deploy/index.md
         - Deployment overview:
           - Deployment Patterns: deploy/deployment-guide.md
           - Deployment Checklist: deploy/deployment-checklist.md
