@@ -8,6 +8,7 @@
     max-width: 770px;
     border: 1px solid #f5f5f5;
     padding: 0 1em 1em;
+    overflow-x: hidden;
 }
 
 /* ---------------------------
@@ -75,6 +76,7 @@
 /* Show sample when checked */
 .mb-config-catalog .superfences-tabs > input.toggle-checkbox:checked ~ .superfences-content {
     display: block;
+    max-width: 100%;
 }
 
 /* Docs content stays visible */
@@ -124,11 +126,10 @@
     display: table-row;
 }
 
-.mb-config-catalog > section > .mb-config-options,
-.mb-config-catalog > section > .mb-config-example {
+.mb-config-catalog > section > .mb-config-options{
     display: table-cell;
     flex-direction: column;
-    max-width: 770px;
+    max-width: 736px;
 }
 
 .mb-config-catalog > section > .mb-config-example > .example-config-wrap {

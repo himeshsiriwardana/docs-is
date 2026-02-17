@@ -42,6 +42,18 @@
         This document describes all the configuration parameters used in {{ config.extra.product_name }}.
       </p>
 
+      <div class="mb-task-filter">
+        <label for="mbTaskSelect">I want to:</label>
+        <select id="mbTaskSelect">
+          <option value="">All configurations</option>
+          <option value="minimum-required">Configure the minimum required settings</option>
+          <option value="connect-database">Connect an external database</option>
+          <option value="enable-oauth">Enable OAuth for applications</option>
+        </select>
+        <button type="button" id="mbTaskClear">Clear</button>
+      </div>
+
+
       {% for section in config.extra.configuration_catalog.sections %}
         <h2 id="{{ section.hyperlink }}">
           {{ section.title }}

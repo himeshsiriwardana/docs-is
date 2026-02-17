@@ -3,6 +3,7 @@ sections:
     hyperlink: server
     title: Server
     required: true
+    tasks: [minimum-required]
     description: >
       Configurations required for deploying and identifying a WSO2 Identity Server node.
 
@@ -11,30 +12,33 @@ sections:
         type: string
         required: true
         default: localhost
-        possible_values: [localhost","127.0.0.1"]
+        possible_values: [localhost,127.0.0.1,<any-ip-address>,<any-hostname>]
         description: >
           The hostname of the machine hosting the Identity Server instance.
-
       - key: node_ip
         type: string
         required: true
         default: 127.0.0.1
-        possible_values: ["127.0.0.1"]
         description: >
           The IP address of the machine hosting the Identity Server instance.
-      
       - key: base_path
         type: string
-        required: false
-        default: localhost:9443
-        possible_values: ["localhost", "identity.example.com"]
+        required: true
+        default: ${carbon.protocol}://${carbon.host}:${carbon.management.port}
         description: >
           Defines the base path URL to access the server.
+      - key: serverDetails
+        type: string
+        required: true
+        default: WSO2 IS as KM 5.11.0
+        description: >
+          Description of the server.
   
   - id: keystore.primary
     hyperlink: primary-keystore
     title: Primary keystore
     required: true
+    tasks: [minimum-required]
     description: >
       Configurations related to the primary keystore.
 
@@ -54,6 +58,155 @@ sections:
         possible_values: ["127.0.0.1"]
         description: >
           The password of the keystore file
+  
+  - id: super_admin
+    hyperlink: super-admin
+    title: Super admin
+    required: true
+    tasks: [minimum-required]
+    description: >
+      This includes the configurations related to the super admin user.
+
+    configs:
+      - key: username
+        type: string
+        required: true
+        default: admin@wso2.com
+        description: >
+          The username of the super admin user.
+
+      - key: password
+        type: string
+        required: false
+        default: wso2123
+        description: >
+          The password of the super admin user.
+
+  - id: database.shared_db
+    hyperlink: shared-database-configurations
+    title: Shared database configurations
+    required: true
+    tasks: [minimum-required]
+    description: >
+      Configurations related to the databases shared between nodes.
+
+    configs:
+      - key: url
+        type: string
+        required: true
+        default: jdbc:mysql://localhost:3306/openbank_govdb?autoReconnect=true&amp;useSSL=false
+        possible_values: ["localhost", "identity.example.com"]
+        description: >
+          The database connection URL that your DBMS JDBC driver uses to connect to the openbank_govdb database.
+      
+      - key: username
+        type: string
+        required: true
+        default: root
+        description: >
+          The username used for the database connection.
+
+      - key: password
+        type: string
+        required: false
+        default: wso2carbon
+        possible_values: ["127.0.0.1"]
+        description: >
+          The password used for the database connection.
+
+  - id: database.shared_db.pool_options
+    hyperlink: shared-database-connection-pool-configurations
+    title: Shared database connection pool configurations
+    required: true
+    tasks: [minimum-required]
+    description: >
+      Configurations related to the database connection pool of the shared databases.
+
+    configs:
+      - key: maxActive
+        type: string
+        required: true
+        default: 150
+        description: >
+          Tuning parameters. Change according to the preferred database.  
+      - key: maxWait
+        type: string
+        required: true
+        default: 60000
+        description: >
+          Tuning parameters. Change according to the preferred database.
+      - key: minIdle
+        type: string
+        required: false
+        default: 5
+        description: >
+          Tuning parameters. Change according to the preferred database.
+      - key: testOnBorrow
+        type: string
+        required: false
+        default: true
+        possible_values: [true,false]
+        description: >
+          Tuning parameters. Change according to the preferred database.
+  
+  - id: database.shared_db.pool_options
+    hyperlink: shared-database-connection-pool-configurations
+    title: Shared database connection pool configurations
+    required: true
+    tasks: [minimum-required]
+    description: >
+      Configurations related to the database connection pool of the shared databases.
+
+    configs:
+      - key: maxActive
+        type: string
+        required: true
+        default: 150
+        description: >
+          Tuning parameters. Change according to the preferred database.  
+      - key: maxWait
+        type: string
+        required: true
+        default: 60000
+        description: >
+          Tuning parameters. Change according to the preferred database.
+      - key: minIdle
+        type: string
+        required: false
+        default: 5
+        description: >
+          Tuning parameters. Change according to the preferred database.
+      - key: testOnBorrow
+        type: string
+        required: false
+        default: true
+        possible_values: [true,false]
+        description: >
+          Tuning parameters. Change according to the preferred database.
+  
+  - id: oauth.endpoints
+    hyperlink: oauth-endpoints
+    title: OAuth endpoints
+    required: true
+    tasks: [minimum-required]
+    description: >
+      The OAuth endpoints for the Identity Server.
+
+    configs:
+      - key: oauth2_consent_page
+        type: string
+        required: true
+        default: ${carbon.protocol}://localhost:${carbon.management.port}/ob/authenticationendpoint/oauth2_authz.do
+        description: >
+          The OAuth2 consent page URL for the Identity Server.
+      - key: oidc_consent_page
+        type: string
+        required: true
+        default: ${carbon.protocol}://localhost:${carbon.management.port}/ob/authenticationendpoint/oauth2_consent.do
+        description: >
+          The OIDC consent page URL for the Identity Server.
+
+  
 
   
   
