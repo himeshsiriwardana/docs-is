@@ -52,7 +52,7 @@ extra:
       description: Allow users to use biometrics for authentication.
       source_link: https://store.wso2.com/connector/identity-outbound-auth-iproov
       category: authentication
-      documentation_link: https://github.com/wso2-extensions/identity-outbound-auth-iproov/blob/main/README.md
+      documentation_link: iproov
     - name: Duo Security
       icon: assets/img/logo/duo-logo.png
       description: Provides two-factor authentication to secure your system.
@@ -1185,6 +1185,11 @@ nav:
       - Usage: connectors/onfido/usage.md
       - Reference: connectors/onfido/reference.md
       - Try it: connectors/onfido/try-it.md
+    - iProov:
+      - Overview: connectors/iproov/overview.md
+      - Set up: connectors/iproov/set-up.md
+      - Usage: connectors/iproov/usage.md
+      - Reference: connectors/iproov/reference.md
   - APIs:
     - APIs: apis/index.md
     - System APIs:

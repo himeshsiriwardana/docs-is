@@ -262,6 +262,8 @@ extra:
       icon: assets/images/sift-logo.svg
     Onfido:
       icon: assets/images/onfido-logo.svg
+    iProov:
+      icon: assets/images/iproov-logo.svg
   
   connectors:
     - name: Sift

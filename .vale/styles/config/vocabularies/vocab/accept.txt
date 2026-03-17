@@ -39,3 +39,8 @@ backchannel
 frontchannel
 URL
 timeframe
+iProov
+liveness
+deepfake
+biometric
+biometrics
