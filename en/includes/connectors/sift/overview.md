@@ -1,4 +1,4 @@
-# Sift
+# Siftir
 
 [Sift](https://sift.com/){:target="_blank"} helps businesses prevent fraud, abuse, and account takeovers by analyzing user behavior and contextual data in real time. By combining signals like device fingerprinting, IP reputation, and behavioral patterns, Sift creates a dynamic risk score that helps businesses make smarter decisions and reduce false positives.
 
