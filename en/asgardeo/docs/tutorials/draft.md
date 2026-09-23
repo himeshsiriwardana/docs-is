@@ -1,665 +1,539 @@
----
+# Why Your MCP Token Expires Mid-Run — and How to Fix It
 
-title: "MCP and OAuth 2.1: What Actually Changed and Why It Matters"
+Your LangGraph agent connects to an MCP server. The first tool call works. Then, sometime later, the next call returns `401 Unauthorized`.
 
-slug: "/blog/mcp-oauth-2-1/"
+Nothing changed in the graph. The MCP server is still running. The tool is still available.
 
-meta_title: "MCP and OAuth 2.1: What Actually Changed and Why It Matters"
+The access token simply expired.
 
-meta_description: "OAuth 2.1 is not a new protocol. Here is precisely which constraints it tightens and what that means for an MCP implementation."
+That is easy to miss because authentication usually appears to be part of the connection setup. You create the MCP client, put an access token in its configuration, load the tools, and give those tools to LangGraph.
 
----
+```python
+client = MultiServerMCPClient(
+    {
+        "protected-server": {
+            "url": MCP_SERVER_URL,
+            "transport": "streamable_http",
+            "headers": {
+                "Authorization": f"Bearer {access_token}",
+            },
+        }
+    }
+)
+```
 
-# MCP and OAuth 2.1: What Actually Changed and Why It Matters**
+The agent can now call the protected tools.
 
-You open the MCP authorization specification to protect a server and run into a version number you were not planning to learn: **OAuth 2.1****.
+But an access token is temporary. A token that was valid when the client was created may no longer be valid when an agent invokes a tool 30 minutes later.
 
-If you already know OAuth 2.0, the name makes the change sound larger than it is. There is no new token type to learn, no replacement for the authorization code flow, and no new set of actors. You still have a client asking for access, an authorization server issuing tokens, and a resource server accepting them.
+This creates a different problem from initially authorizing an MCP connection.
 
-OAuth 2.1 mostly takes the OAuth practices developers have spent years adding on top of OAuth 2.0 and makes them the normal path.
+OAuth can give your application a new access token. The harder part is making sure the MCP request uses that new token instead of continuing to send the credential that was captured earlier.
 
-Some older options disappear. PKCE moves into the authorization code flow. Redirect URIs become stricter. Access tokens stay out of URLs.
+In this guide, we will build that refresh path around the MCP client's HTTP client factory. Instead of treating authentication as a value that is fixed when the MCP client starts, the factory can obtain the credential needed for the request when the HTTP client is created.
 
-For an MCP client, the result is a smaller set of authorization patterns to support.
+We will also look at a second problem that can appear very similar: MCP sessions are stateless by default in the LangGraph MCP adapter. If a server expects initialization state to survive between tool calls, refreshing the token alone will not fix it.
 
-This article covers the changes you are most likely to encounter while implementing MCP authorization, why they fit agent-based applications, and the extra discovery and resource rules MCP adds around OAuth.
+By the end, the flow will look like this:
 
-## OAuth 2.1 is a consolidation, not a reinvention**
-
-OAuth 2.0 was designed as a framework. It deliberately supported several kinds of clients and several ways of getting tokens.
-
-Over time, experience showed that some of those choices were safer than others. New RFCs and security guidance filled the gaps: PKCE protected authorization codes, native-app guidance tightened redirect handling, and the OAuth security best current practice deprecated older flows.
-
-OAuth 2.1 pulls that accumulated guidance back into a single framework.
-
-The easiest way to read it is:
-
-> If you already implement modern OAuth 2.0 correctly, OAuth 2.1 should look familiar.
-
-The basic roles are unchanged.
-
-- The **client**** requests access. In MCP, this is the application connecting to a protected MCP server.
-
-- The **authorization server**** authenticates the user, obtains authorization when needed, and issues tokens.
-
-- The **resource server**** receives the access token and protects the API. In this case, that is the MCP server.
-
-OAuth 2.1 narrows how those roles interact. For MCP, four changes are especially visible: PKCE is part of the authorization code flow, the implicit and password grants are gone, redirect URIs are matched exactly, and bearer tokens are not sent in query strings.
-
-## The OAuth 2.1 changes you see in MCP**
-
-### PKCE is required for authorization code flows**
-
-In an authorization code flow, the client sends the user to the authorization server. After login and authorization, the browser returns with a short-lived authorization code.
-
-The client then exchanges that code for tokens.
-
-Without another proof attached to the flow, an intercepted authorization code may be useful to whoever captures it.
-
-PKCE adds that proof.
-
-Before opening the authorization request, the client creates a random value called a \`code_verifier\`. It hashes that value to create a \`code_challenge\`.
-
-\`\`\`text
-
-code_verifier
-
+```text
+LangGraph agent
       |
-
-      | SHA-256
-
       v
-
-code_challenge
-
-\`\`\`
-
-The client sends the challenge in the authorization request but keeps the verifier.
-
-Later, when it exchanges the authorization code for tokens, it sends the original verifier. The authorization server computes the challenge again and compares it with the one from the original request.
-
-An intercepted authorization code is therefore not enough by itself.
-
-In OAuth 2.1, PKCE is part of the authorization code flow rather than an optional enhancement you need to remember separately.
-
-### The implicit grant is removed**
-
-OAuth 2.0 allowed browser-based clients to use the implicit grant and receive an access token directly from the authorization endpoint.
-
-A simplified implicit flow looked like this:
-
-\`\`\`text
-
-Browser -> Authorization server -> Access token -> Browser
-
-\`\`\`
-
-OAuth 2.1 removes that grant.
-
-The preferred shape is the authorization code flow with PKCE:
-
-\`\`\`text
-
-Browser -> Authorization server -> Authorization code -> Client
-
-                                                   |
-
-                                                   v
-
-                                             Token endpoint
-
-                                                   |
-
-                                                   v
-
-                                              Access token
-
-\`\`\`
-
-The browser still handles the user's interaction with the authorization server, but the access token no longer needs to arrive through the browser redirect.
-
-For an MCP application, the client can open the authorization page, receive a code at its callback, and perform the token exchange itself.
-
-### The password grant is removed**
-
-The Resource Owner Password Credentials grant allowed an application to collect a user's username and password and exchange them for a token.
-
-That makes the OAuth client responsible for handling credentials that should normally be entered only at the identity provider.
-
-OAuth 2.1 removes the grant.
-
-An MCP client should therefore not respond to an authorization requirement by asking:
-
-\`\`\`text
-
-Username:
-
-Password:
-
-\`\`\`
-
-and forwarding those credentials to the authorization server.
-
-Instead, the client sends the user to the authorization server. Login, MFA, passkeys, conditional access, and other authentication steps remain there. The MCP client receives delegated credentials such as access and refresh tokens, not the user's account password.
-
-### Redirect URIs use exact string matching**
-
-After authorization, the authorization server needs to know where it is allowed to return the user.
-
-That destination is the client's redirect URI.
-
-For example:
-
-\`\`\`text
-
-http://127.0.0.1:8765/callback
-
-\`\`\`
-
-OAuth 2.1 requires redirect URIs to be matched using exact string comparison, with the loopback-port behavior used by native applications handled separately.
-
-If the registered redirect URI is:
-
-\`\`\`text
-
-https://client.example.com/oauth/callback
-
-\`\`\`
-
-the authorization server should not treat this as the same redirect:
-
-\`\`\`text
-
-https://client.example.com/anything-else
-
-\`\`\`
-
-just because it shares the same host.
-
-For client implementations, the practical rule is simple: register the complete callback URI and send the expected URI in the authorization request rather than depending on wildcard or partial matching.
-
-### Bearer tokens stay out of query strings**
-
-OAuth 2.0 bearer-token usage historically allowed an access token to appear in a URI query parameter.
-
-For example:
-
-\`\`\`text
-
-https://mcp.example.com/mcp?access_token=eyJ...
-
-\`\`\`
-
-OAuth 2.1 omits that method.
-
-URLs are routinely copied into logs and traces, and they can also surface in browser history or debugging output. Putting a bearer credential there makes accidental exposure much easier.
-
-For MCP over HTTP, send the bearer token in the \`Authorization\` header:
-
-\`\`\`http
-
+MCP tool invocation
+      |
+      v
+client factory
+      |
+      +----> obtain current credential
+      |
+      v
+MCP HTTP client
+      |
+      v
+protected MCP server
+```
+
+LangGraph still does not manage OAuth tokens. It receives MCP tools and decides when to call them. Credential lifetime remains part of the application around the MCP connection.
+
+## The symptom
+
+The simplest version looks like this:
+
+```text
+Tool call 1
+POST /mcp
 Authorization: Bearer eyJ...
+200 OK
 
-\`\`\`
+Tool call 2
+POST /mcp
+Authorization: Bearer eyJ...
+401 Unauthorized
+```
 
-The MCP server then validates the token before allowing access to the protected resource.
+The same bearer token appears in both requests.
 
-## How those changes fit agent flows**
+That is fine while the token is valid. Once it expires, the server rejects it.
 
-OAuth 2.1 was not designed only for AI agents. The same rules apply to ordinary applications.
+For a short interactive request, you might never notice. For a long-running agent, the problem becomes much easier to reproduce. The agent can begin a workflow with a valid token, spend time reasoning or waiting for other operations, and reach another MCP tool after the token lifetime has passed.
 
-Agents simply create a useful environment for seeing why those rules exist.
+A similar problem was raised by users of `langchain-mcp-adapters`, including requests for a way to supply authentication dynamically rather than putting a fixed bearer token in the original connection configuration. One issue describes the desired behavior as providing a token function at request time rather than a static `Authorization` header.
 
-A traditional application often exposes the API action directly to the user. The user clicks **Connect calendar****, completes authorization, and then uses the calendar feature.
+Another report describes the operational consequence directly: applications using JWT bearer authentication have to refresh the token before expiry themselves.
 
-An agent may encounter authorization halfway through a task.
+The authentication server is not necessarily the problem here. Your application may already know how to refresh the token.
 
-The user asks:
+The problem is getting the refreshed credential into the next MCP request.
 
-\`\`\`text
+## Why the auth object is evaluated once
 
-Move my meeting with Maya to Friday afternoon.
+A typical MCP configuration is created before the agent starts running:
 
-\`\`\`
-
-The agent decides it needs a calendar tool. The MCP server hosting that tool requires authorization, so the client has to interrupt the run, obtain access from the user, and then continue.
-
-That authorization step moves through the agent runtime, the MCP client, the browser, and back into the application before the tool call finally reaches the MCP server. OAuth 2.1 narrows how credentials and authorization responses move through that path.
-
-### PKCE protects the return from the browser**
-
-Desktop and local agent applications commonly open authorization in the user's browser and receive the result through a callback.
-
-The browser returns an authorization code, but the token exchange also requires the \`code_verifier\` created by the client before the browser was opened.
-
-Capturing the callback alone does not provide everything required to exchange the code.
-
-### Removing the implicit grant keeps tokens out of the browser redirect**
-
-The browser participates because the user needs somewhere to authenticate and approve access.
-
-It does not need to carry the agent's access token back in the redirect.
-
-With authorization code plus PKCE, the browser returns a temporary code. The client exchanges it at the token endpoint and keeps the resulting credentials within the application.
-
-That gives the agent runtime a cleaner boundary between user interaction and credential handling.
-
-### Removing the password grant keeps user credentials away from the agent**
-
-An agent may eventually call several MCP servers operated by different organizations.
-
-Giving the agent the user's identity-provider password so it can obtain tokens would turn one credential into a credential available to the entire agent application.
-
-OAuth keeps the relationship narrower.
-
-The user authenticates with the authorization server. The client receives a token representing the access that was granted. The MCP server receives that token and decides whether it is acceptable for the requested operation.
-
-The password never needs to enter the agent's tool-calling path.
-
-### Exact redirect matching limits where the authorization response can return**
-
-An MCP client may run in a browser, on the desktop, or as part of a local development tool. Whatever the environment, the authorization server needs a clearly defined place to return the user after login.
-
-Exact redirect matching makes that destination explicit instead of allowing a broadly registered URL to cover unrelated paths.
-
-### Keeping tokens out of URLs reduces accidental exposure**
-
-Agent applications are often heavily instrumented, so request data can pass through tracing and debugging systems during development and production. URLs are especially likely to be recorded along the way.
-
-Keeping access tokens in the \`Authorization\` header does not remove the need for careful secret handling, but it avoids putting the credential in a field that infrastructure routinely records.
-
-None of these rules is specific to a language model. They simply fit an environment where authorization can be triggered dynamically and credentials may cross several application components before a tool call reaches the MCP server.
-
-## What MCP adds on top**
-
-OAuth 2.1 describes how a client obtains and uses authorization.
-
-MCP also needs to answer two practical questions:
-
-1\. **Which authorization server should the client use for this MCP server?****
-
-2\. **How does the client request a token intended for this particular MCP resource?****
-
-MCP uses existing OAuth standards for both.
-
-### Protected Resource Metadata**
-
-Imagine an MCP client connecting to:
-
-\`\`\`text
-
-https://mcp.example.com/mcp
-
-\`\`\`
-
-That server may validate access tokens without running the login or token endpoints itself.
-
-The authorization server may live at:
-
-\`\`\`text
-
-https://identity.example.com
-
-\`\`\`
-
-MCP uses **OAuth 2.0 Protected Resource Metadata****, defined by RFC 9728, so the resource server can publish the authorization servers that can be used with it.
-
-A simplified metadata document looks like this:
-
-\`\`\`json
-
-{
-
-  "resource": "https://mcp.example.com/mcp",
-
-  "authorization_servers": [
-
-    "https://identity.example.com"
-
-  ]
-
+```python
+connections = {
+    "orders": {
+        "url": MCP_SERVER_URL,
+        "transport": "streamable_http",
+        "headers": {
+            "Authorization": f"Bearer {token}",
+        },
+    }
 }
+```
 
-\`\`\`
+At that point, `token` is just a string.
 
-The client can then move through a discovery chain:
+The connection configuration now contains the value that existed when this dictionary was built. Updating some other variable later does not rewrite the header already stored in the connection.
 
-\`\`\`text
+That design is perfectly reasonable for credentials that do not change during the lifetime of the client. API keys often behave that way.
 
-MCP server
+OAuth access tokens do not.
 
-    |
+They have an expiry time and are expected to be replaced. An application that holds a refresh token, or otherwise knows how to obtain another access token, therefore needs a place where credential resolution can happen later in the request lifecycle.
 
-    v
+The MCP Python SDK exposes such a place through its HTTP client factory.
 
-Protected Resource Metadata
+The factory protocol receives three useful values:
 
-    |
+```python
+headers
+timeout
+auth
+```
 
-    v
+and returns the HTTP client used for the MCP connection. The SDK's implementation uses exactly those parameters when constructing its client.
 
-Authorization server
+That gives us a seam between:
 
-    |
+```text
+the MCP adapter deciding to make a request
+```
 
-    v
+and:
 
-Authorization Server Metadata
+```text
+the HTTP client actually sending that request
+```
 
-    |
+Instead of storing the final bearer token in the MCP configuration, we can resolve the current credential inside that seam.
 
-    v
+## The client-factory seam
 
-Authorization endpoint + token endpoint
+Start with a function in your application that owns the credential lifecycle.
 
-\`\`\`
+For example:
 
-The client does not need a hard-coded authorization endpoint for every MCP server it may encounter.
+```python
+async def get_access_token() -> str:
+    token = await token_store.get()
 
-### Resource indicators**
+    if token.expires_soon():
+        token = await oauth_client.refresh(token.refresh_token)
+        await token_store.save(token)
 
-MCP also uses the \`resource\` parameter from RFC 8707.
+    return token.access_token
+```
 
-When requesting authorization, the client identifies the protected resource it intends to access:
+The MCP layer does not need to know how the refresh happened.
 
-\`\`\`text
+`get_access_token()` might use a refresh token, workload identity, a token exchange, or another mechanism. Its job is simply to return an access token that can be used now.
 
-resource=https://mcp.example.com/mcp
+The client factory can then bridge that function into the MCP transport:
 
-\`\`\`
-
-The authorization server can then issue an access token for that resource.
-
-The same authorization server might issue tokens for several APIs. Naming the MCP resource prevents the client from treating a token intended for one service as a generic credential for every service that trusts the same issuer.
-
-So the layers look roughly like this:
-
-\`\`\`text
-
-OAuth 2.1
-
-    Authorization flow and token usage
-
-RFC 9728
-
-    Discover the authorization setup for the MCP resource
-
-RFC 8707
-
-    Identify the resource the client wants to access
-
-MCP
-
-    Defines how those pieces are used between MCP clients and servers
-
-\`\`\`
-
-## An annotated implementation**
-
-The following example shows the OAuth 2.1 pieces in one small Python client.
-
-It assumes that discovery has already given us the authorization and token endpoints. A production MCP client would normally discover those endpoints from the MCP server's Protected Resource Metadata and the authorization server's metadata rather than hard-code them.
-
-Install the dependency first:
-
-\`\`\`bash
-
-pip install httpx
-
-\`\`\`
-
-Set the client ID supplied by your authorization server:
-
-\`\`\`bash
-
-export MCP_CLIENT_ID="<your-client-id>"
-
-\`\`\`
-
-Then run the client:
-
-\`\`\`python
-
-import base64
-
-import hashlib
-
-import os
-
-import secrets
-
-import urllib.parse
-
+```python
 import httpx
 
 
+async def create_authenticated_client(
+    headers=None,
+    timeout=None,
+    auth=None,
+):
+    access_token = await get_access_token()
 
-AUTHORIZATION_ENDPOINT = "https://identity.example.com/oauth2/authorize"
+    request_headers = dict(headers or {})
+    request_headers["Authorization"] = f"Bearer {access_token}"
 
-TOKEN_ENDPOINT = "https://identity.example.com/oauth2/token"
+    return httpx.AsyncClient(
+        headers=request_headers,
+        timeout=timeout,
+        auth=auth,
+        follow_redirects=True,
+    )
+```
 
-CLIENT_ID = os.environ["MCP_CLIENT_ID"]
+Conceptually, the important change is small.
 
-# OAuth 2.1: use the complete registered callback URI.
+Instead of:
 
-REDIRECT_URI = "http://127.0.0.1:8765/callback"
+```text
+construct MCP client
+    ↓
+read token once
+    ↓
+reuse captured token
+```
 
-# MCP + RFC 8707: identify the protected MCP resource.
+we want:
 
-RESOURCE = "https://mcp.example.com/mcp"
+```text
+MCP request needs an HTTP client
+    ↓
+resolve current token
+    ↓
+construct authenticated HTTP client
+    ↓
+send request
+```
 
+The MCP SDK's client-factory protocol is designed to receive the connection's existing headers, timeout and authentication configuration, so a custom factory does not need to throw those settings away.
 
+The runnable example for this article should make expiry deliberately easy to reproduce.
 
-# OAuth 2.1: authorization code flows use PKCE.
+For example, configure the test authorization server to issue a token that lasts only a few seconds:
 
-# Create a fresh high-entropy verifier for this authorization attempt.
+```text
+access_token_1
+expires_in: 5
+```
 
-code_verifier = secrets.token_urlsafe(64)
+Run the first tool:
 
-# OAuth 2.1: use the S256 PKCE challenge method.
+```text
+tool call → access_token_1 → 200
+```
 
-digest = hashlib.sha256(code_verifier.encode("ascii")).digest()
+Wait until it expires.
 
-code_challenge = (
+Then run the second tool:
 
-    base64.urlsafe_b64encode(digest)
+```text
+tool call
+    ↓
+factory asks for credential
+    ↓
+application refreshes token
+    ↓
+access_token_2
+    ↓
+200
+```
 
-    .rstrip(b"=")
+The test should fail when the connection uses a static header and pass when it uses the factory.
 
-    .decode("ascii")
+That gives us something much more useful than assuming refresh works because the application successfully obtained a second token.
 
-)
+We prove that the second **MCP request actually sends it**.
 
-# Recommended OAuth protection for correlating the callback
+## Carrying per-request context safely
 
-# with the authorization request that started it.
+Token refresh becomes slightly more complicated once multiple users can run agents at the same time.
 
-state = secrets.token_urlsafe(32)
+Consider this function:
 
+```python
+CURRENT_TOKEN = None
+```
 
+Request A starts:
 
-authorization_params = {
+```text
+CURRENT_TOKEN = Alice's token
+```
 
-    # OAuth 2.1: request an authorization code.
+Before its MCP tool runs, request B starts:
 
-    # The implicit response_type=token flow is not used.
+```text
+CURRENT_TOKEN = Bob's token
+```
 
-    "response_type": "code",
+The factory now asks for `CURRENT_TOKEN`.
 
-    "client_id": CLIENT_ID,
+Alice's MCP request could leave the application carrying Bob's credential.
 
-    # OAuth 2.1: send the complete registered redirect URI.
+The fix is not to make the factory global-state-aware. The credential needs to follow the request that owns it.
 
-    "redirect_uri": REDIRECT_URI,
+In Python, `ContextVar` is one way to carry that request-local information through asynchronous execution:
 
-    # OAuth 2.1: bind the authorization code to this client instance.
+```python
+from contextvars import ContextVar
 
-    "code_challenge": code_challenge,
+current_user = ContextVar("current_user")
+```
 
-    "code_challenge_method": "S256",
+At the start of the application request:
 
-    # MCP + RFC 8707: request access for this MCP server.
+```python
+token = current_user.set(user_id)
 
-    "resource": RESOURCE,
+try:
+    result = await agent.ainvoke(input)
+finally:
+    current_user.reset(token)
+```
 
-    "state": state,
+The credential resolver can then use that context:
 
-}
+```python
+async def get_access_token():
+    user_id = current_user.get()
+    token = await token_store.get(user_id)
 
+    if token.expires_soon():
+        token = await refresh_token(token)
+        await token_store.save(user_id, token)
 
+    return token.access_token
+```
 
-authorization_url = (
+The factory itself remains simple:
 
-    AUTHORIZATION_ENDPOINT
+```text
+factory
+   ↓
+find current request/user
+   ↓
+load that user's credential
+   ↓
+refresh if necessary
+   ↓
+create HTTP client
+```
 
-    + "?"
+There is another concurrency case to handle: two tool calls can notice that the same token is about to expire at almost the same time.
 
-    + urllib.parse.urlencode(authorization_params)
+Both may attempt a refresh.
 
-)
+If the authorization server rotates refresh tokens, the first refresh can invalidate the credential being used by the second.
 
-print("Open this URL in a browser:")
+Your token store therefore needs synchronization around refresh:
 
-print(authorization_url)
+```python
+async with refresh_lock(user_id):
+    token = await token_store.get(user_id)
 
-# For a compact example, paste the callback URL after authorization.
+    if token.expires_soon():
+        token = await refresh_token(token)
+        await token_store.save(user_id, token)
+```
 
-# A desktop or web client would normally receive this automatically.
+Recheck the token after acquiring the lock. Another request may already have refreshed it while this request was waiting.
 
-callback_url = input("\nPaste the callback URL: ").strip()
+The rule is straightforward: credentials belong to the user and request that obtained them. They should not become shared mutable state merely because the MCP client is shared.
 
-callback = urllib.parse.urlparse(callback_url)
+## The other half — stateless sessions
 
-callback_params = urllib.parse.parse_qs(callback.query)
+A `401` points toward authentication.
 
-returned_state = callback_params.get("state", [None])[0]
+But another MCP failure can appear immediately after the first successful tool call even when the access token is still valid.
 
-if returned_state != state:
+Imagine an MCP server exposing these tools:
 
-    raise RuntimeError("Authorization response state did not match.")
+```text
+initialize_workspace()
+search_workspace()
+```
 
-authorization_code = callback_params.get("code", [None])[0]
+The first tool stores information in the server session.
 
-if not authorization_code:
+The agent calls:
 
-    raise RuntimeError("Authorization response did not contain a code.")
+```text
+initialize_workspace()
+```
 
+and receives a successful response.
 
+It then calls:
 
-token_response = httpx.post(
+```text
+search_workspace()
+```
 
-    TOKEN_ENDPOINT,
+and the server responds:
 
-    data={
+```text
+workspace not initialized
+```
 
-        "grant_type": "authorization_code",
+The problem can be the MCP session rather than the token.
 
-        "client_id": CLIENT_ID,
+`MultiServerMCPClient` has historically treated tool calls as stateless by default: a tool invocation creates a session, executes the tool, and cleans that session up. A later tool call can therefore arrive through a new session.
 
-        "code": authorization_code,
+Users have reported exactly this behaviour with stateful MCP servers. One report describes initialization succeeding and the next tool failing because the initialization state had disappeared; the reporter noted that the same server retained the state when used through other MCP clients.
 
-        # OAuth 2.1: prove possession of the verifier used
+An earlier issue describes the underlying behaviour more directly: a new session being started for each tool call causes stateful servers to lose information saved during the previous invocation.
 
-        # to create the original PKCE challenge.
+If the MCP server requires session continuity, hold the session open explicitly and load the tools against that session.
 
-        "code_verifier": code_verifier,
+Conceptually:
 
-        # MCP + RFC 8707: keep the request associated
+```python
+async with client.session("protected-server") as session:
+    tools = await load_mcp_tools(session)
 
-        # with the intended protected resource.
+    agent = create_agent(
+        model,
+        tools,
+    )
 
-        "resource": RESOURCE,
+    await agent.ainvoke(...)
+```
 
-    },
+The lifetime now becomes:
 
-)
+```text
+open MCP session
+      |
+      +--> tool call 1
+      |
+      +--> tool call 2
+      |
+      +--> tool call 3
+      |
+close MCP session
+```
 
-token_response.raise_for_status()
+instead of:
 
-tokens = token_response.json()
+```text
+open → tool call 1 → close
 
-access_token = tokens["access_token"]
+open → tool call 2 → close
 
+open → tool call 3 → close
+```
 
+A persistent session is not automatically better.
 
-mcp_response = httpx.post(
+It keeps connections and server-side state alive for longer. You also need to decide when the session ends, what happens if the connection disappears, and whether a session can safely be shared.
 
-    RESOURCE,
+Use it when the MCP server actually requires continuity.
 
-    # OAuth 2.1 / bearer token usage:
+Token lifetime and session lifetime are related, but they are not the same thing.
 
-    # send the token in the Authorization header,
+A long-lived session may outlive an access token.
 
-    # never as ?access_token=... in the URL.
+A short-lived session may still be created with an expired credential.
 
-    headers={
+The application therefore has to decide both:
 
-        "Authorization": f"Bearer {access_token}",
+```text
+Which credential should this request use?
+```
 
-        "Content-Type": "application/json",
+and, when necessary:
 
-    },
+```text
+Should these tool calls share the same MCP session?
+```
 
-    json={
+## Why this is not built in
 
-        "jsonrpc": "2.0",
+Requests for dynamic authentication and refresh support have appeared repeatedly around the LangGraph MCP adapter.
 
-        "id": 1,
+Four community issues requesting forms of dynamic refresh were closed: one with only `Closing issue for now.`, one as a duplicate, and two as not planned.
 
-        "method": "tools/list",
+One request specifically asks for dynamic authentication headers rather than a token fixed at client construction. Another describes having to refresh JWT bearer tokens before expiry.
 
-        "params": {},
+The working client-factory approach came from the community rather than being introduced as a first-class refresh API.
 
-    },
+That leads to a useful architectural boundary.
 
-)
+The MCP adapter knows how to expose MCP tools to the agent.
 
-mcp_response.raise_for_status()
+The MCP transport knows how to send requests.
 
-print(mcp_response.json())
+Neither necessarily knows enough about your application to own a user's complete credential lifecycle.
 
-\`\`\`
+Your application may need to decide which account is active, where refresh tokens are stored, whether a token is still usable, how concurrent refreshes are synchronized, or what should happen when reauthorization is required.
 
-The constraints are easier to see when you look at what the code does **not**** contain.
+So keep that lifecycle above the adapter:
 
-There is no username or password field. Authentication stays at the authorization server.
+```text
+Application
+  ├── user/request context
+  ├── token storage
+  ├── refresh logic
+  └── reauthorization
+          |
+          v
+MCP client factory
+          |
+          v
+MCP transport
+          |
+          v
+protected MCP server
+```
 
-There is no \`response_type=token\`. The browser returns an authorization code rather than an access token.
+The client factory becomes the handoff point.
 
-The code cannot be exchanged without the PKCE verifier created before authorization started.
+It does not need to implement OAuth.
 
-The callback URI is the complete URI registered for the client.
+It asks your application for the credential that should be used now and gives that credential to the HTTP layer that will make the MCP request.
 
-The MCP request does not append an access token to the URL. The token travels in the \`Authorization\` header.
+That separation also makes the failure easier to reason about.
 
-And the \`resource\` parameter identifies the MCP server the client is asking to access.
+If the first call succeeds and a later request returns `401`, inspect the credential reaching the HTTP request.
 
-That is the shape OAuth 2.1 and MCP are pushing implementations toward.
+If authorization succeeds but server initialization disappears between tool calls, inspect the MCP session lifetime instead.
 
-## Migration checklist**
+Those are two different lifecycles, even when they surface during the same agent run.
 
-If you already built an MCP client using older OAuth 2.0 patterns, you probably do not need to replace the entire authorization layer. Walk through the flow and remove the patterns OAuth 2.1 no longer carries forward.
+## Conclusion
 
-- **Authorization code without PKCE:**** generate a verifier for every authorization attempt and send an \`S256\` code challenge.
+Connecting a LangGraph agent to an OAuth-protected MCP server is not finished when the first authenticated tool call succeeds.
 
-- **Implicit grant:**** replace \`response_type=token\` with the authorization code flow and PKCE.
+The token used for that call has a lifetime.
 
-- **Password grant:**** stop collecting the user's identity-provider credentials in the MCP client and redirect the user to the authorization server instead.
+If the MCP connection captures the credential once, an agent that runs long enough can eventually send an expired token even when your application already knows how to obtain a fresh one.
 
-- **Loose redirect matching:**** register complete callback URIs and send the expected redirect URI during authorization.
+The client factory gives us a clean place to connect those two pieces. Let the application own the credential lifecycle, resolve the current credential when the MCP HTTP client is created, and keep user context isolated when multiple agents run concurrently.
 
-- **Bearer tokens in URLs:**** send access tokens using the \`Authorization: Bearer\` header.
+Then treat session continuity separately. The LangGraph MCP client is stateless by default, so an MCP server that stores initialization state across tool calls needs an explicitly managed session.
 
-- **Hard-coded authorization server assumptions:**** use Protected Resource Metadata to discover the authorization setup exposed by the MCP server.
+The final flow is:
 
-- **Tokens requested without a target resource:**** send the RFC 8707 \`resource\` parameter for the MCP server.
+```text
+Agent chooses MCP tool
+        |
+        v
+Application context identifies the user
+        |
+        v
+Credential resolver returns a valid token
+        |
+        v
+Client factory creates the authenticated MCP client
+        |
+        v
+Tool executes in the required MCP session
+```
 
-OAuth 2.1 does not give MCP a new authorization model.
+LangGraph still only sees tools.
 
-It trims OAuth down to the patterns modern clients are expected to use: authorization code with PKCE, explicit redirect destinations, no password or implicit grants, and bearer credentials kept out of URLs.
+The agent never needs an access token in its prompt or graph state, and the MCP adapter does not have to become your token manager.
 
-MCP then adds the pieces needed when clients connect to protected servers they may not know in advance: discovery through Protected Resource Metadata and resource-specific authorization through RFC 8707.
-
-If you already know OAuth 2.0, you do not need to relearn OAuth before implementing MCP.
-
-You need to know which old paths are gone, which protections are now part of the default flow, and which extra metadata MCP uses to connect the client, authorization server, and protected resource.
+The application owns the credential lifecycle. The client factory gets the current credential into the request. The session lifetime determines whether server-side state survives the next tool call.
