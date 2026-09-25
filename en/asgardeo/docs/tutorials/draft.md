@@ -1,280 +1,637 @@
-# Why Your MCP Token Expires Mid-Run — and How to Fix It
+# Why Your MCP Token Expires Mid-Run
 
-Your LangGraph agent connects to an MCP server. The first tool call works. Then, sometime later, the next call returns `401 Unauthorized`.
+In the previous guide, we connected a LangGraph agent to an OAuth-protected MCP server without pushing access tokens into the agent itself.
 
-Nothing changed in the graph. The MCP server is still running. The tool is still available.
+That is still the architecture we want.
 
-The access token simply expired.
+The application owns authentication. The agent sees tools. The MCP client uses the credential supplied by the authentication layer when it talks to the protected server.
 
-That is easy to miss because authentication usually appears to be part of the connection setup. You create the MCP client, put an access token in its configuration, load the tools, and give those tools to LangGraph.
+For a short agent run, this can work without any visible problems.
 
-```python
-client = MultiServerMCPClient(
-    {
-        "protected-server": {
-            "url": MCP_SERVER_URL,
-            "transport": "streamable_http",
-            "headers": {
-                "Authorization": f"Bearer {access_token}",
-            },
-        }
-    }
-)
-```
+The agent authenticates, calls a few tools, and finishes before the access token expires.
 
-The agent can now call the protected tools.
+Long-running workflows are different.
 
-But an access token is temporary. A token that was valid when the client was created may no longer be valid when an agent invokes a tool 30 minutes later.
-
-This creates a different problem from initially authorizing an MCP connection.
-
-OAuth can give your application a new access token. The harder part is making sure the MCP request uses that new token instead of continuing to send the credential that was captured earlier.
-
-In this guide, we will build that refresh path around the MCP client's HTTP client factory. Instead of treating authentication as a value that is fixed when the MCP client starts, the factory can obtain the credential needed for the request when the HTTP client is created.
-
-We will also look at a second problem that can appear very similar: MCP sessions are stateless by default in the LangGraph MCP adapter. If a server expects initialization state to survive between tool calls, refreshing the token alone will not fix it.
-
-By the end, the flow will look like this:
+An agent may wait for human approval, call other tools, interact with external services, or remain active for long enough that the access token used when the MCP client was created is no longer valid.
 
 ```text
-LangGraph agent
-      |
-      v
-MCP tool invocation
-      |
-      v
-client factory
-      |
-      +----> obtain current credential
-      |
-      v
-MCP HTTP client
-      |
-      v
-protected MCP server
-```
+Agent starts
 
-LangGraph still does not manage OAuth tokens. It receives MCP tools and decides when to call them. Credential lifetime remains part of the application around the MCP connection.
+    ↓
 
-## The symptom
+OAuth authentication completes
 
-The simplest version looks like this:
+    ↓
 
-```text
-Tool call 1
-POST /mcp
-Authorization: Bearer eyJ...
+MCP tool call
+
+    ↓
+
 200 OK
 
-Tool call 2
-POST /mcp
-Authorization: Bearer eyJ...
+agent keeps running
+
+    ↓
+
+waits for approval
+
+calls other tools
+
+does more work
+
+    ↓
+
+access token expires
+
+another MCP tool call
+
+    ↓
+
 401 Unauthorized
 ```
 
-The same bearer token appears in both requests.
+OAuth already has a way to obtain another access token.
 
-That is fine while the token is valid. Once it expires, the server rejects it.
+Your authentication layer may use a refresh token, a new authorization flow, or another mechanism appropriate for the application.
 
-For a short interactive request, you might never notice. For a long-running agent, the problem becomes much easier to reproduce. The agent can begin a workflow with a valid token, spend time reasoning or waiting for other operations, and reach another MCP tool after the token lifetime has passed.
+The problem is not teaching LangGraph how to refresh OAuth tokens.
 
-A similar problem was raised by users of `langchain-mcp-adapters`, including requests for a way to supply authentication dynamically rather than putting a fixed bearer token in the original connection configuration. One issue describes the desired behavior as providing a token function at request time rather than a static `Authorization` header.
+We should not move authentication responsibilities into the agent.
 
-Another report describes the operational consequence directly: applications using JWT bearer authentication have to refresh the token before expiry themselves.
+The problem appears when the MCP client was configured with a credential that was resolved earlier in the run.
 
-The authentication server is not necessarily the problem here. Your application may already know how to refresh the token.
-
-The problem is getting the refreshed credential into the next MCP request.
-
-## Why the auth object is evaluated once
-
-A typical MCP configuration is created before the agent starts running:
-
-```python
-connections = {
-    "orders": {
-        "url": MCP_SERVER_URL,
-        "transport": "streamable_http",
-        "headers": {
-            "Authorization": f"Bearer {token}",
-        },
-    }
-}
-```
-
-At that point, `token` is just a string.
-
-The connection configuration now contains the value that existed when this dictionary was built. Updating some other variable later does not rewrite the header already stored in the connection.
-
-That design is perfectly reasonable for credentials that do not change during the lifetime of the client. API keys often behave that way.
-
-OAuth access tokens do not.
-
-They have an expiry time and are expected to be replaced. An application that holds a refresh token, or otherwise knows how to obtain another access token, therefore needs a place where credential resolution can happen later in the request lifecycle.
-
-The MCP Python SDK exposes such a place through its HTTP client factory.
-
-The factory protocol receives three useful values:
-
-```python
-headers
-timeout
-auth
-```
-
-and returns the HTTP client used for the MCP connection. The SDK's implementation uses exactly those parameters when constructing its client.
-
-That gives us a seam between:
+For example, an application might construct the MCP connection using an `Authorization` header containing the current access token.
 
 ```text
-the MCP adapter deciding to make a request
+application authentication
+
+        ↓
+
+access_token_1
+
+        ↓
+
+create MCP client
+
+        ↓
+
+Authorization: Bearer access_token_1
+```
+
+Later, the authentication layer may obtain `access_token_2`.
+
+That does not necessarily change the credential already supplied to the MCP client.
+
+This leaves us with two separate operations:
+
+```text
+authentication layer obtains a fresh token
 ```
 
 and:
 
 ```text
-the HTTP client actually sending that request
+the next MCP request uses that fresh token
 ```
 
-Instead of storing the final bearer token in the MCP configuration, we can resolve the current credential inside that seam.
+The first does not automatically guarantee the second.
 
-## The client-factory seam
+That is where the MCP client factory becomes useful.
 
-Start with a function in your application that owns the credential lifecycle.
+Instead of treating the MCP client as something created once with a token that may eventually expire, we can create the client at a point where the application can supply the credential that is valid now.
+
+```text
+LangGraph agent
+
+        ↓
+
+MCP tool invocation
+
+        ↓
+
+MCP client factory
+
+        ↓
+
+application authentication layer
+
+        ↓
+
+current credential
+
+        ↓
+
+MCP request
+```
+
+There is another lifecycle we need to consider as well.
+
+A later MCP tool call can fail even when the access token is perfectly valid.
+
+The multi-server MCP client can create new sessions between tool calls. If the MCP server expects initialization state to survive across those calls, creating a new session can lose that state.
+
+We therefore have two separate lifecycles to reason about:
+
+```text
+credential lifetime
+
+session lifetime
+```
+
+They can surface during the same long-running agent workflow, but they are different problems.
+
+We will start with the credential lifecycle and make sure each MCP client is created with the access token that is valid at that point in the workflow.
+
+Then we will look at the session lifecycle and when an MCP session needs to remain alive across multiple tool calls.
+
+## The symptom
+
+The frustrating part is that everything works at first.
+
+The agent authenticates successfully. The MCP server accepts the access token. The first tool calls return normally.
+
+Then enough time passes for that token to expire.
+
+```text
+Tool call 1
+
+POST /mcp
+
+Authorization: Bearer access_token_1
+
+200 OK
+
+
+time passes
+
+
+Tool call 2
+
+POST /mcp
+
+Authorization: Bearer access_token_1
+
+401 Unauthorized
+```
+
+The second request is reaching the same MCP server with the same credential that worked earlier.
+
+That is easy to miss in a short workflow because the agent may finish before the token reaches the end of its lifetime.
+
+A longer workflow gives the token time to expire.
+
+By the time the agent returns to the MCP server, the authentication layer may already be capable of obtaining a new access token.
 
 For example:
 
-```python
-async def get_access_token() -> str:
-    token = await token_store.get()
+```text
+authentication layer
 
-    if token.expires_soon():
-        token = await oauth_client.refresh(token.refresh_token)
-        await token_store.save(token)
+access_token_1 expires
 
-    return token.access_token
+        ↓
+
+refresh
+
+        ↓
+
+access_token_2
 ```
 
-The MCP layer does not need to know how the refresh happened.
-
-`get_access_token()` might use a refresh token, workload identity, a token exchange, or another mechanism. Its job is simply to return an access token that can be used now.
-
-The client factory can then bridge that function into the MCP transport:
-
-```python
-import httpx
-
-
-async def create_authenticated_client(
-    headers=None,
-    timeout=None,
-    auth=None,
-):
-    access_token = await get_access_token()
-
-    request_headers = dict(headers or {})
-    request_headers["Authorization"] = f"Bearer {access_token}"
-
-    return httpx.AsyncClient(
-        headers=request_headers,
-        timeout=timeout,
-        auth=auth,
-        follow_redirects=True,
-    )
-```
-
-Conceptually, the important change is small.
-
-Instead of:
+But the MCP request can still look like this:
 
 ```text
-construct MCP client
-    ↓
-read token once
-    ↓
-reuse captured token
+MCP client
+
+Authorization: Bearer access_token_1
+
+        ↓
+
+next tool call
+
+        ↓
+
+401 Unauthorized
 ```
 
-we want:
+The authentication layer has a valid credential.
+
+The MCP client is still using the credential it was originally given.
+
+Refreshing the token is therefore only half of the problem.
+
+The refreshed token also has to reach the MCP request that needs it.
+
+## Why refreshing the token is not enough
+
+Suppose the application creates an MCP client using the current access token in its connection headers.
+
+Conceptually:
 
 ```text
-MCP request needs an HTTP client
-    ↓
-resolve current token
-    ↓
-construct authenticated HTTP client
-    ↓
-send request
+get current access token
+
+        ↓
+
+access_token_1
+
+        ↓
+
+create MCP client
+
+        ↓
+
+Authorization: Bearer access_token_1
 ```
 
-The MCP SDK's client-factory protocol is designed to receive the connection's existing headers, timeout and authentication configuration, so a custom factory does not need to throw those settings away.
+At that moment, `access_token_1` is valid.
 
-The runnable example for this article should make expiry deliberately easy to reproduce.
+The MCP server accepts it, and tool calls succeed.
 
-For example, configure the test authorization server to issue a token that lasts only a few seconds:
+Later, the access token expires.
+
+Your authentication layer may then refresh the user's session and obtain a replacement:
 
 ```text
 access_token_1
+
+        ↓
+
+expires
+
+        ↓
+
+authentication layer refreshes
+
+        ↓
+
+access_token_2
+```
+
+The important part is what happens to the MCP client that was already created.
+
+If that client was configured with:
+
+```text
+Authorization: Bearer access_token_1
+```
+
+obtaining `access_token_2` elsewhere in the application does not automatically replace that header.
+
+The two parts of the application can therefore end up with different authentication state:
+
+```text
+application authentication layer
+
+access_token_2
+
+
+MCP client
+
+Authorization: Bearer access_token_1
+```
+
+The authentication system has done its job.
+
+It has a valid token.
+
+The MCP client is also doing what it was configured to do.
+
+It is continuing to send the credential it was given when it was created.
+
+The problem is the handoff between those two pieces.
+
+Long-running agents simply make that gap easier to encounter because there may be a significant delay between MCP tool calls.
+
+The solution is not to put refresh logic inside the LangGraph agent.
+
+Instead, we need a point in the MCP request path where the application can provide the credential that is valid at that moment.
+
+That is the role the client factory will play.
+
+## The HTTP client seam
+
+The MCP Python SDK lets you provide the HTTP client used by the Streamable HTTP transport.
+
+That gives us the handoff point we need.
+
+Instead of creating the MCP transport with an access token that may remain attached to the client for the rest of the workflow, the application can obtain the current credential when it creates the HTTP client.
+
+The request path becomes:
+
+```text
+LangGraph chooses tool
+
+        ↓
+
+application prepares MCP client
+
+        ↓
+
+obtain current credential
+
+        ↓
+
+create HTTP client
+
+        ↓
+
+create MCP transport
+
+        ↓
+
+send MCP request
+```
+
+OAuth still belongs to the application.
+
+The HTTP client is simply where the credential crosses into the MCP transport.
+
+A simplified version could look like this:
+
+```python
+import httpx2
+
+from mcp import Client
+from mcp.client.streamable_http import streamable_http_client
+
+
+async def create_mcp_client():
+    access_token = await auth_provider.get_access_token()
+
+    http_client = httpx2.AsyncClient(
+        headers={
+            "Authorization": f"Bearer {access_token}"
+        },
+        timeout=httpx2.Timeout(
+            30.0,
+            read=300.0,
+        ),
+    )
+
+    transport = streamable_http_client(
+        MCP_SERVER_URL,
+        http_client=http_client,
+    )
+
+    return http_client, Client(transport)
+```
+
+The important line is:
+
+```python
+access_token = await auth_provider.get_access_token()
+```
+
+The application asks its authentication layer for the credential that should be used before constructing the HTTP client.
+
+That authentication layer can decide what to return.
+
+If the current access token is still valid, it can reuse it.
+
+If the token has expired, or is close enough to expiry that the application wants to replace it, the authentication layer can obtain a new one first.
+
+Conceptually:
+
+```text
+MCP client needed
+
+        ↓
+
+ask authentication layer
+
+        ↓
+
+is current token usable?
+
+     yes      no
+
+      ↓        ↓
+
+    reuse    refresh
+
+       \      /
+
+        \    /
+
+      valid token
+
+          ↓
+
+ create HTTP client
+
+          ↓
+
+ create MCP transport
+```
+
+The MCP client does not need to know how OAuth refresh works.
+
+LangGraph does not need access to the token.
+
+The credential does not need to be stored in graph state.
+
+The application authentication layer remains responsible for deciding whether the current token can be reused or whether a new one needs to be obtained.
+
+The MCP layer only receives the result.
+
+There is an important boundary here, though.
+
+Creating an HTTP client with the current token solves the problem only if that client is created again when a newer credential is needed.
+
+If you create the HTTP client once at the beginning of a long-running workflow and keep reusing it, you can end up in exactly the same situation:
+
+```text
+create HTTP client
+
+        ↓
+
+Authorization: Bearer access_token_1
+
+        ↓
+
+reuse same client
+
+        ↓
+
+access_token_1 expires
+
+        ↓
+
+later MCP request
+
+        ↓
+
+401 Unauthorized
+```
+
+So the goal is not merely to move the token from one configuration object into another.
+
+The goal is to place HTTP client creation at a point in the workflow where the application can obtain the credential that is valid for the next MCP interaction.
+
+That gives us the pattern we need:
+
+```text
+need MCP connection
+
+        ↓
+
+get current credential
+
+        ↓
+
+build authenticated HTTP client
+
+        ↓
+
+open MCP transport
+
+        ↓
+
+perform MCP work
+```
+
+The MCP Python SDK supports this layering directly: the application owns the HTTP client, and the Streamable HTTP transport uses the client that is passed to it.
+
+That keeps OAuth concerns outside the agent while still allowing the MCP connection to use current authentication state.
+
+### Prove that the refreshed token reaches MCP
+
+A runnable example should make the failure easy to reproduce.
+
+Configure the authorization server with a deliberately short access-token lifetime:
+
+```text
+access_token_1
+
 expires_in: 5
 ```
 
-Run the first tool:
-
-```text
-tool call → access_token_1 → 200
-```
-
-Wait until it expires.
-
-Then run the second tool:
+Make the first MCP call while that token is still valid:
 
 ```text
 tool call
+
     ↓
-factory asks for credential
+
+access_token_1
+
     ↓
-application refreshes token
+
+MCP request
+
     ↓
-access_token_2
-    ↓
-200
+
+200 OK
 ```
 
-The test should fail when the connection uses a static header and pass when it uses the factory.
+Then wait for the token to expire before making another MCP call.
 
-That gives us something much more useful than assuming refresh works because the application successfully obtained a second token.
+When the application prepares the next MCP connection, it asks the authentication layer for the current credential.
 
-We prove that the second **MCP request actually sends it**.
+```text
+second tool call
+
+        ↓
+
+get current credential
+
+        ↓
+
+access_token_1 expired
+
+        ↓
+
+refresh
+
+        ↓
+
+access_token_2
+
+        ↓
+
+create authenticated HTTP client
+
+        ↓
+
+MCP request
+
+        ↓
+
+200 OK
+```
+
+The test should verify more than the fact that the authentication layer received `access_token_2`.
+
+It should verify that the second MCP request actually sent `access_token_2`.
+
+Conceptually, the assertion is:
+
+```text
+first MCP request
+Authorization: Bearer access_token_1
+
+second MCP request
+Authorization: Bearer access_token_2
+```
+
+That distinction is important because successful refresh alone does not prove that the MCP transport received the new credential.
+
+The behavior we want to demonstrate is the complete path:
+
+```text
+token expires
+
+    ↓
+
+authentication layer obtains replacement
+
+    ↓
+
+new HTTP client receives replacement
+
+    ↓
+
+MCP request sends replacement
+```
+
+Once the example proves that sequence, we know the credential lifecycle is working across multiple MCP interactions.
 
 ## Carrying per-request context safely
 
-Token refresh becomes slightly more complicated once multiple users can run agents at the same time.
+So far, we have treated the application as though only one user were running an agent.
 
-Consider this function:
+A real application may have many agent runs happening at the same time.
+
+Suppose Alice and Bob both start workflows.
+
+A global variable like this would be unsafe:
 
 ```python
 CURRENT_TOKEN = None
 ```
 
-Request A starts:
+Alice's request starts:
 
 ```text
 CURRENT_TOKEN = Alice's token
 ```
 
-Before its MCP tool runs, request B starts:
+Then Bob's request begins:
 
 ```text
 CURRENT_TOKEN = Bob's token
 ```
 
-The factory now asks for `CURRENT_TOKEN`.
+If Alice's workflow prepares its next MCP connection after that, it could read Bob's credential instead.
 
-Alice's MCP request could leave the application carrying Bob's credential.
+At that point, we no longer have a token-expiry problem.
 
-The fix is not to make the factory global-state-aware. The credential needs to follow the request that owns it.
+We have a credential-isolation problem.
 
-In Python, `ContextVar` is one way to carry that request-local information through asynchronous execution:
+The code that obtains the current access token therefore needs enough context to identify which user or session owns the MCP request.
+
+One way to carry that context through asynchronous Python code is `ContextVar`.
 
 ```python
 from contextvars import ContextVar
@@ -282,22 +639,23 @@ from contextvars import ContextVar
 current_user = ContextVar("current_user")
 ```
 
-At the start of the application request:
+When an application begins an agent run, it can associate that execution context with the current user:
 
 ```python
-token = current_user.set(user_id)
+context_token = current_user.set(user_id)
 
 try:
     result = await agent.ainvoke(input)
 finally:
-    current_user.reset(token)
+    current_user.reset(context_token)
 ```
 
-The credential resolver can then use that context:
+The authentication layer can then resolve credentials for that user:
 
 ```python
 async def get_access_token():
     user_id = current_user.get()
+
     token = await token_store.get(user_id)
 
     if token.expires_soon():
@@ -307,27 +665,63 @@ async def get_access_token():
     return token.access_token
 ```
 
-The factory itself remains simple:
+When the application later prepares an authenticated HTTP client, it does not need to pass Alice's or Bob's token through the agent.
+
+It asks the authentication layer for the current credential:
 
 ```text
-factory
-   ↓
-find current request/user
-   ↓
+MCP connection needed
+
+        ↓
+
+authentication layer
+
+        ↓
+
+current request context
+
+        ↓
+
+identify user
+
+        ↓
+
 load that user's credential
-   ↓
-refresh if necessary
-   ↓
-create HTTP client
+
+        ↓
+
+create authenticated HTTP client
+
+        ↓
+
+MCP request
 ```
 
-There is another concurrency case to handle: two tool calls can notice that the same token is about to expire at almost the same time.
+The access token stays outside LangGraph state.
 
-Both may attempt a refresh.
+The request context carries identity, while the authentication layer remains responsible for loading and refreshing the corresponding credential.
 
-If the authorization server rotates refresh tokens, the first refresh can invalidate the credential being used by the second.
+### Avoid concurrent refreshes
 
-Your token store therefore needs synchronization around refresh:
+There is another case to account for.
+
+Suppose two MCP tool calls for the same user happen at nearly the same time.
+
+Both load the same token:
+
+```text
+tool call A ──┐
+              ├── access_token_1 is expiring
+tool call B ──┘
+```
+
+Without coordination, both requests may decide to refresh it.
+
+That is especially troublesome when the authorization server uses refresh-token rotation. A successful refresh can return a new refresh token and invalidate the previous one.
+
+One request could therefore refresh successfully while another request is still preparing to use the old refresh token.
+
+A per-user or per-session refresh lock avoids that race:
 
 ```python
 async with refresh_lock(user_id):
@@ -338,26 +732,93 @@ async with refresh_lock(user_id):
         await token_store.save(user_id, token)
 ```
 
-Recheck the token after acquiring the lock. Another request may already have refreshed it while this request was waiting.
+Notice that the token is loaded again after acquiring the lock.
 
-The rule is straightforward: credentials belong to the user and request that obtained them. They should not become shared mutable state merely because the MCP client is shared.
+Another request may already have refreshed it while this request was waiting.
+
+The sequence then becomes:
+
+```text
+request A                      request B
+
+token expiring                token expiring
+
+     ↓                             ↓
+
+acquire refresh lock          wait
+
+     ↓
+
+refresh token
+
+     ↓
+
+save new token
+
+     ↓
+
+release lock
+
+                                   ↓
+
+                            acquire lock
+
+                                   ↓
+
+                            reload token
+
+                                   ↓
+
+                         new token already valid
+
+                                   ↓
+
+                              reuse it
+```
+
+This keeps credential refresh scoped to the user or session that owns it and prevents one agent run from accidentally interfering with another.
+
+The boundary we want to preserve is:
+
+```text
+request context
+
+      ↓
+
+correct user
+
+      ↓
+
+correct credential
+
+      ↓
+
+authenticated HTTP client
+
+      ↓
+
+MCP request
+```
+
+An MCP connection may be part of a larger concurrent application, but one user's credentials should never become shared mutable authentication state.
 
 ## The other half — stateless sessions
 
-A `401` points toward authentication.
+A `401` usually sends you toward the credential path.
 
-But another MCP failure can appear immediately after the first successful tool call even when the access token is still valid.
+But a different failure can appear even when the access token is completely valid.
 
-Imagine an MCP server exposing these tools:
+Suppose an MCP server exposes two tools:
 
 ```text
 initialize_workspace()
+
 search_workspace()
 ```
 
-The first tool stores information in the server session.
+The first tool creates some server-side state that the second tool expects to find.
 
-The agent calls:
+The agent runs:
 
 ```text
 initialize_workspace()
@@ -365,31 +826,58 @@ initialize_workspace()
 
 and receives a successful response.
 
-It then calls:
+Later, it runs:
 
 ```text
 search_workspace()
 ```
 
-and the server responds:
+but the server responds:
 
 ```text
 workspace not initialized
 ```
 
-The problem can be the MCP session rather than the token.
+The credential is still valid.
 
-`MultiServerMCPClient` has historically treated tool calls as stateless by default: a tool invocation creates a session, executes the tool, and cleans that session up. A later tool call can therefore arrive through a new session.
+The problem is the MCP session.
 
-Users have reported exactly this behaviour with stateful MCP servers. One report describes initialization succeeding and the next tool failing because the initialization state had disappeared; the reporter noted that the same server retained the state when used through other MCP clients.
+By default, tools loaded through `MultiServerMCPClient.get_tools()` do not share one persistent MCP session. A new session is created for each tool call.
 
-An earlier issue describes the underlying behaviour more directly: a new session being started for each tool call causes stateful servers to lose information saved during the previous invocation.
+The lifecycle therefore looks like this:
 
-If the MCP server requires session continuity, hold the session open explicitly and load the tools against that session.
+```text
+open session
 
-Conceptually:
+    ↓
+
+tool call 1
+
+    ↓
+
+close session
+
+
+open new session
+
+    ↓
+
+tool call 2
+
+    ↓
+
+close session
+```
+
+That works well when each MCP tool call is independent.
+
+It becomes a problem when the server expects state created during one call to still exist during the next.
+
+For that case, you can explicitly open an MCP session and load the tools against that session:
 
 ```python
+from langchain_mcp_adapters.tools import load_mcp_tools
+
 async with client.session("protected-server") as session:
     tools = await load_mcp_tools(session)
 
@@ -401,139 +889,257 @@ async with client.session("protected-server") as session:
     await agent.ainvoke(...)
 ```
 
-The lifetime now becomes:
+Now the same MCP session remains available while those tools are being used:
 
 ```text
 open MCP session
-      |
-      +--> tool call 1
-      |
-      +--> tool call 2
-      |
-      +--> tool call 3
-      |
+
+      ↓
+
+tool call 1
+
+      ↓
+
+tool call 2
+
+      ↓
+
+tool call 3
+
+      ↓
+
 close MCP session
 ```
 
-instead of:
+The server can keep session-scoped state alive across those calls.
+
+A persistent session is not automatically the better choice.
+
+Keeping one open means keeping the underlying MCP session and any associated server-side state alive for longer. The application also needs to decide when that session should end and what to do if the connection is interrupted.
+
+Use a shared session when the server actually depends on continuity between tool calls.
+
+### Token lifetime and session lifetime are different
+
+This brings us to the second lifecycle in a long-running MCP workflow.
+
+The credential and the MCP session do not necessarily have the same lifetime.
+
+A persistent MCP session can remain open long enough for its access token to expire.
+
+A newly created MCP session can also fail immediately if it is created with an expired token.
+
+So the application may need to answer two different questions:
 
 ```text
-open → tool call 1 → close
-
-open → tool call 2 → close
-
-open → tool call 3 → close
+Which credential should this MCP connection use?
 ```
 
-A persistent session is not automatically better.
-
-It keeps connections and server-side state alive for longer. You also need to decide when the session ends, what happens if the connection disappears, and whether a session can safely be shared.
-
-Use it when the MCP server actually requires continuity.
-
-Token lifetime and session lifetime are related, but they are not the same thing.
-
-A long-lived session may outlive an access token.
-
-A short-lived session may still be created with an expired credential.
-
-The application therefore has to decide both:
-
-```text
-Which credential should this request use?
-```
-
-and, when necessary:
+and:
 
 ```text
 Should these tool calls share the same MCP session?
 ```
 
-## Why this is not built in
+Those questions can appear during the same agent run, but they solve different problems.
 
-Requests for dynamic authentication and refresh support have appeared repeatedly around the LangGraph MCP adapter.
+The credential lifecycle determines whether the MCP request is authenticated with a valid token.
 
-Four community issues requesting forms of dynamic refresh were closed: one with only `Closing issue for now.`, one as a duplicate, and two as not planned.
+The session lifecycle determines whether state created during one MCP interaction is still available during the next.
 
-One request specifically asks for dynamic authentication headers rather than a token fixed at client construction. Another describes having to refresh JWT bearer tokens before expiry.
+Keeping those two lifecycles separate makes the failures much easier to reason about.
 
-The working client-factory approach came from the community rather than being introduced as a first-class refresh API.
+## Where the credential lifecycle belongs
 
-That leads to a useful architectural boundary.
+The MCP adapter can connect LangChain tools to an MCP server.
 
-The MCP adapter knows how to expose MCP tools to the agent.
+The MCP transport can send requests to that server.
 
-The MCP transport knows how to send requests.
+But the application still owns authentication state that is specific to the user running the workflow.
 
-Neither necessarily knows enough about your application to own a user's complete credential lifecycle.
+That includes questions such as:
 
-Your application may need to decide which account is active, where refresh tokens are stored, whether a token is still usable, how concurrent refreshes are synchronized, or what should happen when reauthorization is required.
+```text
+Which user is running this agent?
 
-So keep that lifecycle above the adapter:
+Where are that user's credentials stored?
+
+Is the current access token still usable?
+
+Should it be refreshed?
+
+Is another request already refreshing it?
+
+Does the user need to authorize again?
+```
+
+Those decisions belong to the application's authentication layer.
+
+The MCP layer only needs the result: the credential that should be used for the connection it is about to make.
+
+That gives us the same separation we started with:
 
 ```text
 Application
-  ├── user/request context
-  ├── token storage
-  ├── refresh logic
-  └── reauthorization
-          |
-          v
-MCP client factory
-          |
-          v
+
+  |
+  +--> user/request context
+  |
+  +--> authentication layer
+  |      |
+  |      +--> token storage
+  |      +--> refresh
+  |      +--> reauthorization
+  |
+  v
+
+create authenticated HTTP client
+
+  |
+  v
+
 MCP transport
-          |
-          v
+
+  |
+  v
+
 protected MCP server
 ```
 
-The client factory becomes the handoff point.
+The HTTP client is the handoff point.
 
-It does not need to implement OAuth.
+It does not need to decide how OAuth works.
 
-It asks your application for the credential that should be used now and gives that credential to the HTTP layer that will make the MCP request.
+It receives the credential selected by the application's authentication layer and carries that credential into the MCP request.
 
-That separation also makes the failure easier to reason about.
+This distinction also helps when debugging long-running workflows.
 
-If the first call succeeds and a later request returns `401`, inspect the credential reaching the HTTP request.
+If the first MCP call succeeds and a later call returns:
 
-If authorization succeeds but server initialization disappears between tool calls, inspect the MCP session lifetime instead.
+```text
+401 Unauthorized
+```
 
-Those are two different lifecycles, even when they surface during the same agent run.
+inspect the credential that reached the later HTTP request.
+
+Did the authentication layer obtain a new token?
+
+Did the HTTP client receive it?
+
+Did the MCP request actually send it?
+
+If authentication continues to succeed but state created by an earlier MCP tool call disappears, inspect a different path:
+
+```text
+MCP session lifetime
+```
+
+Was a new session created for the later call?
+
+Did the server expect state from the earlier session to still exist?
+
+These failures can occur during the same agent run, but they come from different lifecycles:
+
+```text
+credential lifecycle
+
+        and
+
+session lifecycle
+```
+
+Keeping those responsibilities separate gives us a cleaner model for the rest of the application.
+
+The authentication layer answers:
+
+```text
+Which credential should be used now?
+```
+
+The MCP session strategy answers:
+
+```text
+Should these tool calls share the same session?
+```
+
+They are related only because a long-running agent can expose both at the same time.
 
 ## Conclusion
 
 Connecting a LangGraph agent to an OAuth-protected MCP server is not finished when the first authenticated tool call succeeds.
 
-The token used for that call has a lifetime.
+The earlier OAuth flow solved the first problem: keeping credentials out of the agent and letting the application own authentication.
 
-If the MCP connection captures the credential once, an agent that runs long enough can eventually send an expired token even when your application already knows how to obtain a fresh one.
+Long-running agents introduce another problem.
 
-The client factory gives us a clean place to connect those two pieces. Let the application own the credential lifecycle, resolve the current credential when the MCP HTTP client is created, and keep user context isolated when multiple agents run concurrently.
+Access tokens expire.
 
-Then treat session continuity separately. The LangGraph MCP client is stateless by default, so an MCP server that stores initialization state across tool calls needs an explicitly managed session.
+When that happens, refreshing the token inside the authentication layer is only part of the job. The next MCP connection also needs to receive that current credential.
 
-The final flow is:
+The HTTP client creation path gives us that handoff point.
+
+Keep OAuth and refresh logic in the application. Carry the correct user or session context into that layer. Resolve the current credential before creating the authenticated HTTP client, and verify in tests that the replacement token actually reaches the MCP server.
+
+Then handle MCP session lifetime separately.
+
+If the server expects state created by one tool call to still exist during the next, explicitly manage the MCP session and load the tools against that session.
+
+The complete path looks like this:
 
 ```text
 Agent chooses MCP tool
-        |
-        v
-Application context identifies the user
-        |
-        v
-Credential resolver returns a valid token
-        |
-        v
-Client factory creates the authenticated MCP client
-        |
-        v
-Tool executes in the required MCP session
+
+        ↓
+
+request context identifies the user
+
+        ↓
+
+authentication layer resolves current credential
+
+        ↓
+
+reuse or refresh access token
+
+        ↓
+
+create authenticated HTTP client
+
+        ↓
+
+open or reuse the required MCP session
+
+        ↓
+
+MCP request uses current token
+
+        ↓
+
+tool executes
 ```
 
-LangGraph still only sees tools.
+The responsibilities remain separate.
 
-The agent never needs an access token in its prompt or graph state, and the MCP adapter does not have to become your token manager.
+```text
+LangGraph
+    sees tools
 
-The application owns the credential lifecycle. The client factory gets the current credential into the request. The session lifetime determines whether server-side state survives the next tool call.
+Application authentication layer
+    owns credentials and refresh
+
+HTTP client
+    carries the current credential
+
+MCP session
+    controls continuity between tool calls
+```
+
+That separation gives long-running agents two clear lifecycles to manage:
+
+```text id="as8x3g"
+credential lifetime
+
+session lifetime
+```
+
+When a later MCP call fails, knowing which lifecycle you are looking at makes the problem much easier to trace.
