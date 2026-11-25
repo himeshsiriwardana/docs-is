@@ -768,6 +768,13 @@ nav:
         - API authorization:
           - Role-based access control: guides/authorization/api-authorization/api-authorization.md
         - MCP server authorization: guides/authorization/mcp-server-authorization.md
+        - API gateways:
+          - Secure APIs with API gateways: guides/authorization/api-gateways/index.md
+          - Apache APISIX: guides/authorization/api-gateways/apisix.md
+          - Azure API Management: guides/authorization/api-gateways/azure-apim.md
+          - Envoy: guides/authorization/api-gateways/envoy.md
+          - Kong Konnect: guides/authorization/api-gateways/kong.md
+          - KrakenD: guides/authorization/api-gateways/krakend.md
         - User impersonation:
           - User impersonation: guides/authorization/user-impersonation/index.md
           - via Console: guides/authorization/user-impersonation/via-console.md
